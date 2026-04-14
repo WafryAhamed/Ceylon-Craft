@@ -19,6 +19,11 @@ import Profile from '../pages/Profile.vue';
 import Orders from '../pages/Orders.vue';
 import OrderDetail from '../pages/OrderDetail.vue';
 import SearchResults from '../pages/SearchResults.vue';
+import PrivacyPolicy from '../pages/PrivacyPolicy.vue';
+import Terms from '../pages/Terms.vue';
+import ShippingReturns from '../pages/ShippingReturns.vue';
+import FAQ from '../pages/FAQ.vue';
+import NotFound from '../pages/NotFound.vue';
 
 const routes = [
   {
@@ -163,6 +168,46 @@ const routes = [
     meta: {
       title: 'Search Results | Ceylon Craft',
       description: 'Search results for your query.'
+    }
+  },
+  {
+    path: '/privacy-policy',
+    component: PrivacyPolicy,
+    meta: {
+      title: 'Privacy Policy | Ceylon Craft',
+      description: 'Read our privacy policy to understand how we protect your data.'
+    }
+  },
+  {
+    path: '/terms',
+    component: Terms,
+    meta: {
+      title: 'Terms & Conditions | Ceylon Craft',
+      description: 'Review our terms and conditions for using Ceylon Craft.'
+    }
+  },
+  {
+    path: '/shipping-returns',
+    component: ShippingReturns,
+    meta: {
+      title: 'Shipping & Returns | Ceylon Craft',
+      description: 'Learn about our shipping options and return policy.'
+    }
+  },
+  {
+    path: '/faq',
+    component: FAQ,
+    meta: {
+      title: 'FAQ | Ceylon Craft',
+      description: 'Frequently asked questions about Ceylon Craft products and services.'
+    }
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    component: NotFound,
+    meta: {
+      title: 'Page Not Found | Ceylon Craft',
+      description: 'The page you are looking for does not exist.'
     }
   }
 ];

@@ -27,6 +27,9 @@
           <RouterLink to="/contact" active-class="text-[#FB2B4A] font-semibold" class="text-[#657691] hover:text-[#FB2B4A] transition">
             Contact
           </RouterLink>
+          <RouterLink to="/faq" active-class="text-[#FB2B4A] font-semibold" class="text-[#657691] hover:text-[#FB2B4A] transition">
+            FAQ
+          </RouterLink>
         </div>
 
         <!-- Right Actions -->
@@ -117,10 +120,17 @@
         <RouterLink to="/blog" class="block px-4 py-2 text-[#657691] hover:bg-[#EEF0F7]">Blog</RouterLink>
         <RouterLink to="/about" class="block px-4 py-2 text-[#657691] hover:bg-[#EEF0F7]">About</RouterLink>
         <RouterLink to="/contact" class="block px-4 py-2 text-[#657691] hover:bg-[#EEF0F7]">Contact</RouterLink>
+        <RouterLink to="/faq" class="block px-4 py-2 text-[#657691] hover:bg-[#EEF0F7]">FAQ</RouterLink>
         <RouterLink to="/profile" class="block px-4 py-2 text-[#657691] hover:bg-[#EEF0F7]">Profile</RouterLink>
         <RouterLink to="/orders" class="block px-4 py-2 text-[#657691] hover:bg-[#EEF0F7]">Orders</RouterLink>
         <RouterLink to="/wishlist" class="block px-4 py-2 text-[#657691] hover:bg-[#EEF0F7]">Wishlist</RouterLink>
         <RouterLink to="/login" class="block px-4 py-2 text-[#657691] hover:bg-[#EEF0F7]">Sign In</RouterLink>
+        <div class="border-t border-[#DFE2E9] pt-2 mt-2">
+          <p class="px-4 py-2 text-xs font-semibold text-[#A0ACC0] uppercase">Help & Policies</p>
+          <RouterLink to="/privacy-policy" class="block px-4 py-2 text-[#657691] hover:bg-[#EEF0F7] text-sm">Privacy Policy</RouterLink>
+          <RouterLink to="/terms" class="block px-4 py-2 text-[#657691] hover:bg-[#EEF0F7] text-sm">Terms & Conditions</RouterLink>
+          <RouterLink to="/shipping-returns" class="block px-4 py-2 text-[#657691] hover:bg-[#EEF0F7] text-sm">Shipping & Returns</RouterLink>
+        </div>
       </div>
     </div>
   </nav>
