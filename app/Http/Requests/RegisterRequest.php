@@ -30,22 +30,19 @@ class RegisterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|min:2|max:255|regex:/^[\w\s\.\'-]+$/i',
+            'name' => 'required|string|min:2|max:255',
             'email' => [
                 'required',
-                'email:rfc,dns',
+                'email', // Permissive email validation
                 'unique:users,email',
                 'max:255',
             ],
             'password' => [
                 'required',
                 'confirmed',
-                Password::min(8)
-                    ->mixedCase() // requires at least one uppercase and one lowercase
-                    ->numbers()   // requires at least one number
-                    ->symbols(),  // requires at least one symbol
+                'min:8', // Minimum length only
             ],
-            'phone' => 'nullable|phone_number|max:20',
+            'phone' => 'nullable|string|max:20',
             'address' => 'nullable|string|min:5|max:255',
             'city' => 'nullable|string|min:2|max:100',
             'postal_code' => 'nullable|regex:/^[0-9A-Z\s]{3,20}$/i|max:20',
