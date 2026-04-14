@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
+import { setupRouteGuards } from '../middleware/routeGuards.js';
 
 // Pages
 import Home from '../pages/Home.vue';
@@ -24,6 +25,12 @@ import Terms from '../pages/Terms.vue';
 import ShippingReturns from '../pages/ShippingReturns.vue';
 import FAQ from '../pages/FAQ.vue';
 import NotFound from '../pages/NotFound.vue';
+
+// Admin Pages
+import AdminDashboard from '../pages/admin/Dashboard.vue';
+import AdminProducts from '../pages/admin/Products.vue';
+import AdminOrders from '../pages/admin/Orders.vue';
+import AdminCategories from '../pages/admin/Categories.vue';
 
 const routes = [
   {
@@ -103,7 +110,8 @@ const routes = [
     component: Login,
     meta: {
       title: 'Login | Ceylon Craft',
-      description: 'Sign in to your Ceylon Craft account.'
+      description: 'Sign in to your Ceylon Craft account.',
+      requiresGuest: true
     }
   },
   {
@@ -111,7 +119,8 @@ const routes = [
     component: Register,
     meta: {
       title: 'Register | Ceylon Craft',
-      description: 'Create a new Ceylon Craft account.'
+      description: 'Create a new Ceylon Craft account.',
+      requiresGuest: true
     }
   },
   {
