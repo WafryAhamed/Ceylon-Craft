@@ -128,7 +128,8 @@ const routes = [
     component: Cart,
     meta: {
       title: 'Shopping Cart | Ceylon Craft',
-      description: 'View your shopping cart.'
+      description: 'View your shopping cart.',
+      requiresAuth: true
     }
   },
   {
@@ -136,7 +137,8 @@ const routes = [
     component: Checkout,
     meta: {
       title: 'Checkout | Ceylon Craft',
-      description: 'Complete your purchase.'
+      description: 'Complete your purchase.',
+      requiresAuth: true
     }
   },
   {
@@ -144,7 +146,8 @@ const routes = [
     component: Wishlist,
     meta: {
       title: 'My Wishlist | Ceylon Craft',
-      description: 'View your saved favorite products.'
+      description: 'View your saved favorite products.',
+      requiresAuth: true
     }
   },
   {
@@ -152,7 +155,8 @@ const routes = [
     component: Profile,
     meta: {
       title: 'My Profile | Ceylon Craft',
-      description: 'Manage your account settings and personal information.'
+      description: 'Manage your account settings and personal information.',
+      requiresAuth: true
     }
   },
   {
@@ -160,7 +164,8 @@ const routes = [
     component: Orders,
     meta: {
       title: 'My Orders | Ceylon Craft',
-      description: 'View your order history and tracking information.'
+      description: 'View your order history and tracking information.',
+      requiresAuth: true
     }
   },
   {
@@ -168,7 +173,8 @@ const routes = [
     component: OrderDetail,
     meta: {
       title: 'Order Details | Ceylon Craft',
-      description: 'View detailed order information and tracking.'
+      description: 'View detailed order information and tracking.',
+      requiresAuth: true
     }
   },
   {
@@ -209,6 +215,52 @@ const routes = [
     meta: {
       title: 'FAQ | Ceylon Craft',
       description: 'Frequently asked questions about Ceylon Craft products and services.'
+    }
+  },
+  // Admin Routes
+  {
+    path: '/admin',
+    component: AdminDashboard,
+    meta: {
+      title: 'Admin Dashboard | Ceylon Craft',
+      description: 'Admin dashboard overview.',
+      requiresAdmin: true
+    }
+  },
+  {
+    path: '/admin/dashboard',
+    component: AdminDashboard,
+    meta: {
+      title: 'Admin Dashboard | Ceylon Craft',
+      description: 'Admin dashboard overview.',
+      requiresAdmin: true
+    }
+  },
+  {
+    path: '/admin/products',
+    component: AdminProducts,
+    meta: {
+      title: 'Product Management | Ceylon Craft Admin',
+      description: 'Manage products in your store.',
+      requiresAdmin: true
+    }
+  },
+  {
+    path: '/admin/orders',
+    component: AdminOrders,
+    meta: {
+      title: 'Order Management | Ceylon Craft Admin',
+      description: 'Manage customer orders.',
+      requiresAdmin: true
+    }
+  },
+  {
+    path: '/admin/categories',
+    component: AdminCategories,
+    meta: {
+      title: 'Category Management | Ceylon Craft Admin',
+      description: 'Manage product categories.',
+      requiresAdmin: true
     }
   },
   {
