@@ -93,9 +93,7 @@ class Product extends Model
      */
     public function scopeByCategory($query, $categoryId)
     {
-        return $query->whereHas('categories', function ($q) use ($categoryId) {
-            $q->where('categories.id', $categoryId);
-        });
+        return $query->where('category_id', $categoryId);
     }
 
     /**
