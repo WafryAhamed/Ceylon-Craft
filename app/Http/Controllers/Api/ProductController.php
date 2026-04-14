@@ -131,6 +131,10 @@ class ProductController extends Controller
     {
         $validated = $request->validated();
 
+        // Extract category_id for later use
+        $categoryId = $validated['category_id'] ?? null;
+        unset($validated['category_id']);
+
         // Handle image upload
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('products', 'public');
@@ -139,13 +143,21 @@ class ProductController extends Controller
 
         // Generate slug from name
         $validated['slug'] = \Illuminate\Support\Str::slug($validated['name']);
+        
+        // Ensure price is stored as float
+        if (isset($validated['price'])) {
+            $validated['price'] = (float)$validated['price'];
+        }
 
         $product = Product::create($validated);
 
-        // Attach categories if provided
-        if (isset($validated['categories'])) {
-            $product->categories()->attach($validated['categories']);
+        // Attach category if provided
+        if ($categoryId) {
+            $product->categories()->attach([$categoryId]);
         }
+
+        // Reload to get fresh data
+        $product->refresh();
 
         return response()->json([
             'success' => true,
@@ -176,12 +188,23 @@ class ProductController extends Controller
         if (isset($validated['name']) && $validated['name'] !== $product->name) {
             $validated['slug'] = \Illuminate\Support\Str::slug($validated['name']);
         }
+        
+        // Ensure price is stored as float
+        if (isset($validated['price'])) {
+            $validated['price'] = (float)$validated['price'];
+        }
+
+        // Extract category_id for later use (if present in validation rules)
+        $categoryId = $validated['category_id'] ?? null;
+        if (isset($validated['category_id'])) {
+            unset($validated['category_id']);
+        }
 
         $product->update($validated);
 
-        // Sync categories if provided
-        if (isset($validated['categories'])) {
-            $product->categories()->sync($validated['categories']);
+        // Sync category if provided
+        if ($categoryId) {
+            $product->categories()->sync([$categoryId]);
         }
 
         return response()->json([
