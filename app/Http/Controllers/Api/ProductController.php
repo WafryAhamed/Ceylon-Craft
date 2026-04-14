@@ -210,6 +210,21 @@ class ProductController extends Controller
     }
 
     /**
+     * Toggle product featured status (admin only).
+     */
+    public function toggleFeatured(Product $product): JsonResponse
+    {
+        $product->featured = !$product->featured;
+        $product->save();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Product featured status updated successfully',
+            'data' => $product,
+        ], 200);
+    }
+
+    /**
      * Get featured products.
      */
     public function featured(): JsonResponse

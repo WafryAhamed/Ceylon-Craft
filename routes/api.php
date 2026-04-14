@@ -89,11 +89,13 @@ Route::middleware(['api-token', 'admin'])->group(function () {
     Route::put('/admin/products/{product}', [ProductController::class, 'update']);
     Route::delete('/admin/products/{product}', [ProductController::class, 'destroy']);
     Route::patch('/admin/products/{product}/toggle', [ProductController::class, 'toggleActive']);
+    Route::patch('/admin/products/{product}/featured', [ProductController::class, 'toggleFeatured']);
 
     // Order management
     Route::get('/admin/orders', [OrderController::class, 'adminIndex']);
     Route::get('/admin/orders/stats', [OrderController::class, 'stats']);
     Route::put('/admin/orders/{order}/status', [OrderController::class, 'updateStatus']);
+    Route::patch('/admin/orders/{order}', [OrderController::class, 'updateStatus']);
     Route::patch('/admin/orders/{order}/toggle', [OrderController::class, 'toggleStatus']);
 });
 
