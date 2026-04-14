@@ -90,5 +90,10 @@ class CheckoutRequest extends FormRequest
         if ($this->has('city') && !$this->has('shipping_city')) {
             $this->merge(['shipping_city' => $this->input('city')]);
         }
+
+        // Provide default city if missing
+        if (!$this->has('shipping_city') && $this->has('shipping_address')) {
+            $this->merge(['shipping_city' => 'N/A']);
+        }
     }
 }
