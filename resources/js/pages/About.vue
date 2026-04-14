@@ -71,13 +71,16 @@
       <!-- Team Section -->
       <div>
         <h2 class="text-3xl md:text-4xl font-bold text-[#5A7184] mb-12 text-center">Meet Our Artisans</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div v-for="artisan in artisans" :key="artisan.id" class="text-center">
+        <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Our network of talented artisans from across Sri Lanka, each bringing unique skills and traditions to their craft</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div v-for="artisan in artisans" :key="artisan.id" class="text-center p-6 rounded-2xl bg-white border border-gray-100 hover:border-[#D1E8E2] transition">
             <div class="mb-4 rounded-2xl overflow-hidden">
               <img :src="artisan.image" :alt="artisan.name" class="w-full h-64 object-cover" />
             </div>
-            <h3 class="text-lg font-semibold text-[#5A7184] mb-2">{{ artisan.name }}</h3>
-            <p class="text-gray-600">{{ artisan.specialty }}</p>
+            <h3 class="text-lg font-semibold text-[#5A7184] mb-1">{{ artisan.name }}</h3>
+            <p class="text-sm text-[#D1E8E2] font-semibold mb-2">{{ artisan.region }}, Sri Lanka</p>
+            <p class="font-medium text-gray-700 mb-3">{{ artisan.specialty }}</p>
+            <p class="text-sm text-gray-600 leading-relaxed">{{ artisan.bio }}</p>
           </div>
         </div>
       </div>
@@ -93,18 +96,48 @@ const artisans = ref([
     id: 1,
     name: 'Lakshmi Perera',
     specialty: 'Ceramic Artist',
+    region: 'Kandy',
+    bio: 'Master ceramic artist from Kandy with 20+ years experience in traditional wheel-throwing',
     image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&h=300&fit=crop'
   },
   {
     id: 2,
     name: 'Rajith Silva',
     specialty: 'Textile Weaver',
+    region: 'Galle',
+    bio: 'Expert textile weaver from Galle creating traditional patterns using sustainable natural dyes',
     image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop'
   },
   {
     id: 3,
     name: 'Amara Dissanayake',
     specialty: 'Leather Craftsman',
+    region: 'Colombo',
+    bio: 'Skilled leather artisan from Colombo specializing in hand-stitched leather journals and accessories',
+    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=300&fit=crop'
+  },
+  {
+    id: 4,
+    name: 'Priya Kumari Jayasinha',
+    specialty: 'Woodcarver',
+    region: 'Matara',
+    bio: 'Traditional woodcarver from Matara creating intricate designs inspired by Sri Lankan heritage',
+    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&h=300&fit=crop'
+  },
+  {
+    id: 5,
+    name: 'Vikram Patel',
+    specialty: 'Batik Artist',
+    region: 'Colombo',
+    bio: 'Contemporary batik artist blending traditional Sri Lankan motifs with modern artistic vision',
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop'
+  },
+  {
+    id: 6,
+    name: 'Kalpana Singh',
+    specialty: 'Traditional Weaver',
+    region: 'Kurunegala',
+    bio: 'Master weaver from Kurunegala preserving ancient Sri Lankan textile techniques',
     image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=300&fit=crop'
   }
 ]);
