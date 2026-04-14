@@ -32,13 +32,13 @@ class ReviewController extends Controller
         return response()->json([
             'success' => true,
             'data' => $reviews->items(),
-            'pagination' => [
+            'meta' => [
                 'total' => $reviews->total(),
                 'per_page' => $reviews->perPage(),
                 'current_page' => $reviews->currentPage(),
                 'last_page' => $reviews->lastPage(),
             ],
-        ]);
+        ], 200);
     }
 
     /**
@@ -96,7 +96,7 @@ class ReviewController extends Controller
             'success' => true,
             'message' => 'Review updated successfully',
             'data' => $review,
-        ]);
+        ], 200);
     }
 
     /**
@@ -117,7 +117,7 @@ class ReviewController extends Controller
         return response()->json([
             'success' => true,
             'message' => 'Review deleted successfully',
-        ]);
+        ], 200);
     }
 
     /**
@@ -150,6 +150,6 @@ class ReviewController extends Controller
         return response()->json([
             'success' => true,
             'data' => $stats,
-        ]);
+        ], 200);
     }
 }
