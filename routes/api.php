@@ -52,14 +52,16 @@ Route::middleware('api-token')->group(function () {
     Route::delete('/reviews/{review}', [ReviewController::class, 'destroy']);
 });
 
-// Admin routes (require admin role)
-Route::middleware(['auth:sanctum', 'admin'])->group(function () {
+// Admin routes (require authentication and admin role)
+Route::middleware(['api-token', 'admin'])->group(function () {
     // Product management
     Route::post('/products', [ProductController::class, 'store']);
     Route::put('/products/{product}', [ProductController::class, 'update']);
     Route::delete('/products/{product}', [ProductController::class, 'destroy']);
 
     // Order management
-    Route::put('/orders/{order}/status', [OrderController::class, 'updateStatus']);
+    Route::get('/admin/orders', [OrderController::class, 'adminIndex']);
+    Route::get('/admin/orders/stats', [OrderController::class, 'stats']);
+    Route::put('/admin/orders/{order}/status', [OrderController::class, 'updateStatus']);
 });
 

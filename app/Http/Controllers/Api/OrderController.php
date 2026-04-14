@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CheckoutRequest;
 use App\Models\Order;
 use App\Models\OrderItem;
+use App\Models\Product;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -193,5 +194,84 @@ class OrderController extends Controller
                 'message' => 'Order cancelled successfully',
             ]);
         });
+    }
+
+    /**
+     * Get all orders (admin only).
+     */
+    public function adminIndex(Request $request): JsonResponse
+    {
+        $query = Order::query();
+
+        // Filter by status if provided
+        if ($request->has('status')) {
+            $query->where('status', $request->input('status'));
+        }
+
+        // Filter by payment status if provided
+        if ($request->has('payment_status')) {
+            $query->where('payment_status', $request->input('payment_status'));
+        }
+
+        // Search by customer email or name
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $query->whereHas('user', function ($q) use ($search) {
+                $q->where('email', 'like', "%$search%")
+                    ->orWhere('name', 'like', "%$search%");
+            });
+        }
+
+        $orders = $query
+            ->with(['user', 'items.product'])
+            ->latest()
+            ->paginate(20);
+
+        return response()->json([
+            'success' => true,
+            'data' => $orders->items(),
+            'pagination' => [
+                'total' => $orders->total(),
+                'per_page' => $orders->perPage(),
+                'current_page' => $orders->currentPage(),
+                'last_page' => $orders->lastPage(),
+            ],
+        ]);
+    }
+
+    /**
+     * Get order statistics (admin only).
+     */
+    public function stats(Request $request): JsonResponse
+    {
+        $totalOrders = Order::count();
+        $pendingOrders = Order::where('status', 'pending')->count();
+        $totalRevenue = Order::where('payment_status', 'paid')
+            ->sum('total');
+        $totalProducts = Order::query()
+            ->selectRaw('COUNT(DISTINCT product_id) as total')
+            ->join('order_items', 'orders.id', '=', 'order_items.order_id')
+            ->value('total') ?? 0;
+
+        return response()->json([
+            'success' => true,
+            'data' => [
+                'total_orders' => $totalOrders,
+                'pending_orders' => $pendingOrders,
+                'total_revenue' => number_format((float)$totalRevenue, 2),
+                'total_products' => Product::count(),
+                'recent_orders' => Order::with(['user', 'items.product'])
+                    ->latest()
+                    ->limit(5)
+                    ->get()
+                    ->map(fn ($order) => [
+                        'id' => $order->id,
+                        'customer' => $order->user->name,
+                        'total' => $order->total,
+                        'status' => $order->status,
+                        'created_at' => $order->created_at->format('Y-m-d H:i:s'),
+                    ]),
+            ],
+        ]);
     }
 }
