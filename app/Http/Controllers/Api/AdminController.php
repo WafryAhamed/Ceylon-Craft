@@ -21,11 +21,12 @@ class AdminController extends Controller
 
         return response()->json([
             'success' => true,
+            'message' => 'Users retrieved successfully',
             'data' => $users->items(),
             'meta' => [
                 'total' => $users->total(),
                 'per_page' => $users->perPage(),
-                'current_page' => $users->currentPage(),
+                'page' => $users->currentPage(),
                 'last_page' => $users->lastPage(),
             ],
         ]);
@@ -49,6 +50,7 @@ class AdminController extends Controller
 
         return response()->json([
             'success' => true,
+            'message' => 'Dashboard data retrieved successfully',
             'data' => [
                 'statistics' => [
                     'total_users' => $totalUsers,

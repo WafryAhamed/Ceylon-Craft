@@ -39,6 +39,7 @@ class CartController extends Controller
 
         return response()->json([
             'success' => true,
+            'message' => 'Cart retrieved successfully',
             'data' => [
                 'items' => $items,
                 'total_items' => $cart->getTotalItems(),

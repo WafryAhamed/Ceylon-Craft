@@ -289,6 +289,7 @@ class OrderController extends Controller
 
         return response()->json([
             'success' => true,
+            'message' => 'Order statistics retrieved successfully',
             'data' => [
                 'total_orders' => $totalOrders,
                 'pending_orders' => $pendingOrders,

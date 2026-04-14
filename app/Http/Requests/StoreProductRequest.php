@@ -18,7 +18,7 @@ class StoreProductRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return auth('api')->check() && auth('api')->user()->isAdmin();
+        return $this->user()?->isAdmin() ?? false;
     }
 
     /**
@@ -32,15 +32,6 @@ class StoreProductRequest extends FormRequest
                 'string',
                 'min:3',
                 'max:255',
-                'unique:products,name',
-                'regex:/^[a-z0-9\s\-&(),\.\']*$/i',
-            ],
-            'slug' => [
-                'nullable',
-                'string',
-                'max:255',
-                'unique:products,slug',
-                'regex:/^[a-z0-9\-]*$/',
             ],
             'description' => [
                 'required',
@@ -48,23 +39,10 @@ class StoreProductRequest extends FormRequest
                 'min:10',
                 'max:2000',
             ],
-            'short_description' => [
-                'nullable',
-                'string',
-                'min:5',
-                'max:500',
-            ],
             'price' => [
                 'required',
                 'numeric',
                 'min:0.01',
-                'max:999999.99',
-                'decimal:2',
-            ],
-            'cost' => [
-                'nullable',
-                'numeric',
-                'min:0',
                 'max:999999.99',
             ],
             'stock' => [
@@ -73,60 +51,15 @@ class StoreProductRequest extends FormRequest
                 'min:0',
                 'max:1000000',
             ],
-            'low_stock_threshold' => [
-                'nullable',
-                'integer',
-                'min:0',
-                'max:1000',
-            ],
-            'sku' => [
-                'nullable',
-                'string',
-                'max:100',
-                'unique:products,sku',
-                'regex:/^[A-Z0-9\-]*$/',
-            ],
             'category_id' => [
-                'required',
-               Rule::exists('categories', 'id'),
+                'nullable',
+                Rule::exists('categories', 'id'),
             ],
             'image' => [
                 'nullable',
                 'image',
                 'mimes:jpeg,png,jpg,webp',
                 'max:2048',
-                'dimensions:min_width=400,min_height=400',
-            ],
-            'images' => [
-                'nullable',
-                'array',
-                'max:5',
-            ],
-            'images.*' => [
-                'image',
-                'mimes:jpeg,png,jpg,webp',
-                'max:2048',
-            ],
-            'is_active' => [
-                'nullable',
-                'boolean',
-            ],
-            'is_featured' => [
-                'nullable',
-                'boolean',
-            ],
-            'tags' => [
-                'nullable',
-                'array',
-                'max:10',
-            ],
-            'tags.*' => [
-                'string',
-                'max:50',
-            ],
-            'attributes' => [
-                'nullable',
-                'array',
             ],
         ];
     }
