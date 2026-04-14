@@ -19,8 +19,9 @@ class CategoryFactory extends Factory
      */
     public function definition(): array
     {
+        $word = fake()->unique()->word();
         return [
-            'name' => fake()->word() . ' Category',
+            'name' => $word . ' Category',
             'slug' => fake()->unique()->slug(),
             'description' => fake()->sentence(),
         ];

@@ -86,13 +86,8 @@ class OrderController extends Controller
     {
         $user = $request->user();
         $cart = $user->cart;
-        
-        // Create cart if doesn't exist (for test compatibility)
-        if (!$cart) {
-            $cart = Cart::create(['user_id' => $user->id]);
-        }
 
-        if ($cart->items()->count() === 0) {
+        if (!$cart || $cart->items()->count() === 0) {
             return response()->json([
                 'success' => false,
                 'message' => 'Cart is empty',
