@@ -32,8 +32,8 @@ class AuthController extends Controller
         // Create cart for user
         Cart::create(['user_id' => $user->id]);
 
-        // Create token
-        $token = $user->createToken('auth_token')->plainTextToken;
+        // Generate token
+        $token = $user->generateToken();
 
         return response()->json([
             'success' => true,
@@ -68,7 +68,8 @@ class AuthController extends Controller
             ], 401);
         }
 
-        $token = $user->createToken('auth_token')->plainTextToken;
+        // Generate token
+        $token = $user->generateToken();
 
         return response()->json([
             'success' => true,

@@ -27,7 +27,7 @@ Route::get('/reviews', [ReviewController::class, 'index']);
 Route::get('/reviews/stats', [ReviewController::class, 'stats']);
 
 // Protected routes (require authentication)
-Route::middleware('auth:sanctum')->group(function () {
+Route::middleware('api-token')->group(function () {
     // Auth routes
     Route::post('/auth/logout', [AuthController::class, 'logout']);
     Route::get('/auth/me', [AuthController::class, 'me']);
