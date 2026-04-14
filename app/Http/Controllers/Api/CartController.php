@@ -106,7 +106,8 @@ class CartController extends Controller
         ], 200);
     }
 
-    /**Update cart item quantity.
+    /**
+     * Update cart item quantity.
      */
     public function update(Request $request, CartItem $cartItem): JsonResponse
     {
@@ -136,10 +137,79 @@ class CartController extends Controller
     }
 
     /**
+     * Update cart item by cart_item_id in request body (alternative endpoint).
+     */
+    public function updateByBody(Request $request): JsonResponse
+    {
+        $request->validate([
+            'cart_item_id' => 'required|integer',
+            'quantity' => 'required|integer|min:0|max:999',
+        ]);
+
+        $cartItem = CartItem::findOrFail($request->input('cart_item_id'));
+        $quantity = $request->input('quantity');
+
+        // If quantity is 0, delete the item
+        if ($quantity === 0) {
+            $cart = $cartItem->cart;
+            $cartItem->delete();
+            return response()->json([
+                'success' => true,
+                'message' => 'Cart item removed',
+                'data' => [
+                    'total_items' => $cart->getTotalItems(),
+                    'total_price' => $cart->getTotalPrice(),
+                ],
+            ], 200);
+        }
+
+        // Check stock
+        if ($cartItem->product->stock < $quantity) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Insufficient stock available',
+            ], 409);
+        }
+
+        $cartItem->update(['quantity' => $quantity]);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Cart item updated',
+            'data' => [
+                'total_price' => $cartItem->getTotalPrice(),
+            ],
+        ], 200);
+    }
+
+    /**
      * Remove item from cart.
      */
     public function destroy(CartItem $cartItem): JsonResponse
     {
+        $cart = $cartItem->cart;
+        $cartItem->delete();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Item removed from cart',
+            'data' => [
+                'total_items' => $cart->getTotalItems(),
+                'total_price' => $cart->getTotalPrice(),
+            ],
+        ], 200);
+    }
+
+    /**
+     * Remove item from cart by cart_item_id in request body (alternative endpoint).
+     */
+    public function deleteByBody(Request $request): JsonResponse
+    {
+        $request->validate([
+            'cart_item_id' => 'required|integer',
+        ]);
+
+        $cartItem = CartItem::findOrFail($request->input('cart_item_id'));
         $cart = $cartItem->cart;
         $cartItem->delete();
 

@@ -51,7 +51,9 @@ Route::middleware('api-token')->group(function () {
     // Cart routes
     Route::get('/cart', [CartController::class, 'index']);
     Route::post('/cart/add', [CartController::class, 'store']);
+    Route::put('/cart/update', [CartController::class, 'updateByBody']);
     Route::put('/cart/items/{cartItem}', [CartController::class, 'update']);
+    Route::delete('/cart/remove', [CartController::class, 'deleteByBody']);
     Route::delete('/cart/items/{cartItem}', [CartController::class, 'destroy']);
     Route::post('/cart/clear', [CartController::class, 'clear']);
 
