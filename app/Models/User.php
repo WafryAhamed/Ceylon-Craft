@@ -75,9 +75,7 @@ class User extends Authenticatable
 
         static::created(function ($model) {
             // Create cart for user if it doesn't exist
-            if (!$model->cart) {
-                Cart::create(['user_id' => $model->id]);
-            }
+            Cart::firstOrCreate(['user_id' => $model->id]);
         });
 
         static::updating(function ($model) {
