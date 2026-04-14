@@ -13,9 +13,18 @@ class ReviewController extends Controller
     /**
      * Get reviews for a product.
      */
-    public function index(Request $request): JsonResponse
+    public function index(Request $request, $slug = null): JsonResponse
     {
-        $productId = $request->input('product_id');
+        // Get product_id from route parameter (slug) or query parameter
+        $productId = null;
+        
+        if ($slug) {
+            // Look up product by slug
+            $product = \App\Models\Product::where('slug', $slug)->firstOrFail();
+            $productId = $product->id;
+        } else {
+            $productId = $request->input('product_id');
+        }
 
         if (!$productId) {
             return response()->json([

@@ -25,6 +25,7 @@ Route::get('/products', [ProductController::class, 'index']);
 Route::get('/products/featured', [ProductController::class, 'featured']);
 Route::get('/products/search', [ProductController::class, 'search']);
 Route::get('/products/{slug}', [ProductController::class, 'show']);
+Route::get('/products/{slug}/reviews', [ReviewController::class, 'index']);
 
 // Category routes
 Route::get('/categories', [CategoryController::class, 'index']);
