@@ -56,7 +56,7 @@ class ProductController extends Controller
         return response()->json([
             'success' => true,
             'data' => $products->items(),
-            'pagination' => [
+            'meta' => [
                 'total' => $products->total(),
                 'per_page' => $products->perPage(),
                 'current_page' => $products->currentPage(),
@@ -71,6 +71,7 @@ class ProductController extends Controller
     public function show(Request $request, string $slug): JsonResponse
     {
         $product = Product::where('slug', $slug)
+            ->where('is_active', true)
             ->with(['categories', 'reviews.user'])
             ->firstOrFail();
 
@@ -157,7 +158,7 @@ class ProductController extends Controller
         }
 
         // Generate slug from name if changed
-        if ($validated['name'] !== $product->name) {
+        if (isset($validated['name']) && $validated['name'] !== $product->name) {
             $validated['slug'] = \Illuminate\Support\Str::slug($validated['name']);
         }
 
@@ -172,7 +173,7 @@ class ProductController extends Controller
             'success' => true,
             'message' => 'Product updated successfully',
             'data' => $product,
-        ]);
+        ], 200);
     }
 
     /**
@@ -190,7 +191,22 @@ class ProductController extends Controller
         return response()->json([
             'success' => true,
             'message' => 'Product deleted successfully',
-        ]);
+        ], 200);
+    }
+
+    /**
+     * Toggle product active status (admin only).
+     */
+    public function toggleActive(Product $product): JsonResponse
+    {
+        $product->is_active = !$product->is_active;
+        $product->save();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Product status updated successfully',
+            'data' => ['is_active' => $product->is_active],
+        ], 200);
     }
 
     /**

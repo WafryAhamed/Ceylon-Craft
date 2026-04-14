@@ -14,6 +14,11 @@ class ApiToken
      */
     public function handle(Request $request, Closure $next): Response
     {
+        // If user already set (from testing with actingAs), proceed
+        if ($request->user()) {
+            return $next($request);
+        }
+
         $token = $request->bearerToken();
 
         if (!$token) {

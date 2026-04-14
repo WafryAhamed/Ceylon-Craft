@@ -27,13 +27,13 @@ class OrderController extends Controller
         return response()->json([
             'success' => true,
             'data' => $orders->items(),
-            'pagination' => [
+            'meta' => [
                 'total' => $orders->total(),
                 'per_page' => $orders->perPage(),
                 'current_page' => $orders->currentPage(),
                 'last_page' => $orders->lastPage(),
             ],
-        ]);
+        ], 200);
     }
 
     /**
@@ -90,7 +90,7 @@ class OrderController extends Controller
             return response()->json([
                 'success' => false,
                 'message' => 'Cart is empty',
-            ], 400);
+            ], 422);
         }
 
         return DB::transaction(function () use ($user, $cart, $request) {
@@ -158,7 +158,37 @@ class OrderController extends Controller
             'success' => true,
             'message' => 'Order updated successfully',
             'data' => $order,
-        ]);
+        ], 200);
+    }
+
+    /**
+     * Toggle order status (admin only).
+     */
+    public function toggleStatus(Request $request, Order $order): JsonResponse
+    {
+        if (!$request->user()?->isAdmin()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Unauthorized',
+            ], 403);
+        }
+
+        $statusMap = [
+            'pending' => 'paid',
+            'paid' => 'shipped',
+            'shipped' => 'delivered',
+            'delivered' => 'delivered',
+            'cancelled' => 'cancelled',
+        ];
+
+        $newStatus = $statusMap[$order->status] ?? 'pending';
+        $order->update(['status' => $newStatus]);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Order status toggled successfully',
+            'data' => ['status' => $newStatus],
+        ], 200);
     }
 
     /**
@@ -192,7 +222,7 @@ class OrderController extends Controller
             return response()->json([
                 'success' => true,
                 'message' => 'Order cancelled successfully',
-            ]);
+            ], 200);
         });
     }
 
@@ -230,13 +260,13 @@ class OrderController extends Controller
         return response()->json([
             'success' => true,
             'data' => $orders->items(),
-            'pagination' => [
+            'meta' => [
                 'total' => $orders->total(),
                 'per_page' => $orders->perPage(),
                 'current_page' => $orders->currentPage(),
                 'last_page' => $orders->lastPage(),
             ],
-        ]);
+        ], 200);
     }
 
     /**

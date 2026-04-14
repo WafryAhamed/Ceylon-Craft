@@ -44,7 +44,7 @@ class CartController extends Controller
                 'total_items' => $cart->getTotalItems(),
                 'total_price' => $cart->getTotalPrice(),
             ],
-        ]);
+        ], 200);
     }
 
     /**
@@ -58,12 +58,20 @@ class CartController extends Controller
         $product = Product::findOrFail($request->input('product_id'));
         $quantity = $request->input('quantity', 1);
 
+        // Validate quantity
+        if ($quantity <= 0) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Quantity must be greater than 0',
+            ], 422);
+        }
+
         // Check stock
         if ($product->stock < $quantity) {
             return response()->json([
                 'success' => false,
                 'message' => 'Insufficient stock available',
-            ], 400);
+            ], 409);
         }
 
         // Add or update cart item
@@ -75,7 +83,7 @@ class CartController extends Controller
                 return response()->json([
                     'success' => false,
                     'message' => 'Insufficient stock available',
-                ], 400);
+                ], 409);
             }
             $cartItem->update(['quantity' => $newQuantity]);
         } else {
@@ -93,11 +101,10 @@ class CartController extends Controller
                 'total_items' => $cart->getTotalItems(),
                 'total_price' => $cart->getTotalPrice(),
             ],
-        ]);
+        ], 200);
     }
 
-    /**
-     * Update cart item quantity.
+    /**Update cart item quantity.
      */
     public function update(Request $request, CartItem $cartItem): JsonResponse
     {
@@ -112,7 +119,7 @@ class CartController extends Controller
             return response()->json([
                 'success' => false,
                 'message' => 'Insufficient stock available',
-            ], 400);
+            ], 409);
         }
 
         $cartItem->update(['quantity' => $quantity]);
@@ -123,7 +130,7 @@ class CartController extends Controller
             'data' => [
                 'total_price' => $cartItem->getTotalPrice(),
             ],
-        ]);
+        ], 200);
     }
 
     /**
@@ -141,7 +148,7 @@ class CartController extends Controller
                 'total_items' => $cart->getTotalItems(),
                 'total_price' => $cart->getTotalPrice(),
             ],
-        ]);
+        ], 200);
     }
 
     /**
@@ -157,6 +164,6 @@ class CartController extends Controller
         return response()->json([
             'success' => true,
             'message' => 'Cart cleared',
-        ]);
+        ], 200);
     }
 }

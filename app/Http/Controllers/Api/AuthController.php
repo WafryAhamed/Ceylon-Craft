@@ -22,10 +22,10 @@ class AuthController extends Controller
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'password' => Hash::make($request->input('password')),
-            'phone' => $request->input('phone'),
-            'address' => $request->input('address'),
-            'city' => $request->input('city'),
-            'postal_code' => $request->input('postal_code'),
+            'phone' => $request->input('phone', null),
+            'address' => $request->input('address', null),
+            'city' => $request->input('city', null),
+            'postal_code' => $request->input('postal_code', null),
             'role' => 'user',
         ]);
 
@@ -39,16 +39,9 @@ class AuthController extends Controller
             'success' => true,
             'message' => 'User registered successfully',
             'data' => [
-                'user' => [
-                    'id' => $user->id,
-                    'name' => $user->name,
-                    'email' => $user->email,
-                    'phone' => $user->phone,
-                    'address' => $user->address,
-                    'city' => $user->city,
-                    'postal_code' => $user->postal_code,
-                    'role' => $user->role,
-                ],
+                'id' => $user->id,
+                'name' => $user->name,
+                'email' => $user->email,
                 'token' => $token,
             ],
         ], 201);
@@ -75,19 +68,12 @@ class AuthController extends Controller
             'success' => true,
             'message' => 'Login successful',
             'data' => [
-                'user' => [
-                    'id' => $user->id,
-                    'name' => $user->name,
-                    'email' => $user->email,
-                    'phone' => $user->phone,
-                    'address' => $user->address,
-                    'city' => $user->city,
-                    'postal_code' => $user->postal_code,
-                    'role' => $user->role,
-                ],
+                'id' => $user->id,
+                'name' => $user->name,
+                'email' => $user->email,
                 'token' => $token,
             ],
-        ]);
+        ], 200);
     }
 
     /**
@@ -149,11 +135,13 @@ class AuthController extends Controller
      */
     public function logout(Request $request): JsonResponse
     {
-        $request->user()->currentAccessToken()->delete();
+        $user = $request->user();
+        $user->api_token = null;
+        $user->save();
 
         return response()->json([
             'success' => true,
             'message' => 'Logout successful',
-        ]);
+        ], 200);
     }
 }

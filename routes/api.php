@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\ReviewController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\PaymentController;
+use App\Http\Controllers\Api\AdminController;
 
 // =====================================================================
 // PUBLIC ROUTES (No Authentication Required)
@@ -77,14 +78,21 @@ Route::middleware('api-token')->group(function () {
 // =====================================================================
 
 Route::middleware(['api-token', 'admin'])->group(function () {
+    // User management
+    Route::get('/admin/users', [AdminController::class, 'listUsers']);
+    Route::get('/admin/dashboard', [AdminController::class, 'dashboard']);
+
     // Product management
-    Route::post('/products', [ProductController::class, 'store']);
-    Route::put('/products/{product}', [ProductController::class, 'update']);
-    Route::delete('/products/{product}', [ProductController::class, 'destroy']);
+    Route::post('/admin/products', [ProductController::class, 'store']);
+    Route::put('/admin/products/{product}', [ProductController::class, 'update']);
+    Route::delete('/admin/products/{product}', [ProductController::class, 'destroy']);
+    Route::patch('/admin/products/{product}/toggle', [ProductController::class, 'toggleActive']);
 
     // Order management
     Route::get('/admin/orders', [OrderController::class, 'adminIndex']);
     Route::get('/admin/orders/stats', [OrderController::class, 'stats']);
     Route::put('/admin/orders/{order}/status', [OrderController::class, 'updateStatus']);
+    Route::patch('/admin/orders/{order}/toggle', [OrderController::class, 'toggleStatus']);
 });
+
 
