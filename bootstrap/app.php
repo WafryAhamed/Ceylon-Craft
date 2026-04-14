@@ -13,10 +13,21 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
+        // Middleware aliases for easy reference
         $middleware->alias([
             'admin' => \App\Http\Middleware\AdminMiddleware::class,
             'api-token' => \App\Http\Middleware\ApiToken::class,
         ]);
+
+        // API-specific middleware
+        $middleware->api(prepend: [
+            // Rate limiting by IP for all requests
+            \Illuminate\Http\Middleware\ValidatePostSize::class,
+            \Illuminate\Foundation\Http\Middleware\HandlePrecognitiveRequests::class,
+        ])->stateful(['laravel_session']);
+
+        // Rate limiting for sensitive endpoints
+        // Applied per-route in routes/api.php
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         // Handle API exceptions

@@ -3,7 +3,14 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
+/**
+ * Store Product Validation Request (Admin)
+ * 
+ * Comprehensive validation for product creation with advanced
+ * checks for SKU, pricing, inventory, and file uploads.
+ */
 class StoreProductRequest extends FormRequest
 {
     /**
@@ -11,7 +18,7 @@ class StoreProductRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return $this->user()?->isAdmin() ?? false;
+        return auth('api')->check() && auth('api')->user()->isAdmin();
     }
 
     /**
@@ -20,13 +27,107 @@ class StoreProductRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|max:255|unique:products,name',
-            'description' => 'nullable|string',
-            'price' => 'required|numeric|min:0.01',
-            'stock' => 'required|integer|min:0',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'categories' => 'nullable|array',
-            'categories.*' => 'exists:categories,id',
+            'name' => [
+                'required',
+                'string',
+                'min:3',
+                'max:255',
+                'unique:products,name',
+                'regex:/^[a-z0-9\s\-&(),\.\']*$/i',
+            ],
+            'slug' => [
+                'nullable',
+                'string',
+                'max:255',
+                'unique:products,slug',
+                'regex:/^[a-z0-9\-]*$/',
+            ],
+            'description' => [
+                'required',
+                'string',
+                'min:10',
+                'max:2000',
+            ],
+            'short_description' => [
+                'nullable',
+                'string',
+                'min:5',
+                'max:500',
+            ],
+            'price' => [
+                'required',
+                'numeric',
+                'min:0.01',
+                'max:999999.99',
+                'decimal:2',
+            ],
+            'cost' => [
+                'nullable',
+                'numeric',
+                'min:0',
+                'max:999999.99',
+            ],
+            'stock' => [
+                'required',
+                'integer',
+                'min:0',
+                'max:1000000',
+            ],
+            'low_stock_threshold' => [
+                'nullable',
+                'integer',
+                'min:0',
+                'max:1000',
+            ],
+            'sku' => [
+                'nullable',
+                'string',
+                'max:100',
+                'unique:products,sku',
+                'regex:/^[A-Z0-9\-]*$/',
+            ],
+            'category_id' => [
+                'required',
+               Rule::exists('categories', 'id'),
+            ],
+            'image' => [
+                'nullable',
+                'image',
+                'mimes:jpeg,png,jpg,webp',
+                'max:2048',
+                'dimensions:min_width=400,min_height=400',
+            ],
+            'images' => [
+                'nullable',
+                'array',
+                'max:5',
+            ],
+            'images.*' => [
+                'image',
+                'mimes:jpeg,png,jpg,webp',
+                'max:2048',
+            ],
+            'is_active' => [
+                'nullable',
+                'boolean',
+            ],
+            'is_featured' => [
+                'nullable',
+                'boolean',
+            ],
+            'tags' => [
+                'nullable',
+                'array',
+                'max:10',
+            ],
+            'tags.*' => [
+                'string',
+                'max:50',
+            ],
+            'attributes' => [
+                'nullable',
+                'array',
+            ],
         ];
     }
 
@@ -37,11 +138,57 @@ class StoreProductRequest extends FormRequest
     {
         return [
             'name.required' => 'Product name is required',
-            'name.unique' => 'Product name must be unique',
+            'name.min' => 'Product name must be at least 3 characters',
+            'name.unique' => 'This product name is already in use',
+            'name.regex' => 'Product name contains invalid characters',
+            'description.required' => 'Product description is required',
+            'description.min' => 'Description must be at least 10 characters',
             'price.required' => 'Product price is required',
-            'price.min' => 'Product price must be greater than 0',
-            'image.image' => 'File must be an image',
+            'price.min' => 'Price must be greater than 0',
+            'price.decimal' => 'Price must have 2 decimal places',
+            'stock.required' => 'Stock quantity is required',
+            'stock.min' => 'Stock cannot be negative',
+            'category_id.required' => 'Product category is required',
+            'category_id.exists' => 'Selected category does not exist',
+            'image.image' => 'File must be a valid image',
+            'image.mimes' => 'Image must be a JPEG, PNG, or WebP file',
             'image.max' => 'Image size cannot exceed 2MB',
+            'image.dimensions' => 'Image must be at least 400x400 pixels',
+            'sku.unique' => 'This SKU is already in use',
+            'sku.regex' => 'SKU must contain only uppercase letters, numbers, and hyphens',
+            'tags.max' => 'Maximum 10 tags allowed',
         ];
+    }
+
+    /**
+     * Prepare the data for validation and transformation.
+     */
+    protected function prepareForValidation(): void
+    {
+        // Generate slug from name if not provided
+        if (!$this->filled('slug') && $this->filled('name')) {
+            $this->merge([
+                'slug' => \Str::slug($this->string('name')),
+            ]);
+        }
+
+        // Generate SKU from name if not provided
+        if (!$this->filled('sku') && $this->filled('name')) {
+            $this->merge([
+                'sku' => strtoupper(\Str::limit(
+                    preg_replace('/[^A-Z0-9]/', '', \Str::upper($this->string('name'))),
+                    8,
+                    ''
+                )),
+            ]);
+        }
+
+        // Normalize inputs
+        $this->merge([
+            'name' => trim($this->string('name')),
+            'description' => trim($this->string('description')),
+            'is_active' => $this->boolean('is_active', true),
+            'is_featured' => $this->boolean('is_featured', false),
+        ]);
     }
 }

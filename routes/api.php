@@ -7,12 +7,19 @@ use App\Http\Controllers\Api\CartController;
 use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\ReviewController;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\PaymentController;
 
-// Public routes
-Route::post('/auth/register', [AuthController::class, 'register']);
-Route::post('/auth/login', [AuthController::class, 'login']);
+// =====================================================================
+// PUBLIC ROUTES (No Authentication Required)
+// =====================================================================
 
-// Product routes
+// Auth routes with rate limiting
+Route::middleware('throttle:5,1')->group(function () {
+    Route::post('/auth/register', [AuthController::class, 'register']);
+    Route::post('/auth/login', [AuthController::class, 'login']);
+});
+
+// Product routes (no rate limiting, high traffic expected)
 Route::get('/products', [ProductController::class, 'index']);
 Route::get('/products/featured', [ProductController::class, 'featured']);
 Route::get('/products/search', [ProductController::class, 'search']);
@@ -26,7 +33,13 @@ Route::get('/categories/{slug}', [CategoryController::class, 'show']);
 Route::get('/reviews', [ReviewController::class, 'index']);
 Route::get('/reviews/stats', [ReviewController::class, 'stats']);
 
-// Protected routes (require authentication)
+// Stripe webhook (must be public, uses signature verification)
+Route::post('/webhooks/stripe', [PaymentController::class, 'handleWebhook']);
+
+// =====================================================================
+// PROTECTED ROUTES (Require Authentication)
+// =====================================================================
+
 Route::middleware('api-token')->group(function () {
     // Auth routes
     Route::post('/auth/logout', [AuthController::class, 'logout']);
@@ -50,9 +63,19 @@ Route::middleware('api-token')->group(function () {
     Route::post('/reviews', [ReviewController::class, 'store']);
     Route::put('/reviews/{review}', [ReviewController::class, 'update']);
     Route::delete('/reviews/{review}', [ReviewController::class, 'destroy']);
+
+    // Payment routes with rate limiting (sensitive operations)
+    Route::middleware('throttle:10,1')->group(function () {
+        Route::post('/payments/intent', [PaymentController::class, 'createIntent']);
+        Route::post('/payments/confirm', [PaymentController::class, 'confirmPayment']);
+        Route::get('/payments/{payment}', [PaymentController::class, 'show']);
+    });
 });
 
-// Admin routes (require authentication and admin role)
+// =====================================================================
+// ADMIN ROUTES (Require Authentication + Admin Role)
+// =====================================================================
+
 Route::middleware(['api-token', 'admin'])->group(function () {
     // Product management
     Route::post('/products', [ProductController::class, 'store']);
