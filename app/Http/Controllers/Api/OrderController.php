@@ -27,11 +27,12 @@ class OrderController extends Controller
 
         return response()->json([
             'success' => true,
+            'message' => 'Orders retrieved successfully',
             'data' => $orders->items(),
             'meta' => [
                 'total' => $orders->total(),
                 'per_page' => $orders->perPage(),
-                'current_page' => $orders->currentPage(),
+                'page' => $orders->currentPage(),
                 'last_page' => $orders->lastPage(),
             ],
         ], 200);
@@ -52,6 +53,7 @@ class OrderController extends Controller
 
         return response()->json([
             'success' => true,
+            'message' => 'Order retrieved successfully',
             'data' => [
                 'id' => $order->id,
                 'status' => $order->status,
@@ -260,11 +262,12 @@ class OrderController extends Controller
 
         return response()->json([
             'success' => true,
+            'message' => 'Orders retrieved successfully',
             'data' => $orders->items(),
             'meta' => [
                 'total' => $orders->total(),
                 'per_page' => $orders->perPage(),
-                'current_page' => $orders->currentPage(),
+                'page' => $orders->currentPage(),
                 'last_page' => $orders->lastPage(),
             ],
         ], 200);
