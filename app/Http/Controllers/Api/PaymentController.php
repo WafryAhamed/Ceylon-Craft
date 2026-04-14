@@ -3,32 +3,29 @@
 namespace App\Http\Controllers\Api;
 
 use App\Exceptions\PaymentFailedException;
-use App\Exceptions\ResourceNotFoundException;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CreatePaymentIntentRequest;
 use App\Http\Responses\ApiResponse;
 use App\Models\Order;
 use App\Models\Payment;
-use App\Services\StripePaymentService;
+use App\Services\MockPaymentService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 /**
  * Payment Controller
  * 
- * Handles all payment operations:
+ * Handles all payment operations (using mock service for now):
  * - Creating payment intents
  * - Confirming payments
- * - Processing webhooks
  * - Retrieving payment status
  */
 class PaymentController extends Controller
 {
-    protected StripePaymentService $stripeService;
+    protected MockPaymentService $paymentService;
 
-    public function __construct(StripePaymentService $stripeService)
+    public function __construct(MockPaymentService $paymentService)
     {
-        $this->stripeService = $stripeService;
+        $this->paymentService = $paymentService;
     }
 
     /**
@@ -53,8 +50,8 @@ class PaymentController extends Controller
                 ], 403);
             }
 
-            // Create Stripe payment intent
-            $stripeIntent = $this->stripeService->createPaymentIntent(
+            // Create mock payment intent
+            $mockIntent = $this->paymentService->createPaymentIntent(
                 userId: $user->id,
                 amount: (int)($order->total * 100), // Convert to cents
                 description: "Order #{$order->id} - Ceylon Craft",
@@ -67,13 +64,13 @@ class PaymentController extends Controller
             $payment = Payment::create([
                 'user_id' => $user->id,
                 'order_id' => $order->id,
-                'stripe_payment_intent_id' => $stripeIntent->id,
+                'stripe_payment_intent_id' => $mockIntent['id'],
                 'amount' => $order->total,
                 'currency' => 'usd',
                 'status' => 'pending',
-                'payment_method_type' => 'stripe',
+                'payment_method_type' => 'mock',
                 'metadata' => [
-                    'client_secret' => $stripeIntent->client_secret,
+                    'client_secret' => $mockIntent['client_secret'],
                 ],
             ]);
 
@@ -82,8 +79,8 @@ class PaymentController extends Controller
                 'message' => 'Payment intent created successfully',
                 'data' => [
                     'payment_id' => $payment->id,
-                    'client_secret' => $stripeIntent->client_secret,
-                    'public_key' => config('services.stripe.public_key'),
+                    'client_secret' => $mockIntent['client_secret'],
+                    'public_key' => 'mock_pk_' . fake()->numerify('####################'),
                     'amount' => $order->total,
                     'currency' => 'usd',
                 ],
@@ -93,11 +90,6 @@ class PaymentController extends Controller
                 'success' => false,
                 'message' => 'Order not found',
             ], 404);
-        } catch (PaymentFailedException $e) {
-            return response()->json([
-                'success' => false,
-                'message' => $e->getMessage(),
-            ], 402);
         } catch (\Exception $e) {
             \Log::error('Payment intent creation error', [
                 'error' => $e->getMessage(),
@@ -146,15 +138,19 @@ class PaymentController extends Controller
                 ], 409);
             }
 
-            // Simulate payment processing based on test ID
-            $stripeIntentId = $request->input('stripe_payment_intent_id');
-            $isSuccess = !str_contains($stripeIntentId, 'failed');
+            // Confirm mock payment
+            $result = $this->paymentService->confirmPaymentIntent(
+                $request->input('stripe_payment_intent_id')
+            );
+
+            $isSuccess = $result['status'] === 'succeeded';
 
             if ($isSuccess) {
                 // Mark payment as succeeded
+                $chargeId = $result['charges']['data'][0]['id'] ?? 'ch_' . fake()->numerify('####################');
                 $payment->update([
                     'status' => 'succeeded',
-                    'stripe_charge_id' => 'ch_' . fake()->numerify('####################'),
+                    'stripe_charge_id' => $chargeId,
                     'succeeded_at' => now(),
                 ]);
 
@@ -227,92 +223,5 @@ class PaymentController extends Controller
             'succeeded_at' => $payment->succeeded_at,
             'failed_at' => $payment->failed_at,
         ]);
-    }
-
-    /**
-     * Handle Stripe webhook.
-     * 
-     * POST /api/webhooks/stripe
-     * 
-     * @param Request $request
-     * @return JsonResponse
-     */
-    public function handleWebhook(Request $request): JsonResponse
-    {
-        try {
-            $event = $this->stripeService->verifyWebhook(
-                $request->getContent(),
-                $request->header('Stripe-Signature')
-            );
-
-            // Handle different event types
-            match ($event['type']) {
-                'payment_intent.succeeded' => $this->handlePaymentSucceeded($event['data']['object']),
-                'payment_intent.payment_failed' => $this->handlePaymentFailed($event['data']['object']),
-                'charge.refunded' => $this->handleChargeRefunded($event['data']['object']),
-                default => \Log::info('Unhandled webhook event', ['type' => $event['type']]),
-            };
-
-            return response()->json(['received' => true]);
-        } catch (PaymentFailedException $e) {
-            \Log::error('Webhook verification failed', ['error' => $e->getMessage()]);
-
-            return ApiResponse::error('Webhook verification failed', null, 401);
-        } catch (\Exception $e) {
-            \Log::error('Webhook processing error', ['error' => $e->getMessage()]);
-
-            return response()->json(['error' => $e->getMessage()], 400);
-        }
-    }
-
-    /**
-     * Handle payment_intent.succeeded webhook event.
-     */
-    protected function handlePaymentSucceeded(array $intent): void
-    {
-        $payment = Payment::where('stripe_payment_intent_id', $intent['id'])->firstOrFail();
-
-        if ($payment->status !== 'succeeded') {
-            $chargeId = $intent['charges']['data'][0]['id'] ?? null;
-            $payment->markAsSucceeded($chargeId);
-
-            // Update order
-            $payment->order->update(['payment_status' => 'paid']);
-
-            \Log::info('Payment succeeded via webhook', ['payment_id' => $payment->id]);
-        }
-    }
-
-    /**
-     * Handle payment_intent.payment_failed webhook event.
-     */
-    protected function handlePaymentFailed(array $intent): void
-    {
-        $payment = Payment::where('stripe_payment_intent_id', $intent['id'])->firstOrFail();
-
-        if ($payment->status !== 'failed') {
-            $payment->markAsFailed(
-                $intent['last_payment_error']['message'] ?? 'Payment failed'
-            );
-
-            \Log::info('Payment failed via webhook', ['payment_id' => $payment->id]);
-        }
-    }
-
-    /**
-     * Handle charge.refunded webhook event.
-     */
-    protected function handleChargeRefunded(array $charge): void
-    {
-        $payment = Payment::where('stripe_charge_id', $charge['id'])->firstOrFail();
-
-        if ($payment->status !== 'refunded') {
-            $payment->markAsRefunded($charge['refunds']['data'][0]['id'] ?? '');
-
-            // Update order status
-            $payment->order->update(['status' => 'cancelled']);
-
-            \Log::info('Payment refunded via webhook', ['payment_id' => $payment->id]);
-        }
     }
 }

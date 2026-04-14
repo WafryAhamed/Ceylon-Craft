@@ -35,9 +35,6 @@ Route::get('/categories/{slug}', [CategoryController::class, 'show']);
 Route::get('/reviews', [ReviewController::class, 'index']);
 Route::get('/reviews/stats', [ReviewController::class, 'stats']);
 
-// Stripe webhook (must be public, uses signature verification)
-Route::post('/webhooks/stripe', [PaymentController::class, 'handleWebhook']);
-
 // =====================================================================
 // PROTECTED ROUTES (Require Authentication)
 // =====================================================================
