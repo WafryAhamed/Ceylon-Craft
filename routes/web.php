@@ -9,3 +9,8 @@ Route::get('/', function () {
 
 // API Routes
 Route::get('/api/products', [ProductController::class, 'index']);
+
+// Catch-all route for Vue Router - must be last
+Route::fallback(function () {
+    return view('index');
+});
