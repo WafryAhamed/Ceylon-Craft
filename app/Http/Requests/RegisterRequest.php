@@ -40,7 +40,7 @@ class RegisterRequest extends FormRequest
             'password' => [
                 'required',
                 'confirmed',
-                'min:8', // Minimum length only
+                Password::min(8)->mixedCase()->numbers()->symbols(),
             ],
             'phone' => 'nullable|string|max:20',
             'address' => 'nullable|string|min:5|max:255',
