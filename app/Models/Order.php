@@ -41,6 +41,22 @@ class Order extends Model
     }
 
     /**
+     * Get the status history of the order.
+     */
+    public function statusHistory(): HasMany
+    {
+        return $this->hasMany(OrderStatusHistory::class)->orderBy('created_at', 'desc');
+    }
+
+    /**
+     * Get the payment record for this order.
+     */
+    public function payment()
+    {
+        return $this->hasOne(Payment::class);
+    }
+
+    /**
      * Calculate order total from items.
      */
     public function calculateTotal(): float
@@ -51,20 +67,62 @@ class Order extends Model
     }
 
     /**
+     * Update status and log to history.
+     * 
+     * @param string $status
+     * @param string|null $notes
+     * @param string|null $trackingNumber
+     * @return void
+     */
+    public function updateStatus(string $status, ?string $notes = null, ?string $trackingNumber = null): void
+    {
+        // Don't create history if status hasn't changed
+        if ($this->status === $status) {
+            return;
+        }
+
+        // Update order status
+        $this->update([
+            'status' => $status,
+        ]);
+
+        // Log to status history
+        $this->statusHistory()->create([
+            'status' => $status,
+            'notes' => $notes,
+            'tracking_number' => $trackingNumber,
+            'updated_by_user_id' => auth('api')->user()?->id,
+        ]);
+
+        // Trigger events based on status change
+        if ($status === 'shipped' && !$this->statusHistory()->where('status', 'packed')->exists()) {
+            // Auto-mark as packed before shipping
+            $this->statusHistory()->create([
+                'status' => 'packed',
+                'notes' => 'Automatically marked as packed',
+                'updated_by_user_id' => auth('api')->user()?->id,
+            ]);
+        }
+
+        // TODO: Send email notifications based on status
+    }
+
+    /**
      * Mark order as paid.
      */
     public function markAsPaid(): self
     {
-        $this->update(['payment_status' => 'paid', 'status' => 'paid']);
+        $this->update(['payment_status' => 'paid', 'status' => 'confirmed']);
+        $this->updateStatus('confirmed', 'Payment received');
         return $this;
     }
 
     /**
      * Mark order as shipped.
      */
-    public function markAsShipped(): self
+    public function markAsShipped(?string $trackingNumber = null): self
     {
-        $this->update(['status' => 'shipped']);
+        $this->updateStatus('shipped', 'Order shipped', $trackingNumber);
         return $this;
     }
 
@@ -73,16 +131,16 @@ class Order extends Model
      */
     public function markAsDelivered(): self
     {
-        $this->update(['status' => 'delivered']);
+        $this->updateStatus('delivered', 'Order delivered');
         return $this;
     }
 
     /**
      * Mark order as cancelled.
      */
-    public function markAsCancelled(): self
+    public function markAsCancelled(?string $reason = null): self
     {
-        $this->update(['status' => 'cancelled']);
+        $this->updateStatus('cancelled', $reason ?? 'Order cancelled by user');
         return $this;
     }
 
