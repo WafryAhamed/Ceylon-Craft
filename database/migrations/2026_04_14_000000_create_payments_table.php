@@ -19,8 +19,7 @@ return new class extends Migration
                   ->constrained('users')
                   ->onDelete('cascade');
 
-            // Stripe
- identifiers
+            // Stripe identifiers
             $table->string('stripe_payment_intent_id')->nullable()->unique();
             $table->string('stripe_charge_id')->nullable()->unique();
             $table->string('stripe_payment_method_id')->nullable();
