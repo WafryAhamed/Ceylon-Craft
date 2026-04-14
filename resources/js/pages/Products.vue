@@ -1,106 +1,136 @@
 <template>
-  <div class="w-full">
-    <!-- Page Header -->
-    <section class="bg-gradient-to-b from-[#F9F9F9] to-white py-12 md:py-16">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 class="text-4xl md:text-5xl font-bold text-[#5A7184] mb-4">Our Products</h1>
-        <p class="text-gray-600">Explore our complete collection of handmade products</p>
+  <div class="bg-[#EEF0F7] min-h-screen">
+    <!-- PAGE HEADER -->
+    <section class="bg-white py-12 md:py-16 border-b-2 border-[#DFE2E9]">
+      <div class="max-w-7xl mx-auto px-6">
+        <h1 class="text-5xl font-bold text-[#363851] mb-2">
+          Our Collections
+        </h1>
+        <p class="text-xl text-[#657691]">
+          Discover {{ totalProducts }} handcrafted products from Sri Lanka
+        </p>
       </div>
     </section>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
-        <!-- Sidebar Filters -->
-        <div class="lg:col-span-1">
-          <div class="sticky top-20 space-y-6">
-            <!-- Search -->
-            <div>
-              <h3 class="text-lg font-semibold text-[#5A7184] mb-4">Search</h3>
+    <div class="max-w-7xl mx-auto px-6 py-12">
+      <div class="grid lg:grid-cols-4 gap-8">
+        <!-- SIDEBAR - FILTERS -->
+        <aside class="lg:col-span-1">
+          <div class="sticky top-24 space-y-6">
+            <!-- SEARCH BAR -->
+            <div class="bg-white p-6 rounded-xl shadow-md">
+              <h3 class="text-lg font-bold text-[#363851] mb-4">Search</h3>
               <input
                 v-model="searchQuery"
                 type="text"
-                placeholder="Search products..."
-                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D1E8E2]"
+                placeholder="Find product..."
+                class="w-full px-4 py-3 bg-[#EEF0F7] rounded-lg text-[#363851] placeholder-[#A0ACC0] focus:outline-none focus:ring-2 focus:ring-[#FB2B4A] transition"
               />
             </div>
 
-            <!-- Category Filter -->
-            <div>
-              <h3 class="text-lg font-semibold text-[#5A7184] mb-4">Category</h3>
+            <!-- CATEGORY FILTER -->
+            <div class="bg-white p-6 rounded-xl shadow-md">
+              <h3 class="text-lg font-bold text-[#363851] mb-4">Category</h3>
               <div class="space-y-2">
-                <label v-for="cat in categories" :key="cat" class="flex items-center cursor-pointer">
+                <label v-for="cat in categories" :key="cat" class="flex items-center cursor-pointer group">
                   <input
                     type="checkbox"
                     :value="cat"
                     v-model="selectedCategories"
-                    class="w-4 h-4 rounded border-gray-300"
+                    class="w-4 h-4 rounded accent-[#FB2B4A] cursor-pointer"
                   />
-                  <span class="ml-3 text-gray-700">{{ cat }}</span>
+                  <span class="ml-3 text-[#657691] group-hover:text-[#FB2B4A] transition">{{ cat }}</span>
                 </label>
               </div>
             </div>
 
-            <!-- Price Filter -->
-            <div>
-              <h3 class="text-lg font-semibold text-[#5A7184] mb-4">Price Range</h3>
+            <!-- PRICE FILTER -->
+            <div class="bg-white p-6 rounded-xl shadow-md">
+              <h3 class="text-lg font-bold text-[#363851] mb-4">Price Range</h3>
               <div class="space-y-2">
-                <label class="flex items-center cursor-pointer">
-                  <input type="radio" v-model="priceRange" value="all" class="w-4 h-4" />
-                  <span class="ml-3 text-gray-700">All Prices</span>
-                </label>
-                <label class="flex items-center cursor-pointer">
-                  <input type="radio" v-model="priceRange" value="0-50" class="w-4 h-4" />
-                  <span class="ml-3 text-gray-700">Under $50</span>
-                </label>
-                <label class="flex items-center cursor-pointer">
-                  <input type="radio" v-model="priceRange" value="50-100" class="w-4 h-4" />
-                  <span class="ml-3 text-gray-700">$50 - $100</span>
-                </label>
-                <label class="flex items-center cursor-pointer">
-                  <input type="radio" v-model="priceRange" value="100+" class="w-4 h-4" />
-                  <span class="ml-3 text-gray-700">Over $100</span>
+                <label v-for="range in priceRanges" :key="range.id" class="flex items-center cursor-pointer group">
+                  <input
+                    type="radio"
+                    :value="range.id"
+                    v-model="selectedPriceRange"
+                    class="w-4 h-4 accent-[#FB2B4A] cursor-pointer"
+                  />
+                  <span class="ml-3 text-[#657691] group-hover:text-[#FB2B4A] transition">{{ range.label }}</span>
                 </label>
               </div>
             </div>
 
-            <!-- Sort -->
-            <div>
-              <h3 class="text-lg font-semibold text-[#5A7184] mb-4">Sort By</h3>
-              <select v-model="sortBy" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D1E8E2]">
+            <!-- RATING FILTER -->
+            <div class="bg-white p-6 rounded-xl shadow-md">
+              <h3 class="text-lg font-bold text-[#363851] mb-4">Rating</h3>
+              <div class="space-y-2">
+                <label v-for="rating in [5, 4, 3, 2, 1]" :key="rating" class="flex items-center cursor-pointer group">
+                  <input
+                    type="checkbox"
+                    :value="rating"
+                    v-model="selectedRatings"
+                    class="w-4 h-4 rounded accent-[#FB2B4A] cursor-pointer"
+                  />
+                  <span class="ml-3 text-[#FB2B4A]">
+                    <span v-for="i in rating" :key="i">★</span>
+                    <span v-for="i in (5 - rating)" :key="`empty-${i}`" class="text-[#A0ACC0]">★</span>
+                  </span>
+                </label>
+              </div>
+            </div>
+
+            <!-- CLEAR FILTERS -->
+            <button
+              @click="clearFilters"
+              class="w-full px-4 py-3 bg-[#FB2B4A] hover:bg-[#E91B3D] text-white font-bold rounded-lg transition-all duration-300 shadow-md hover:shadow-lg"
+            >
+              Clear Filters
+            </button>
+          </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <section class="lg:col-span-3">
+          <!-- TOOLBAR -->
+          <div class="bg-white p-6 rounded-xl shadow-md mb-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p class="text-[#657691] font-semibold">
+              Showing <span class="text-[#FB2B4A] font-bold">{{ filteredProducts.length }}</span> of {{ totalProducts }} products
+            </p>
+
+            <div class="flex items-center gap-4 w-full sm:w-auto">
+              <label class="text-[#657691] font-semibold whitespace-nowrap">Sort by:</label>
+              <select
+                v-model="sortBy"
+                class="px-4 py-2 bg-[#EEF0F7] text-[#363851] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FB2B4A] cursor-pointer flex-1 sm:flex-none"
+              >
                 <option value="newest">Newest</option>
                 <option value="price-low">Price: Low to High</option>
                 <option value="price-high">Price: High to Low</option>
                 <option value="popular">Most Popular</option>
+                <option value="rating">Highest Rated</option>
               </select>
             </div>
-
-            <!-- Clear Filters -->
-            <button
-              @click="clearFilters"
-              class="w-full bg-gray-200 hover:bg-gray-300 text-gray-800 py-2 rounded-lg font-semibold transition"
-            >
-              Clear All Filters
-            </button>
           </div>
-        </div>
 
-        <!-- Products Grid -->
-        <div class="lg:col-span-3">
-          <div v-if="filteredProducts.length > 0" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- PRODUCTS GRID -->
+          <div v-if="filteredProducts.length > 0" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             <ProductCard
-              v-for="product in filteredProducts"
+              v-for="product in sortedProducts"
               :key="product.id"
               :product="product"
               @add-to-cart="handleAddToCart"
             />
           </div>
-          <div v-else class="text-center py-12">
-            <p class="text-lg text-gray-600">No products found matching your criteria.</p>
-            <button @click="clearFilters" class="mt-4 text-[#5A7184] hover:text-[#4a5f70] font-semibold">
-              Clear filters and try again
-            </button>
+
+          <!-- NO RESULTS -->
+          <div v-else class="bg-white p-12 rounded-xl shadow-md text-center">
+            <svg class="w-20 h-20 mx-auto mb-6 text-[#A0ACC0]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 21l-4.35-4.35m0 0A7.5 7.5 0 103.65 3.65a7.5 7.5 0 0012.3 12.3z" />
+            </svg>
+            <h3 class="text-2xl font-bold text-[#363851] mb-2">No Products Found</h3>
+            <p class="text-[#657691]">Try adjusting your filters or search terms</p>
           </div>
-        </div>
+        </section>
       </div>
     </div>
   </div>
@@ -108,80 +138,101 @@
 
 <script setup>
 import { ref, computed, onMounted } from 'vue';
-import ProductCard from '../components/ProductCard.vue';
+import ProductCard from '@/components/ProductCard.vue';
 
 const searchQuery = ref('');
 const selectedCategories = ref([]);
-const priceRange = ref('all');
+const selectedPriceRange = ref('all');
+const selectedRatings = ref([]);
 const sortBy = ref('newest');
-const products = ref([]);
+const allProducts = ref([]);
 
-const categories = ref(['Home Decor', 'Art', 'Journals', 'Gifts', 'Textiles', 'Ceramics']);
+const categories = ['Home Decor', 'Art', 'Textiles', 'Crafts', 'Jewelry'];
+const priceRanges = [
+  { id: 'all', label: 'All Prices', min: 0, max: Infinity },
+  { id: 'under25', label: 'Under $25', min: 0, max: 25 },
+  { id: '25-50', label: '$25 - $50', min: 25, max: 50 },
+  { id: '50-100', label: '$50 - $100', min: 50, max: 100 },
+  { id: 'over100', label: 'Over $100', min: 100, max: Infinity }
+];
+
+const totalProducts = computed(() => allProducts.value.length);
 
 const filteredProducts = computed(() => {
-  let filtered = products.value;
+  let result = allProducts.value;
 
-  // Filter by search
+  // Search filter  
   if (searchQuery.value) {
-    filtered = filtered.filter(p =>
-      p.name.toLowerCase().includes(searchQuery.value.toLowerCase()) ||
-      p.description?.toLowerCase().includes(searchQuery.value.toLowerCase())
+    const query = searchQuery.value.toLowerCase();
+    result = result.filter(p => 
+      p.name.toLowerCase().includes(query) ||
+      p.category.toLowerCase().includes(query)
     );
   }
 
-  // Filter by category
+  // Category filter
   if (selectedCategories.value.length > 0) {
-    filtered = filtered.filter(p => selectedCategories.value.includes(p.category));
+    result = result.filter(p => selectedCategories.value.includes(p.category));
   }
 
-  // Filter by price
-  if (priceRange.value !== 'all') {
-    filtered = filtered.filter(p => {
-      const price = parseFloat(p.price);
-      if (priceRange.value === '0-50') return price <= 50;
-      if (priceRange.value === '50-100') return price >= 50 && price <= 100;
-      if (priceRange.value === '100+') return price >= 100;
-      return true;
-    });
+  // Price filter
+  const priceRange = priceRanges.find(r => r.id === selectedPriceRange.value);
+  if (priceRange) {
+    result = result.filter(p => p.price >= priceRange.min && p.price <= priceRange.max);
   }
 
-  // Sort
-  if (sortBy.value === 'price-low') {
-    filtered.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
-  } else if (sortBy.value === 'price-high') {
-    filtered.sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
-  } else if (sortBy.value === 'popular') {
-    filtered.sort((a, b) => (b.rating || 0) - (a.rating || 0));
+  // Rating filter
+  if (selectedRatings.value.length > 0) {
+    result = result.filter(p => selectedRatings.value.includes(Math.floor(p.rating)));
   }
 
-  return filtered;
+  return result;
 });
 
-const clearFilters = () => {
-  searchQuery.value = '';
-  selectedCategories.value = [];
-  priceRange.value = 'all';
-  sortBy.value = 'newest';
-};
+const sortedProducts = computed(() => {
+  const sorted = [...filteredProducts.value];
 
-const handleAddToCart = () => {
-  alert('Added to cart!');
-};
+  switch (sortBy.value) {
+    case 'price-low':
+      return sorted.sort((a, b) => a.price - b.price);
+    case 'price-high':
+      return sorted.sort((a, b) => b.price - a.price);
+    case 'rating':
+      return sorted.sort((a, b) => b.rating - a.rating);
+    case 'popular':
+      return sorted.sort((a, b) => b.reviews - a.reviews);
+    case 'newest':
+    default:
+      return sorted;
+  }
+});
 
 onMounted(async () => {
   try {
     const response = await fetch('/api/products');
     const data = await response.json();
-    products.value = data.map(product => ({
+    allProducts.value = data.map((product, index) => ({
       ...product,
       slug: product.name.toLowerCase().replace(/\s+/g, '-'),
-      category: categories.value[Math.floor(Math.random() * categories.value.length)],
-      description: 'Beautiful handmade item crafted with care',
-      rating: (4 + Math.random()).toFixed(1),
-      isNew: Math.random() > 0.7
+      category: categories[index % categories.length],
+      reviews: Math.floor(Math.random() * 200) + 30,
+      rating: Math.floor(Math.random() * 2) + 4.2,
+      discount: Math.random() > 0.7 ? Math.floor(Math.random() * 30) + 10 : null,
+      isNew: index < 2
     }));
   } catch (error) {
     console.error('Error fetching products:', error);
   }
 });
+
+const clearFilters = () => {
+  searchQuery.value = '';
+  selectedCategories.value = [];
+  selectedPriceRange.value = 'all';
+  selectedRatings.value = [];
+};
+
+const handleAddToCart = () => {
+  console.log('Product added to cart');
+};
 </script>
