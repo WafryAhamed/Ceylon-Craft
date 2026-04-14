@@ -39,7 +39,7 @@ class PaymentController extends Controller
     public function createIntent(Request $request): JsonResponse
     {
         try {
-            $user = auth('api')->user();
+            $user = $request->user();
             $order = Order::findOrFail($request->input('order_id'));
 
             // Verify order belongs to user
@@ -93,7 +93,7 @@ class PaymentController extends Controller
         } catch (\Exception $e) {
             \Log::error('Payment intent creation error', [
                 'error' => $e->getMessage(),
-                'user_id' => auth('api')->id(),
+                'user_id' => $request->user()?->id,
             ]);
 
             return response()->json([
@@ -119,7 +119,7 @@ class PaymentController extends Controller
                 'stripe_payment_intent_id' => 'required|string',
             ]);
 
-            $user = auth('api')->user();
+            $user = $request->user();
             $payment = Payment::findOrFail($request->input('payment_id'));
 
             // Verify payment belongs to user
@@ -187,7 +187,7 @@ class PaymentController extends Controller
         } catch (\Exception $e) {
             \Log::error('Payment confirmation error', [
                 'error' => $e->getMessage(),
-                'user_id' => auth('api')->id(),
+                'user_id' => $request->user()?->id,
             ]);
 
             return response()->json([
@@ -205,10 +205,11 @@ class PaymentController extends Controller
      * @param Payment $payment
      * @return JsonResponse
      */
-    public function show(Payment $payment): JsonResponse
+    public function show(Payment $payment, Request $request): JsonResponse
     {
+        $user = $request->user();
         // Verify user owns this payment
-        if ($payment->user_id !== auth('api')->id() && !auth('api')->user()->isAdmin()) {
+        if ($payment->user_id !== $user->id && !$user->isAdmin()) {
             return ApiResponse::forbidden();
         }
 
