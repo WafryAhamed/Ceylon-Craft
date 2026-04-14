@@ -52,7 +52,32 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'is_admin' => 'boolean',
         ];
+    }
+
+    /**
+     * Boot - handle is_admin to role conversion
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model) {
+            // Convert is_admin to role
+            if (isset($model->attributes['is_admin']) && $model->attributes['is_admin']) {
+                $model->role = 'admin';
+            } elseif (!isset($model->role) || !$model->role) {
+                $model->role = 'user';
+            }
+        });
+
+        static::updating(function ($model) {
+            // Convert is_admin to role on update
+            if ($model->isDirty('is_admin')) {
+                $model->role = $model->attributes['is_admin'] ? 'admin' : 'user';
+            }
+        });
     }
 
     /**
