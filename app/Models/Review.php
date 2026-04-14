@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Review extends Model
 {
+    use HasFactory;
+
     protected $fillable = ['user_id', 'product_id', 'rating', 'comment'];
 
     protected $casts = [
@@ -30,7 +33,7 @@ class Review extends Model
     }
 
     /**
-     * Validate rating is between 1-5.
+     * Validate rating is between 1-5 and sanitize comment for XSS.
      */
     protected static function boot()
     {
@@ -40,11 +43,19 @@ class Review extends Model
             if ($model->rating < 1 || $model->rating > 5) {
                 throw new \InvalidArgumentException('Rating must be between 1 and 5');
             }
+            // Sanitize comment to prevent XSS
+            if ($model->comment) {
+                $model->comment = strip_tags($model->comment);
+            }
         });
 
         static::updating(function ($model) {
             if ($model->rating < 1 || $model->rating > 5) {
                 throw new \InvalidArgumentException('Rating must be between 1 and 5');
+            }
+            // Sanitize comment to prevent XSS
+            if ($model->comment) {
+                $model->comment = strip_tags($model->comment);
             }
         });
     }
