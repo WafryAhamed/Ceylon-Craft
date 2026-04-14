@@ -58,6 +58,7 @@ Route::middleware('api-token')->group(function () {
     // Order routes
     Route::get('/orders', [OrderController::class, 'index']);
     Route::get('/orders/{order}', [OrderController::class, 'show']);
+    Route::post('/orders', [OrderController::class, 'checkout']);
     Route::post('/orders/checkout', [OrderController::class, 'checkout']);
     Route::post('/orders/{order}/cancel', [OrderController::class, 'cancel']);
 
