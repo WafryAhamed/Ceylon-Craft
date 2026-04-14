@@ -270,7 +270,7 @@ class ProductTest extends TestCase
         $response->assertStatus(200);
         
         // Verify table still exists
-        $this->assertGreater(Product::count(), 0);
+        $this->assertGreaterThan(0, Product::count());
     }
 
     /**

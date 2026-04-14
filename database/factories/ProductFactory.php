@@ -19,6 +19,7 @@ class ProductFactory extends Factory
             'image' => $this->faker->imageUrl(),
             'stock' => $this->faker->numberBetween(0, 100),
             'is_active' => true,
+            'featured' => false,
             'category_id' => null,
         ];
     }
