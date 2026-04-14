@@ -16,10 +16,9 @@ class OrderFactory extends Factory
             'user_id' => User::factory(),
             'status' => 'pending',
             'total' => $this->faker->numberBetween(1000, 100000) / 100,
-            'address' => $this->faker->address(),
-            'postal_code' => $this->faker->postcode(),
-            'phone' => $this->faker->phoneNumber(),
-            'country' => 'lk',
+            'shipping_address' => $this->faker->address(),
+            'shipping_city' => $this->faker->city(),
+            'shipping_postal_code' => $this->faker->postcode(),
             'payment_method' => 'stripe',
         ];
     }
