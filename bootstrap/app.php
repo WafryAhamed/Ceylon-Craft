@@ -3,7 +3,6 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
-use Throwable;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -24,7 +23,7 @@ return Application::configure(basePath: dirname(__DIR__))
             // Rate limiting by IP for all requests
             \Illuminate\Http\Middleware\ValidatePostSize::class,
             \Illuminate\Foundation\Http\Middleware\HandlePrecognitiveRequests::class,
-        ])->stateful(['laravel_session']);
+        ]);
 
         // Rate limiting for sensitive endpoints
         // Applied per-route in routes/api.php
