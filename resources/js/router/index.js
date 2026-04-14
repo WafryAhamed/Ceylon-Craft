@@ -278,10 +278,7 @@ const router = createRouter({
   routes
 });
 
-// Update document title on route change
-router.beforeEach((to, from, next) => {
-  document.title = to.meta.title || 'Ceylon Craft';
-  next();
-});
+// Setup route guards (auth, admin, guest protection)
+setupRouteGuards(router);
 
 export default router;
