@@ -7,7 +7,6 @@ use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use App\Models\Cart;
 
 class User extends Authenticatable
 {
@@ -58,7 +57,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Boot - handle is_admin to role conversion and create cart
+     * Boot - handle is_admin to role conversion
      */
     protected static function boot()
     {
@@ -71,11 +70,6 @@ class User extends Authenticatable
             } elseif (!isset($model->role) || !$model->role) {
                 $model->role = 'user';
             }
-        });
-
-        static::created(function ($model) {
-            // Create cart for user if it doesn't exist
-            Cart::firstOrCreate(['user_id' => $model->id]);
         });
 
         static::updating(function ($model) {

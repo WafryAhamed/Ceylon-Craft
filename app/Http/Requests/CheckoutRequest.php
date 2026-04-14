@@ -20,7 +20,7 @@ class CheckoutRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return auth('api')->check();
+        return $this->user() !== null;
     }
 
     /**
