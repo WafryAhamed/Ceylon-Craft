@@ -87,7 +87,7 @@ class CartController extends Controller
             }
             $cartItem->update(['quantity' => $newQuantity]);
         } else {
-            CartItem::create([
+            $cartItem = CartItem::create([
                 'cart_id' => $cart->id,
                 'product_id' => $product->id,
                 'quantity' => $quantity,
@@ -98,8 +98,10 @@ class CartController extends Controller
             'success' => true,
             'message' => 'Product added to cart',
             'data' => [
-                'total_items' => $cart->getTotalItems(),
-                'total_price' => $cart->getTotalPrice(),
+                'id' => $cartItem->id,
+                'product_id' => $cartItem->product_id,
+                'quantity' => $cartItem->quantity,
+                'price' => $cartItem->product->price,
             ],
         ], 200);
     }
