@@ -14,6 +14,11 @@ import Login from '../pages/Login.vue';
 import Register from '../pages/Register.vue';
 import Cart from '../pages/Cart.vue';
 import Checkout from '../pages/Checkout.vue';
+import Wishlist from '../pages/Wishlist.vue';
+import Profile from '../pages/Profile.vue';
+import Orders from '../pages/Orders.vue';
+import OrderDetail from '../pages/OrderDetail.vue';
+import SearchResults from '../pages/SearchResults.vue';
 
 const routes = [
   {
@@ -118,6 +123,46 @@ const routes = [
     meta: {
       title: 'Checkout | Ceylon Craft',
       description: 'Complete your purchase.'
+    }
+  },
+  {
+    path: '/wishlist',
+    component: Wishlist,
+    meta: {
+      title: 'My Wishlist | Ceylon Craft',
+      description: 'View your saved favorite products.'
+    }
+  },
+  {
+    path: '/profile',
+    component: Profile,
+    meta: {
+      title: 'My Profile | Ceylon Craft',
+      description: 'Manage your account settings and personal information.'
+    }
+  },
+  {
+    path: '/orders',
+    component: Orders,
+    meta: {
+      title: 'My Orders | Ceylon Craft',
+      description: 'View your order history and tracking information.'
+    }
+  },
+  {
+    path: '/order/:orderId',
+    component: OrderDetail,
+    meta: {
+      title: 'Order Details | Ceylon Craft',
+      description: 'View detailed order information and tracking.'
+    }
+  },
+  {
+    path: '/search',
+    component: SearchResults,
+    meta: {
+      title: 'Search Results | Ceylon Craft',
+      description: 'Search results for your query.'
     }
   }
 ];
