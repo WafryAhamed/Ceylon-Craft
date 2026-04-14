@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Ceylon Craft
 
 A modern Laravel web application built with Vue.js and Tailwind CSS for managing products and users.
@@ -182,3 +183,6 @@ For support, email or open an issue on the GitHub repository.
 ---
 
 **Ceylon Craft** - Bringing Sri Lankan craftsmanship to the digital world.
+=======
+# Ceylon-Craft
+>>>>>>> 4b00b5e915e5b3b17639e3950aef48d55b363fbc
