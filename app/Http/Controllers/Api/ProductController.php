@@ -45,8 +45,22 @@ class ProductController extends Controller
         }
 
         // Sorting
-        $sortBy = $request->input('sort_by', 'created_at');
-        $sortOrder = $request->input('sort_order', 'desc');
+        if ($request->has('sort')) {
+            $sort = $request->input('sort');
+            if (substr($sort, 0, 1) === '-') {
+                // Descending sort (e.g., -price)
+                $sortBy = substr($sort, 1);
+                $sortOrder = 'desc';
+            } else {
+                // Ascending sort (e.g., price)
+                $sortBy = $sort;
+                $sortOrder = 'asc';
+            }
+        } else {
+            // Default sorting
+            $sortBy = $request->input('sort_by', 'created_at');
+            $sortOrder = $request->input('sort_order', 'desc');
+        }
         $query->orderBy($sortBy, $sortOrder);
 
         // Pagination
@@ -55,11 +69,12 @@ class ProductController extends Controller
 
         return response()->json([
             'success' => true,
+            'message' => 'Products retrieved successfully',
             'data' => $products->items(),
             'meta' => [
                 'total' => $products->total(),
                 'per_page' => $products->perPage(),
-                'current_page' => $products->currentPage(),
+                'page' => $products->currentPage(),
                 'last_page' => $products->lastPage(),
             ],
         ]);
