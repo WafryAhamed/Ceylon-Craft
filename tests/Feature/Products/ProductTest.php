@@ -185,8 +185,10 @@ class ProductTest extends TestCase
         $response->assertStatus(200);
         $data = $response->json('data');
         
-        $prices = collect($data)->map(fn($p) => $p['price'])->toArray();
-        $this->assertEquals($prices, array_values(sort($prices) ?: $prices));
+        $prices = collect($data)->map(fn($p) => (float)$p['price'])->toArray();
+        $sortedPrices = $prices;
+        sort($sortedPrices);
+        $this->assertEquals($prices, $sortedPrices);
     }
 
     /**
@@ -201,9 +203,10 @@ class ProductTest extends TestCase
         $response->assertStatus(200);
         $data = $response->json('data');
         
-        $prices = collect($data)->map(fn($p) => $p['price'])->toArray();
-        $reversedPrices = array_reverse($prices);
-        $this->assertEquals($prices, $reversedPrices);
+        $prices = collect($data)->map(fn($p) => (float)$p['price'])->toArray();
+        $sortedDescending = $prices;
+        rsort($sortedDescending);
+        $this->assertEquals($prices, $sortedDescending);
     }
 
     /**
