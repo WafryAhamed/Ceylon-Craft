@@ -168,6 +168,7 @@ class CartController extends Controller
             'success' => true,
             'message' => 'Cart item updated',
             'data' => [
+                'quantity' => $quantity,
                 'total_price' => $cartItem->getTotalPrice(),
             ],
         ], 200);

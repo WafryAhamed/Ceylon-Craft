@@ -206,7 +206,9 @@ class CartTest extends TestCase
      */
     public function test_clear_entire_cart(): void
     {
-        CartItem::factory(5)->create();
+        // Create cart for user and add 5 items
+        $cart = $this->user->cart()->firstOrCreate(['user_id' => $this->user->id]);
+        CartItem::factory(5)->create(['cart_id' => $cart->id]);
 
         $response = $this->actingAs($this->user)->postJson('/api/cart/clear');
 
@@ -311,16 +313,23 @@ class CartTest extends TestCase
         $product1 = Product::factory()->create(['price' => 50.00, 'is_active' => true]);
         $product2 = Product::factory()->create(['price' => 75.00, 'is_active' => true]);
 
-        CartItem::factory()->create(['product_id' => $product1->id, 'quantity' => 2, 'price' => 50.00]);
-        CartItem::factory()->create(['product_id' => $product2->id, 'quantity' => 1, 'price' => 75.00]);
+        // Create cart for user
+        $cart = $this->user->cart()->firstOrCreate(['user_id' => $this->user->id]);
+
+        CartItem::factory()->create(['cart_id' => $cart->id, 'product_id' => $product1->id, 'quantity' => 2, 'price' => 50.00]);
+        CartItem::factory()->create(['cart_id' => $cart->id, 'product_id' => $product2->id, 'quantity' => 1, 'price' => 75.00]);
 
         $response = $this->actingAs($this->user)->getJson('/api/cart');
 
         $response->assertStatus(200);
         $data = $response->json();
         
+        // Verify cart items are returned
+        $this->assertCount(2, $data['data']);
+        
         // Total should be: (50 * 2) + (75 * 1) = 175
         $expectedTotal = 175;
-        $this->assertNotNull($data['total'] ?? $data['data'][0]['total'] ?? null);
+        $actualTotal = array_sum(array_map(fn($item) => $item['price'] * $item['quantity'], $data['data']));
+        $this->assertEquals($expectedTotal, $actualTotal);
     }
 }
