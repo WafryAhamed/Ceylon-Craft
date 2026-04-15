@@ -152,7 +152,7 @@ class OrderController extends Controller
         }
 
         $request->validate([
-            'status' => 'required|in:pending,paid,shipped,delivered,cancelled,processing',
+            'status' => 'required|in:pending,paid,shipped,delivered,cancelled',
             'payment_status' => 'nullable|in:pending,paid,failed,refunded',
         ]);
 

@@ -125,10 +125,6 @@ class PaymentController extends Controller
             ], 500);
         }
     }
-                'message' => 'Failed to create payment intent',
-            ], 500);
-        }
-    }
 
     /**
      * Confirm a payment intent.
