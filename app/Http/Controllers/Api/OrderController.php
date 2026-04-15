@@ -101,11 +101,12 @@ class OrderController extends Controller
             $order = Order::create([
                 'user_id' => $user->id,
                 'total' => $cart->getTotalPrice(),
+                'status' => 'pending',
                 'payment_status' => 'pending',
-                'payment_method' => $request->input('payment_method'),
-                'shipping_address' => $request->input('shipping_address'),
+                'payment_method' => $request->input('payment_method', 'cod'),
+                'shipping_address' => $request->input('address') ?? $request->input('shipping_address'),
                 'shipping_city' => $request->input('shipping_city'),
-                'shipping_postal_code' => $request->input('shipping_postal_code'),
+                'shipping_postal_code' => $request->input('postal_code') ?? $request->input('shipping_postal_code'),
                 'notes' => $request->input('notes'),
             ]);
 

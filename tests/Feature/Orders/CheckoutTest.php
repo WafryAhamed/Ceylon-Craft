@@ -28,18 +28,21 @@ class CheckoutTest extends TestCase
      */
     public function test_checkout_with_valid_data(): void
     {
+        // Create cart for user and add item
+        $cart = $this->user->cart()->firstOrCreate(['user_id' => $this->user->id]);
         CartItem::factory()->create([
+            'cart_id' => $cart->id,
             'product_id' => $this->product->id,
             'quantity' => 1,
         ]);
 
         $response = $this->actingAs($this->user)->postJson('/api/orders/checkout', [
             'address' => '123 Main Street, Colombo',
+            'shipping_city' => 'Colombo',
             'postal_code' => '00100',
             'phone' => '+94771234567',
             'country' => 'lk',
             'terms_agreed' => true,
-            'payment_intent_id' => 'pi_test_123',
         ]);
 
         $response->assertStatus(201)
