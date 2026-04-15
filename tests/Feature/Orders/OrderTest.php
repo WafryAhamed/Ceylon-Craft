@@ -147,7 +147,12 @@ class OrderTest extends TestCase
      */
     public function test_order_requires_address(): void
     {
-        CartItem::factory()->create(['product_id' => $this->product->id]);
+        CartItem::create([
+            'cart_id' => $this->user->cart->id,
+            'product_id' => $this->product->id,
+            'quantity' => 1,
+            'price' => $this->product->price,
+        ]);
 
         $response = $this->actingAs($this->user)->postJson('/api/orders', [
             'postal_code' => '10001',
@@ -239,7 +244,7 @@ class OrderTest extends TestCase
         $order = Order::factory()->create(['user_id' => $this->user->id]);
 
         $response = $this->actingAs($this->user)->patchJson("/api/orders/{$order->id}/status", [
-            'status' => 'processing',
+            'status' => 'paid',
         ]);
 
         $response->assertStatus(403);
@@ -255,8 +260,8 @@ class OrderTest extends TestCase
         $admin = User::factory()->create(['is_admin' => true]);
         $order = Order::factory()->create(['status' => 'pending']);
 
-        // Change to processing
-        $this->actingAs($admin)->patchJson("/api/orders/{$order->id}/status", ['status' => 'processing']);
+        // Change to paid
+        $this->actingAs($admin)->patchJson("/api/orders/{$order->id}/status", ['status' => 'paid']);
 
         // Change to shipped
         $this->actingAs($admin)->patchJson("/api/orders/{$order->id}/status", ['status' => 'shipped']);
@@ -296,9 +301,24 @@ class OrderTest extends TestCase
         $product2 = Product::factory()->create(['stock' => 50, 'is_active' => true]);
         $product3 = Product::factory()->create(['stock' => 50, 'is_active' => true]);
 
-        CartItem::factory()->create(['product_id' => $product1->id, 'quantity' => 2]);
-        CartItem::factory()->create(['product_id' => $product2->id, 'quantity' => 1]);
-        CartItem::factory()->create(['product_id' => $product3->id, 'quantity' => 3]);
+        CartItem::create([
+            'cart_id' => $this->user->cart->id,
+            'product_id' => $product1->id,
+            'quantity' => 2,
+            'price' => $product1->price,
+        ]);
+        CartItem::create([
+            'cart_id' => $this->user->cart->id,
+            'product_id' => $product2->id,
+            'quantity' => 1,
+            'price' => $product2->price,
+        ]);
+        CartItem::create([
+            'cart_id' => $this->user->cart->id,
+            'product_id' => $product3->id,
+            'quantity' => 3,
+            'price' => $product3->price,
+        ]);
 
         $response = $this->actingAs($this->user)->postJson('/api/orders', [
             'address' => '123 Main St',
@@ -308,7 +328,7 @@ class OrderTest extends TestCase
         ]);
 
         $response->assertStatus(201);
-        $orderId = $response->json('data.id');
+        $orderId = $response->json('data.order_id');
 
         // Verify 3 order items created
         $this->assertDatabaseCount('order_items', 3);
@@ -342,8 +362,18 @@ class OrderTest extends TestCase
         $product1 = Product::factory()->create(['stock' => 50, 'price' => 25.00, 'is_active' => true]);
         $product2 = Product::factory()->create(['stock' => 50, 'price' => 75.00, 'is_active' => true]);
 
-        CartItem::factory()->create(['product_id' => $product1->id, 'quantity' => 2, 'price' => 25.00]);
-        CartItem::factory()->create(['product_id' => $product2->id, 'quantity' => 1, 'price' => 75.00]);
+        CartItem::create([
+            'cart_id' => $this->user->cart->id,
+            'product_id' => $product1->id,
+            'quantity' => 2,
+            'price' => 25.00,
+        ]);
+        CartItem::create([
+            'cart_id' => $this->user->cart->id,
+            'product_id' => $product2->id,
+            'quantity' => 1,
+            'price' => 75.00,
+        ]);
 
         $response = $this->actingAs($this->user)->postJson('/api/orders', [
             'address' => '123 Main St',
@@ -366,7 +396,12 @@ class OrderTest extends TestCase
      */
     public function test_prevent_duplicate_orders(): void
     {
-        CartItem::factory()->create(['product_id' => $this->product->id, 'quantity' => 1]);
+        CartItem::create([
+            'cart_id' => $this->user->cart->id,
+            'product_id' => $this->product->id,
+            'quantity' => 1,
+            'price' => $this->product->price,
+        ]);
 
         $payload = [
             'address' => '123 Main St',
@@ -377,10 +412,15 @@ class OrderTest extends TestCase
 
         // First request
         $response1 = $this->actingAs($this->user)->postJson('/api/orders', $payload);
-        $orderId1 = $response1->json('data.id');
+        $orderId1 = $response1->json('data.order_id');
 
-        // Repopulate cart
-        CartItem::factory()->create(['product_id' => $this->product->id, 'quantity' => 1]);
+        // Repopulate cart for second order
+        CartItem::create([
+            'cart_id' => $this->user->cart->id,
+            'product_id' => $this->product->id,
+            'quantity' => 1,
+            'price' => $this->product->price,
+        ]);
 
         // Second request (should create new order as cart is different)
         $response2 = $this->actingAs($this->user)->postJson('/api/orders', $payload);

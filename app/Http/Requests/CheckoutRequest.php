@@ -28,11 +28,13 @@ class CheckoutRequest extends FormRequest
      * Supports both naming conventions:
      * - shipping_address/shipping_postal_code/shipping_phone/shipping_city
      * - address/postal_code/phone/country (for test compatibility)
+     * 
+     * Address is required (either shipping_address or address).
      */
     public function rules(): array
     {
         return [
-            // Support both naming conventions
+            // Support both naming conventions - at least one address field required
             'address' => 'nullable|string|min:5|max:255',
             'shipping_address' => 'nullable|string|min:5|max:255',
             'postal_code' => 'nullable|regex:/^[0-9]{5,10}$/i',
@@ -95,5 +97,18 @@ class CheckoutRequest extends FormRequest
         if (!$this->has('shipping_city') && $this->has('shipping_address')) {
             $this->merge(['shipping_city' => 'N/A']);
         }
+    }
+
+    /**
+     * Configure the validator instance with custom rule...
+     */
+    public function withValidator($validator)
+    {
+        $validator->after(function ($validator) {
+            // Require at least one address field
+            if (!$this->input('address') && !$this->input('shipping_address')) {
+                $validator->errors()->add('address', 'Shipping address is required');
+            }
+        });
     }
 }
