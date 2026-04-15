@@ -208,7 +208,7 @@ class OrderTest extends TestCase
 
     /**
      * TEST: Orders - Order status update by admin
-     * Scenario: Admin changes order status to processing
+     * Scenario: Admin changes order status to paid
      * Expected: 200 OK with updated status
      */
     public function test_admin_update_order_status(): void
@@ -217,15 +217,15 @@ class OrderTest extends TestCase
         $order = Order::factory()->create(['user_id' => $this->user->id, 'status' => 'pending']);
 
         $response = $this->actingAs($admin)->patchJson("/api/orders/{$order->id}/status", [
-            'status' => 'processing',
+            'status' => 'paid',
         ]);
 
         $response->assertStatus(200)
-                ->assertJsonPath('data.status', 'processing');
+                ->assertJsonPath('data.status', 'paid');
 
         $this->assertDatabaseHas('orders', [
             'id' => $order->id,
-            'status' => 'processing',
+            'status' => 'paid',
         ]);
     }
 

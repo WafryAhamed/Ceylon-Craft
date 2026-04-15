@@ -66,6 +66,7 @@ class OrderController extends Controller
                 'notes' => $order->notes,
                 'items' => $order->items()->with('product')->get()->map(fn ($item) => [
                     'id' => $item->id,
+                    'product_id' => $item->product_id,
                     'product' => [
                         'id' => $item->product->id,
                         'name' => $item->product->name,
@@ -94,6 +95,16 @@ class OrderController extends Controller
                 'success' => false,
                 'message' => 'Cart is empty',
             ], 422);
+        }
+
+        // Check stock availability for all items
+        foreach ($cart->items()->with('product')->get() as $cartItem) {
+            if ($cartItem->product->stock < $cartItem->quantity) {
+                return response()->json([
+                    'success' => false,
+                    'message' => "Insufficient stock for {$cartItem->product->name}. Available: {$cartItem->product->stock}, Requested: {$cartItem->quantity}",
+                ], 409);
+            }
         }
 
         return DB::transaction(function () use ($user, $cart, $request) {
