@@ -40,33 +40,49 @@ class PaymentController extends Controller
     {
         try {
             $user = $request->user();
-            $order = Order::findOrFail($request->input('order_id'));
-
-            // Verify order belongs to user
-            if ($order->user_id !== $user->id) {
-                return response()->json([
-                    'success' => false,
-                    'message' => 'Unauthorized',
-                ], 403);
+            
+            // Validate input
+            $request->validate([
+                'amount' => 'required|numeric|min:50',  // Minimum $0.50
+                'currency' => 'required|string|in:usd,eur,gbp,lkr',
+                'order_id' => 'nullable|exists:orders,id',
+            ]);
+            
+            $orderId = $request->input('order_id');
+            $amount = (int)$request->input('amount');
+            $currency = $request->input('currency', 'usd');
+            
+            // If order_id is provided, verify it belongs to user
+            $order = null;
+            if ($orderId) {
+                $order = Order::findOrFail($orderId);
+                if ($order->user_id !== $user->id) {
+                    return response()->json([
+                        'success' => false,
+                        'message' => 'Unauthorized',
+                    ], 403);
+                }
+                $amount = (int)($order->total * 100); // Use order total instead
             }
 
             // Create mock payment intent
             $mockIntent = $this->paymentService->createPaymentIntent(
                 userId: $user->id,
-                amount: (int)($order->total * 100), // Convert to cents
-                description: "Order #{$order->id} - Ceylon Craft",
+                amount: $amount,
+                description: $order ? "Order #{$order->id} - Ceylon Craft" : "Payment - Ceylon Craft",
                 metadata: [
-                    'order_id' => $order->id,
+                    'order_id' => $orderId,
+                    'user_id' => $user->id,
                 ],
             );
 
             // Store payment record
             $payment = Payment::create([
                 'user_id' => $user->id,
-                'order_id' => $order->id,
+                'order_id' => $orderId,
                 'stripe_payment_intent_id' => $mockIntent['id'],
-                'amount' => $order->total,
-                'currency' => 'usd',
+                'amount' => $amount / 100, // Convert cents to dollars
+                'currency' => $currency,
                 'status' => 'pending',
                 'payment_method_type' => 'mock',
                 'metadata' => [
@@ -79,12 +95,19 @@ class PaymentController extends Controller
                 'message' => 'Payment intent created successfully',
                 'data' => [
                     'payment_id' => $payment->id,
+                    'payment_intent_id' => $mockIntent['id'],
                     'client_secret' => $mockIntent['client_secret'],
                     'public_key' => 'mock_pk_' . fake()->numerify('####################'),
-                    'amount' => $order->total,
-                    'currency' => 'usd',
+                    'amount' => $amount / 100,
+                    'currency' => $currency,
                 ],
-            ], 200);
+            ], 201);
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Validation failed',
+                'data' => $e->errors(),
+            ], 422);
         } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
             return response()->json([
                 'success' => false,
@@ -98,6 +121,10 @@ class PaymentController extends Controller
 
             return response()->json([
                 'success' => false,
+                'message' => 'Failed to create payment intent',
+            ], 500);
+        }
+    }
                 'message' => 'Failed to create payment intent',
             ], 500);
         }

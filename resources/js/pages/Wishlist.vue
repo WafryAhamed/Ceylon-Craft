@@ -113,7 +113,8 @@ const wishlistItems = ref([]);
 onMounted(async () => {
   try {
     const response = await fetch('/api/products');
-    const data = await response.json();
+    const json = await response.json();
+    const data = json.data || json;
     
     wishlistItems.value = data.slice(0, 4).map((product, index) => ({
       ...product,

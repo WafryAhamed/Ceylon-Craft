@@ -3,7 +3,7 @@ import { useAuthStore } from '@/stores/authStore';
 /**
  * Guard for protecting routes that require authentication
  */
-export const requireAuth = async (to, from, next) => {
+export const requireAuth = async (to, from) => {
   const authStore = useAuthStore();
   
   // Initialize auth if not done
@@ -12,20 +12,20 @@ export const requireAuth = async (to, from, next) => {
   }
 
   if (authStore.isAuthenticated) {
-    next();
+    return true;
   } else {
     // Redirect to login with return URL
-    next({
+    return {
       path: '/login',
       query: { redirect: to.fullPath },
-    });
+    };
   }
 };
 
 /**
  * Guard for protecting admin routes
  */
-export const requireAdmin = async (to, from, next) => {
+export const requireAdmin = async (to, from) => {
   const authStore = useAuthStore();
   
   // Initialize auth if not done
@@ -34,22 +34,22 @@ export const requireAdmin = async (to, from, next) => {
   }
 
   if (authStore.isAuthenticated && authStore.isAdmin) {
-    next();
+    return true;
   } else if (!authStore.isAuthenticated) {
-    next({
+    return {
       path: '/login',
       query: { redirect: to.fullPath },
-    });
+    };
   } else {
     // Redirect to home if not admin
-    next('/');
+    return '/';
   }
 };
 
 /**
  * Guard to prevent authenticated users from accessing auth pages
  */
-export const requireGuest = async (to, from, next) => {
+export const requireGuest = async (to, from) => {
   const authStore = useAuthStore();
   
   // Initialize auth if not done
@@ -59,9 +59,9 @@ export const requireGuest = async (to, from, next) => {
 
   if (authStore.isAuthenticated) {
     // Redirect to home if already logged in
-    next('/');
+    return '/';
   } else {
-    next();
+    return true;
   }
 };
 
@@ -69,17 +69,16 @@ export const requireGuest = async (to, from, next) => {
  * Global route meta guard handler
  */
 export const setupRouteGuards = (router) => {
-  router.beforeEach(async (to, from, next) => {
+  router.beforeEach(async (to, from) => {
     // Check meta requirements
     if (to.meta?.requiresAuth) {
-      await requireAuth(to, from, next);
+      return await requireAuth(to, from);
     } else if (to.meta?.requiresAdmin) {
-      await requireAdmin(to, from, next);
+      return await requireAdmin(to, from);
     } else if (to.meta?.requiresGuest) {
-      await requireGuest(to, from, next);
-    } else {
-      next();
+      return await requireGuest(to, from);
     }
+    return true;
   });
 
   // Update page title

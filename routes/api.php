@@ -50,6 +50,8 @@ Route::middleware('api-token')->group(function () {
     Route::post('/cart/add', [CartController::class, 'store']);
     Route::put('/cart/update', [CartController::class, 'updateByBody']);
     Route::put('/cart/items/{cartItem}', [CartController::class, 'update']);
+    // Support both DELETE methods with and without body
+    Route::delete('/cart/delete', [CartController::class, 'deleteByBody']);
     Route::delete('/cart/remove', [CartController::class, 'deleteByBody']);
     Route::delete('/cart/items/{cartItem}', [CartController::class, 'destroy']);
     Route::post('/cart/clear', [CartController::class, 'clear']);
@@ -94,6 +96,7 @@ Route::middleware(['api-token', 'admin'])->group(function () {
     Route::get('/admin/orders', [OrderController::class, 'adminIndex']);
     Route::get('/admin/orders/stats', [OrderController::class, 'stats']);
     Route::put('/admin/orders/{order}/status', [OrderController::class, 'updateStatus']);
+    Route::patch('/admin/orders/{order}/status', [OrderController::class, 'updateStatus']);
     Route::patch('/admin/orders/{order}', [OrderController::class, 'updateStatus']);
     Route::patch('/admin/orders/{order}/toggle', [OrderController::class, 'toggleStatus']);
 });

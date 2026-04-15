@@ -274,7 +274,8 @@ const testimonials = ref([
 onMounted(async () => {
   try {
     const response = await fetch('/api/products');
-    const data = await response.json();
+    const json = await response.json();
+    const data = json.data || json;
     featuredProducts.value = data.slice(0, 4).map((product, index) => ({
       ...product,
       slug: product.name.toLowerCase().replace(/\s+/g, '-'),

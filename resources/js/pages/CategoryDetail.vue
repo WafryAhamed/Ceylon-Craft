@@ -146,7 +146,8 @@ const handleAddToCart = () => {
 onMounted(async () => {
   try {
     const response = await fetch('/api/products');
-    const data = await response.json();
+    const json = await response.json();
+    const data = json.data || json;
     products.value = data.map(product => ({
       ...product,
       slug: product.name.toLowerCase().replace(/\s+/g, '-'),

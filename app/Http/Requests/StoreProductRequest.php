@@ -53,6 +53,7 @@ class StoreProductRequest extends FormRequest
             ],
             'category_id' => [
                 'nullable',
+                'integer',
                 Rule::exists('categories', 'id'),
             ],
             'image' => [

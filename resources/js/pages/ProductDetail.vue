@@ -261,7 +261,8 @@ onMounted(async () => {
   try {
     // Fetch all products
     const response = await fetch('/api/products');
-    const data = await response.json();
+    const json = await response.json();
+    const data = json.data || json;
     
     // Find product by slug or ID
     const productId = route.params.id || route.params.slug;

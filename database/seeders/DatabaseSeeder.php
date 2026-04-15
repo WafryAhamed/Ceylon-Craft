@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Cart;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -17,18 +18,22 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // Create admin user
-        $admin = User::factory()->create([
+        $admin = User::create([
             'name' => 'Admin User',
             'email' => 'admin@ceyloncraft.lk',
+            'password' => Hash::make('admin123'),
             'role' => 'admin',
+            'is_admin' => true,
         ]);
         Cart::create(['user_id' => $admin->id]);
 
         // Create test user
-        $user = User::factory()->create([
+        $user = User::create([
             'name' => 'Test User',
             'email' => 'user@ceyloncraft.lk',
+            'password' => Hash::make('user123'),
             'role' => 'user',
+            'is_admin' => false,
         ]);
         Cart::create(['user_id' => $user->id]);
 

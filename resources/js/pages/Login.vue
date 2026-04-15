@@ -101,10 +101,37 @@ const form = ref({
   rememberMe: false
 });
 
-const handleLogin = () => {
-  if (form.value.email && form.value.password) {
-    alert('Login successful! (Demo mode)');
-    router.push('/');
+const handleLogin = async () => {
+  if (!form.value.email || !form.value.password) {
+    return;
+  }
+
+  try {
+    const response = await fetch('/api/auth/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: form.value.email,
+        password: form.value.password,
+      }),
+    });
+
+    const result = await response.json();
+
+    if (response.ok && result.success) {
+      // Store token and user data in localStorage
+      localStorage.setItem('authToken', result.data.token);
+      localStorage.setItem('user', JSON.stringify(result.data));
+      // Redirect to home
+      router.push('/');
+    } else {
+      alert(result.message || 'Login failed');
+    }
+  } catch (error) {
+    console.error('Login error:', error);
+    alert('Login error: ' + error.message);
   }
 };
 </script>

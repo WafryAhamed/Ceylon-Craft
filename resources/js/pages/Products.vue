@@ -210,7 +210,8 @@ const sortedProducts = computed(() => {
 onMounted(async () => {
   try {
     const response = await fetch('/api/products');
-    const data = await response.json();
+    const json = await response.json();
+    const data = json.data || json;
     allProducts.value = data.map((product, index) => ({
       ...product,
       slug: product.name.toLowerCase().replace(/\s+/g, '-'),

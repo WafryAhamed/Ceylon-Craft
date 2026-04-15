@@ -1,0 +1,1858 @@
+﻿
+   PASS  Tests\Unit\ExampleTest
+  Γ£ô that true is true                                                    0.01s  
+
+   FAIL  Tests\Feature\Admin\AdminTest
+  Γ¿» admin can add product                                                1.05s  
+  Γ£ô regular user cannot add product                                      0.05s  
+  Γ¿» admin can update product                                             0.04s  
+  Γ¿» admin can delete product                                             0.05s  
+  Γ£ô admin can toggle product active status                               0.03s  
+  Γ£ô admin can view all orders                                            0.06s  
+  Γ£ô regular user cannot view all orders                                  0.03s  
+  Γ¿» admin can update order status                                        0.03s  
+  Γ£ô admin can toggle featured status                                     0.03s  
+  Γ¿» admin can view order details                                         0.06s  
+  Γ¿» admin can bulk import products                                       0.03s  
+  Γ£ô add product requires name                                            0.03s  
+  Γ£ô product name max length                                              0.03s  
+  Γ£ô product price cannot be negative                                     0.03s  
+  Γ£ô product stock cannot be negative                                     0.03s  
+  Γ£ô guest cannot access admin endpoints                                  0.03s  
+  Γ¿» admin dashboard stats                                                0.04s  
+
+   FAIL  Tests\Feature\Auth\AuthenticationTest
+  Γ£ô register with valid data                                             0.09s  
+  Γ£ô register with duplicate email                                        0.05s  
+  Γ£ô register with weak password                                          0.05s  
+  Γ£ô register with mismatched passwords                                   0.03s  
+  Γ£ô register with missing required fields                                0.04s  
+  Γ£ô login with correct credentials                                       0.03s  
+  Γ£ô login with wrong password                                            0.03s  
+  Γ£ô login with non existent email                                        0.03s  
+  Γ£ô login with missing email                                             0.03s  
+  Γ¿» logout invalidates token                                             0.03s  
+  Γ£ô access protected endpoint without token                              0.03s  
+  Γ£ô get current user profile                                             0.03s  
+  Γ£ô update user profile                                                  0.03s  
+  Γ£ô login rate limiting                                                  0.05s  
+
+   FAIL  Tests\Feature\Auth\LoginTest
+  Γ£ô login with correct credentials                                       0.05s  
+  Γ£ô login with wrong password                                            0.03s  
+  Γ£ô login with non existent email                                        0.03s  
+  Γ¿» logout invalidates token                                             0.03s  
+  Γ¿» access protected endpoint without token                              0.03s  
+
+   FAIL  Tests\Feature\Auth\RegisterTest
+  Γ£ô register with valid data                                             0.04s  
+  Γ¿» register with existing email                                         0.03s  
+  Γ£ô register with weak password                                          0.03s  
+  Γ£ô register with mismatched password confirmation                       0.03s  
+  Γ£ô register missing required fields                                     0.03s  
+
+   PASS  Tests\Feature\Cart\CartOperationsTest
+  Γ£ô add product to cart                                                  0.06s  
+  Γ£ô add same product twice increases quantity                            0.05s  
+  Γ£ô add out of stock product returns error                               0.04s  
+  Γ£ô add quantity exceeding stock returns error                           0.04s  
+  Γ£ô update cart item quantity                                            0.04s  
+  Γ£ô update quantity to zero removes item                                 0.03s  
+  Γ£ô remove item from cart                                                0.03s  
+  Γ£ô add with negative quantity returns error                             0.03s  
+
+   FAIL  Tests\Feature\Cart\CartTest
+  Γ£ô add product to cart                                                  0.06s  
+  Γ£ô add same product twice increments quantity                           0.05s  
+  Γ£ô add out of stock product                                             0.04s  
+  Γ£ô add quantity exceeding stock                                         0.03s  
+  Γ¿» view cart                                                            0.04s  
+  Γ¿» update cart item quantity                                            0.03s  
+  Γ£ô update quantity exceeding stock                                      0.03s  
+  Γ£ô remove item from cart                                                0.03s  
+  Γ¿» clear entire cart                                                    0.04s  
+  Γ£ô add non existent product to cart                                     0.03s  
+  Γ£ô add with negative quantity                                           0.03s  
+  Γ£ô add with zero quantity                                               0.03s  
+  Γ£ô guest user cannot add to cart                                        0.03s  
+  Γ£ô cart persists across sessions                                        0.04s  
+  Γ¿» cart total calculation                                               0.04s  
+
+   FAIL  Tests\Feature\Categories\CategoryTest
+  Γ¿» fetch all categories                                                 0.06s  
+  Γ£ô fetch single category by slug                                        0.04s  
+  Γ£ô fetch non existent category                                          0.05s  
+  Γ¿» fetch products by category                                           0.05s  
+  Γ¿» category excludes inactive products                                  0.05s  
+  Γ¿» category products pagination                                         0.08s  
+  Γ¿» empty category                                                       0.04s  
+  Γ£ô sql injection prevention                                             0.04s  
+  Γ£ô category slug handling                                               0.04s  
+  Γ¿» category products sorted by price                                    0.05s  
+  Γ¿» category description escaping                                        0.04s  
+  Γ¿» fetch many categories performance                                    0.20s  
+  Γ¿» category product count                                               0.05s  
+
+   PASS  Tests\Feature\ExampleTest
+  Γ£ô the application returns a successful response                        0.04s  
+
+   FAIL  Tests\Feature\Orders\CheckoutTest
+  Γ¿» checkout with valid data                                             0.03s  
+  Γ£ô checkout with empty cart                                             0.03s  
+  Γ£ô checkout with invalid address                                        0.03s  
+  Γ£ô checkout with invalid postal code                                    0.04s  
+  Γ£ô checkout with invalid country                                        0.04s  
+  Γ£ô checkout without terms acceptance                                    0.03s  
+  Γ£ô view users own orders                                                0.03s  
+  Γ£ô access another users order returns 403                               0.03s  
+  Γ¿» cancel shipped order returns error                                   0.03s  
+
+   FAIL  Tests\Feature\Orders\OrderTest
+  Γ¿» create order from cart                                               0.04s  
+  Γ£ô empty cart prevents order creation                                   0.03s  
+  Γ¿» stock reduced on order                                               0.03s  
+  Γ¿» insufficient stock prevents order                                    0.03s  
+  Γ£ô order requires address                                               0.03s  
+  Γ£ô get user orders                                                      0.03s  
+  Γ¿» get order detail                                                     0.04s  
+  Γ£ô cannot view another users order                                      0.04s  
+  Γ¿» admin update order status                                            0.05s  
+  Γ¿» non admin cannot update order status                                 0.04s  
+  Γ¿» order status history tracking                                        0.06s  
+  Γ¿» invalid status value                                                 0.04s  
+  Γ¿» order with multiple products                                         0.04s  
+  Γ£ô guest cannot create order                                            0.03s  
+  Γ¿» order total calculation                                              0.04s  
+  Γ¿» prevent duplicate orders                                             0.04s  
+
+   FAIL  Tests\Feature\Payment\PaymentIntentTest
+  Γ¿» create payment intent with valid amount                              0.07s  
+  Γ¿» create payment intent with amount too small                          0.03s  
+  Γ¿» create payment intent with unsupported currency                      0.03s  
+  Γ¿» payment endpoint rate limit                                          0.05s  
+
+   FAIL  Tests\Feature\Payments\PaymentTest
+  Γ¿» create payment intent                                                0.05s  
+  Γ¿» create intent for non existent order                                 0.04s  
+  Γ¿» confirm payment success                                              0.04s  
+  Γ¿» confirm payment failure                                              0.04s  
+  Γ¿» prevent duplicate charges                                            0.04s  
+  Γ¿» invalid payment amount                                               0.03s  
+  Γ¿» webhook payment succeeded event                                      0.04s  
+  Γ¿» webhook signature validation                                         0.03s  
+  Γ¿» cannot pay another users order                                       0.05s  
+  Γ¿» guest cannot make payment                                            0.06s  
+  Γ¿» get payment history                                                  0.07s  
+  Γ¿» refund payment                                                       0.06s  
+  Γ¿» cannot refund failed payment                                         0.05s  
+  Γ¿» non admin cannot refund payment                                      0.04s  
+  Γ¿» payment with zero amount                                             0.04s  
+  Γ¿» invalid currency in payment                                          0.03s  
+
+   PASS  Tests\Feature\Products\ProductListTest
+  Γ£ô list products with pagination                                        0.11s  
+  Γ£ô filter by category id                                                0.06s  
+  Γ£ô search products by name                                              0.04s  
+  Γ£ô sort by price ascending                                              0.03s  
+  Γ£ô view inactive product returns 404                                    0.03s  
+  Γ£ô search with sql injection attempt                                    0.03s  
+
+   FAIL  Tests\Feature\Products\ProductTest
+  Γ£ô list all products                                                    0.05s  
+  Γ£ô get product by slug                                                  0.05s  
+  Γ£ô get non existent product                                             0.04s  
+  Γ£ô get inactive product returns 404                                     0.04s  
+  Γ£ô search products by name                                              0.05s  
+  Γ£ô search with no results                                               0.04s  
+  Γ£ô filter by category                                                   0.05s  
+  Γ£ô filter by price range                                                0.05s  
+  Γ¿» sort by price ascending                                              0.05s  
+  Γ¿» sort by price descending                                             0.05s  
+  Γ£ô pagination                                                           0.05s  
+  Γ£ô get featured products                                                0.05s  
+  Γ£ô multiple filters combined                                            0.05s  
+  Γ£ô search sql injection prevention                                      0.04s  
+  Γ£ô xss prevention in product name                                       0.06s  
+  Γ£ô invalid filter values                                                0.04s  
+  Γ£ô large product list performance                                       0.64s  
+
+   WARN  Tests\Feature\Reviews\ReviewTest
+  Γ£ô authenticated user can add review                                    0.05s  
+  Γ£ô guest cannot add review                                              0.03s  
+  Γ£ô rating below minimum rejected                                        0.03s  
+  Γ£ô rating above maximum rejected                                        0.03s  
+  Γ£ô all valid ratings accepted                                           0.05s  
+  Γ£ô get product reviews                                                  0.04s  
+  Γ£ô user can update own review                                           0.03s  
+  Γ£ô user cannot update other review                                      0.03s  
+  Γ£ô user can delete own review                                           0.03s  
+  Γ£ô user cannot delete other review                                      0.03s  
+  Γ£ô review without comment                                               0.03s  
+  Γ£ô xss prevention in review comment                                     0.03s  
+  Γ£ô cannot review non existent product                                   0.04s  
+  ! prevent duplicate user reviews ΓåÆ This test did not perform any asseΓÇª 0.03s  
+  Γ£ô product average rating calculation                                   0.11s  
+
+   FAIL  Tests\Feature\Security\AuthorizationTest
+  Γ£ô user cannot access another users order                               0.05s  
+  Γ¿» regular user cannot create product                                   0.04s  
+  Γ£ô regular user cannot access admin endpoints                           0.04s  
+
+   FAIL  Tests\Feature\Security\SecurityTest
+  Γ£ô unauthorized access without token                                    0.03s  
+  Γ£ô invalid token format                                                 0.03s  
+  Γ£ô expired token rejected                                               0.03s  
+  Γ£ô missing authorization header                                         0.03s  
+  Γ£ô sql injection in search                                              0.03s  
+  Γ£ô sql injection in filter                                              0.03s  
+  Γ£ô sql injection in product slug                                        0.03s  
+  Γ£ô xss in product search                                                0.03s  
+  Γ£ô xss in review comment                                                0.04s  
+  Γ£ô user cannot access other user orders                                 0.03s  
+  Γ£ô regular user cannot access admin endpoints                           0.03s  
+  Γ£ô cors headers configured                                              0.03s  
+  Γ£ô email validation                                                     0.03s  
+  Γ£ô password strength validation                                         0.03s  
+  Γ£ô login rate limiting                                                  0.04s  
+  Γ£ô generic error messages on login failure                              0.03s  
+  Γ£ô csrf protection                                                      0.03s  
+  ! product name sanitization ΓåÆ This test did not perform any assertionΓÇª 0.03s  
+  Γ¿» user cannot access other users profile                               0.03s  
+  Γ£ô malicious json handling                                              0.03s  
+  Γ£ô file upload validation                                               0.03s  
+  Γ£ô large payload handling                                               0.08s  
+  Γ¿» api response format consistency                                      0.03s  
+  Γ£ô error response format                                                0.03s  
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Admin\AdminTest > admin can add product                
+  Expected response status code [201] but received 422.
+Failed asserting that 422 is identical to 201.
+
+  at tests\Feature\Admin\AdminTest.php:40
+     36Γûò             'stock' => 50,
+     37Γûò             'category_id' => 1,
+     38Γûò         ]);
+     39Γûò 
+  Γ₧£  40Γûò         $response->assertStatus(201)
+     41Γûò                 ->assertJsonPath('data.name', 'New Laptop')
+     42Γûò                 ->assertJsonPath('data.price', 1299.99);
+     43Γûò 
+     44Γûò         $this->assertDatabaseHas('products', [
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Admin\AdminTest > admin can update product             
+  Failed asserting that '75.00' is identical to 75.0.
+
+  at tests\Feature\Admin\AdminTest.php:85
+     81Γûò         ]);
+     82Γûò 
+     83Γûò         $response->assertStatus(200)
+     84Γûò                 ->assertJsonPath('data.name', 'Updated Name')
+  Γ₧£  85Γûò                 ->assertJsonPath('data.price', 75.00);
+     86Γûò 
+     87Γûò         $this->assertDatabaseHas('products', [
+     88Γûò             'id' => $product->id,
+     89Γûò             'name' => 'Updated Name',
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Admin\AdminTest > admin can delete product             
+  Failed asserting that null is not null.
+
+  at tests\Feature\Admin\AdminTest.php:110
+    106Γûò                 ->assertJsonPath('success', true);
+    107Γûò 
+    108Γûò         // Check if soft or hard deleted
+    109Γûò         if (in_array('deleted_at', $product->getAttributes())) {
+  Γ₧£ 110Γûò             $this->assertNotNull(Product::find($product->id)?->deleted_at ?? null);
+    111Γûò         } else {
+    112Γûò             $this->assertNull(Product::find($product->id));
+    113Γûò         }
+    114Γûò     }
+
+  1   tests\Feature\Admin\AdminTest.php:110
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Admin\AdminTest > admin can update order status        
+  Expected response status code [200] but received 422.
+Failed asserting that 422 is identical to 200.
+
+  at tests\Feature\Admin\AdminTest.php:177
+    173Γûò         $response = $this->actingAs($this->admin)->patchJson("/api/admin/orders/{$order->id}", [
+    174Γûò             'status' => 'processing',
+    175Γûò         ]);
+    176Γûò 
+  Γ₧£ 177Γûò         $response->assertStatus(200)
+    178Γûò                 ->assertJsonPath('data.status', 'processing');
+    179Γûò 
+    180Γûò         $this->assertDatabaseHas('orders', [
+    181Γûò             'id' => $order->id,
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Admin\AdminTest > admin can vΓÇª  AssertionFailedError   
+  Invalid JSON was returned from the route.
+
+  at tests\Feature\Admin\AdminTest.php:218
+    214Γûò 
+    215Γûò         $response = $this->actingAs($this->admin)->getJson("/api/admin/orders/{$order->id}");
+    216Γûò 
+    217Γûò         $response->assertStatus(200)
+  Γ₧£ 218Γûò                 ->assertJsonStructure(['success', 'data' => ['id', 'user_id', 'status', 'items', 'user']])
+    219Γûò                 ->assertJsonPath('data.id', $order->id);
+    220Γûò     }
+    221Γûò 
+    222Γûò     /**
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Admin\AdminTest > admin can bulk import products       
+  Failed asserting that false is true.
+
+  at tests\Feature\Admin\AdminTest.php:237
+    233Γûò             ]),
+    234Γûò         ]);
+    235Γûò 
+    236Γûò         // May return 201 or 200
+  Γ₧£ 237Γûò         $this->assertTrue($response->status() === 200 || $response->status() === 201 || $response->status() === 404);
+    238Γûò     }
+    239Γûò 
+    240Γûò     /**
+    241Γûò      * TEST: Admin - Missing required admin fields
+
+  1   tests\Feature\Admin\AdminTest.php:237
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Admin\AdminTest > admin dashbΓÇª  AssertionFailedError   
+  Invalid JSON was returned from the route.
+
+  at tests\Feature\Admin\AdminTest.php:330
+    326Γûò         $response = $this->actingAs($this->admin)->getJson('/api/admin/stats');
+    327Γûò 
+    328Γûò         // May or may not exist
+    329Γûò         if ($response->status() === 200) {
+  Γ₧£ 330Γûò             $response->assertJsonStructure(['success', 'data']);
+    331Γûò         }
+    332Γûò     }
+    333Γûò }
+    334Γûò
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Auth\AuthenticationTest > logout invalidates token     
+  Expected response status code [401] but received 200.
+Failed asserting that 200 is identical to 401.
+
+  at tests\Feature\Auth\AuthenticationTest.php:210
+    206Γûò         $response = $this->getJson('/api/auth/me', [
+    207Γûò             'Authorization' => 'Bearer invalid-token',
+    208Γûò         ]);
+    209Γûò 
+  Γ₧£ 210Γûò         $response->assertStatus(401);
+    211Γûò     }
+    212Γûò 
+    213Γûò     /**
+    214Γûò      * TEST: Auth - Access protected endpoint without token
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Auth\LoginTest > logout invalidates token              
+  Expected response status code [401] but received 200.
+Failed asserting that 200 is identical to 401.
+
+  at tests\Feature\Auth\LoginTest.php:81
+     77Γûò         $response = $this->getJson('/api/auth/me', [
+     78Γûò             'Authorization' => 'Bearer ' . $token,
+     79Γûò         ]);
+     80Γûò 
+  Γ₧£  81Γûò         $response->assertStatus(401);
+     82Γûò     }
+     83Γûò 
+     84Γûò     /**
+     85Γûò      * Test Case QA-010: Access protected endpoint without token
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Auth\LoginTest > access protected endpoint withoutΓÇª    
+  Failed asserting that two strings are identical.
+--- Expected
++++ Actual
+@@ @@
+-'Unauthenticated'
++'Unauthorized - No token provided'
+
+  at tests\Feature\Auth\LoginTest.php:92
+     88Γûò     {
+     89Γûò         $response = $this->getJson('/api/auth/me');
+     90Γûò 
+     91Γûò         $response->assertStatus(401)
+  Γ₧£  92Γûò                 ->assertJsonPath('message', 'Unauthenticated');
+     93Γûò     }
+     94Γûò }
+     95Γûò
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Auth\RegisterTest > register with existing email       
+  Failed asserting that two strings are identical.
+--- Expected
++++ Actual
+@@ @@
+-'The email has already been taken'
++'Validation failed'
+
+  at tests\Feature\Auth\RegisterTest.php:49
+     45Γûò             'password_confirmation' => 'SecurePass123!',
+     46Γûò         ]);
+     47Γûò 
+     48Γûò         $response->assertStatus(422)
+  Γ₧£  49Γûò                 ->assertJsonPath('message', 'The email has already been taken');
+     50Γûò     }
+     51Γûò 
+     52Γûò     /**
+     53Γûò      * Test Case QA-003: Register with weak password (no symbols)
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Cart\CartTest > view cart                              
+  Failed to assert that the response count matched the expected 3
+Failed asserting that actual size 0 matches expected size 3.
+
+  at tests\Feature\Cart\CartTest.php:131
+    127Γûò 
+    128Γûò         $response->assertStatus(200)
+    129Γûò                 ->assertJsonPath('success', true)
+    130Γûò                 ->assertJsonStructure(['success', 'data' => ['*' => ['id', 'product_id', 'quantity', 'price']]])
+  Γ₧£ 131Γûò                 ->assertJsonCount(3, 'data');
+    132Γûò     }
+    133Γûò 
+    134Γûò     /**
+    135Γûò      * TEST: Cart - Update cart item quantity
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Cart\CartTest > update cart item quantity              
+  Failed asserting that null is identical to 5.
+
+  at tests\Feature\Cart\CartTest.php:149
+    145Γûò             'quantity' => 5,
+    146Γûò         ]);
+    147Γûò 
+    148Γûò         $response->assertStatus(200)
+  Γ₧£ 149Γûò                 ->assertJsonPath('data.quantity', 5);
+    150Γûò 
+    151Γûò         $this->assertDatabaseHas('cart_items', [
+    152Γûò             'id' => $cartItem->id,
+    153Γûò             'quantity' => 5,
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Cart\CartTest > clear entire cart                      
+  Failed asserting that table [cart_items] matches expected entries count of 0. Entries found: 5.
+.
+
+  at tests\Feature\Cart\CartTest.php:208
+    204Γûò 
+    205Γûò         $response->assertStatus(200)
+    206Γûò                 ->assertJsonPath('success', true);
+    207Γûò 
+  Γ₧£ 208Γûò         $this->assertDatabaseCount('cart_items', 0);
+    209Γûò     }
+    210Γûò 
+    211Γûò     /**
+    212Γûò      * TEST: Cart - Add invalid product
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Cart\CartTest > cart total calculation                 
+  Failed asserting that null is not null.
+
+  at tests\Feature\Cart\CartTest.php:316
+    312Γûò         $data = $response->json();
+    313Γûò         
+    314Γûò         // Total should be: (50 * 2) + (75 * 1) = 175
+    315Γûò         $expectedTotal = 175;
+  Γ₧£ 316Γûò         $this->assertNotNull($data['total'] ?? $data['data'][0]['total'] ?? null);
+    317Γûò     }
+    318Γûò }
+    319Γûò
+
+  1   tests\Feature\Cart\CartTest.php:316
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Categories\CategoryTest > fetch all categories         
+  Failed to assert that the response count matched the expected 5
+Failed asserting that actual size 0 matches expected size 5.
+
+  at tests\Feature\Categories\CategoryTest.php:33
+     29Γûò 
+     30Γûò         $response->assertStatus(200)
+     31Γûò                 ->assertJsonPath('success', true)
+     32Γûò                 ->assertJsonStructure(['success', 'data' => ['*' => ['id', 'name', 'slug', 'description']]])
+  Γ₧£  33Γûò                 ->assertJsonCount(5, 'data');
+     34Γûò     }
+     35Γûò 
+     36Γûò     /**
+     37Γûò      * TEST: Categories - Fetch single category
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Categories\CategoryTest > fetΓÇª  AssertionFailedError   
+  Invalid JSON was returned from the route.
+
+  at tests\Feature\Categories\CategoryTest.php:80
+     76Γûò 
+     77Γûò         $response = $this->getJson("/api/categories/{$category->slug}/products");
+     78Γûò 
+     79Γûò         $response->assertStatus(200)
+  Γ₧£  80Γûò                 ->assertJsonPath('success', true)
+     81Γûò                 ->assertJsonStructure(['success', 'data' => ['*' => ['id', 'name', 'price', 'category_id']]])
+     82Γûò                 ->assertJsonCount(3, 'data');
+     83Γûò 
+     84Γûò         // Verify all products belong to category
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Categories\CategoryTest > catΓÇª  AssertionFailedError   
+  Invalid JSON was returned from the route.
+
+  at tests\Feature\Categories\CategoryTest.php:104
+    100Γûò 
+    101Γûò         $response = $this->getJson("/api/categories/{$category->slug}/products");
+    102Γûò 
+    103Γûò         $response->assertStatus(200)
+  Γ₧£ 104Γûò                 ->assertJsonCount(2, 'data');
+    105Γûò     }
+    106Γûò 
+    107Γûò     /**
+    108Γûò      * TEST: Categories - Pagination for products
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Categories\CategoryTest > catΓÇª  AssertionFailedError   
+  Invalid JSON was returned from the route.
+
+  at tests\Feature\Categories\CategoryTest.php:123
+    119Γûò 
+    120Γûò         $response = $this->getJson("/api/categories/{$category->slug}/products?per_page=15&page=1");
+    121Γûò 
+    122Γûò         $response->assertStatus(200)
+  Γ₧£ 123Γûò                 ->assertJsonCount(15, 'data')
+    124Γûò                 ->assertJsonPath('meta.total', 50)
+    125Γûò                 ->assertJsonPath('meta.per_page', 15);
+    126Γûò     }
+    127Γûò
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Categories\CategoryTest > empΓÇª  AssertionFailedError   
+  Invalid JSON was returned from the route.
+
+  at tests\Feature\Categories\CategoryTest.php:140
+    136Γûò 
+    137Γûò         $response = $this->getJson("/api/categories/{$emptyCategory->slug}/products");
+    138Γûò 
+    139Γûò         $response->assertStatus(200)
+  Γ₧£ 140Γûò                 ->assertJsonCount(0, 'data');
+    141Γûò     }
+    142Γûò 
+    143Γûò     /**
+    144Γûò      * TEST: Categories - SQL injection prevention
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Categories\CategoryTest > catΓÇª  AssertionFailedError   
+  Invalid JSON was returned from the route.
+
+  at tests\Feature\Categories\CategoryTest.php:186
+    182Γûò         $response = $this->getJson("/api/categories/{$category->slug}/products?sort=price");
+    183Γûò 
+    184Γûò         $response->assertStatus(200);
+    185Γûò 
+  Γ₧£ 186Γûò         $prices = collect($response->json('data'))->pluck('price');
+    187Γûò         $this->assertTrue($prices->values() === $prices->sort()->values());
+    188Γûò     }
+    189Γûò 
+    190Γûò     /**
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Categories\CategoryTest > category description escaΓÇª   
+  Expected: <script>alert("xss")</script> Safe description
+
+  Not to contain: <script>
+
+  at tests\Feature\Categories\CategoryTest.php:206
+    202Γûò 
+    203Γûò         $response->assertStatus(200);
+    204Γûò 
+    205Γûò         $description = $response->json('data.description');
+  Γ₧£ 206Γûò         $this->assertStringNotContainsString('<script>', $description);
+    207Γûò     }
+    208Γûò 
+    209Γûò     /**
+    210Γûò      * TEST: Categories - Performance with many categories
+
+  1   tests\Feature\Categories\CategoryTest.php:206
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Categories\CateΓÇª  UniqueConstraintViolationException   
+  SQLSTATE[23000]: Integrity constraint violation: 19 UNIQUE constraint failed: categories.slug (Connection: sqlite, Database: :memory:, SQL: insert into "categories" ("name", "slug", "description", "updated_at", "created_at") values (Est Category 707, est-685, Provident quis quo dicta non., 2026-04-15 13:49:42, 2026-04-15 13:49:42))
+
+  at vendor\laravel\framework\src\Illuminate\Database\Connection.php:838
+    834Γûò             $exceptionType = $this->isUniqueConstraintError($e)
+    835Γûò                 ? UniqueConstraintViolationException::class
+    836Γûò                 : QueryException::class;
+    837Γûò 
+  Γ₧£ 838Γûò             throw new $exceptionType(
+    839Γûò                 $this->getNameWithReadWriteType(),
+    840Γûò                 $query,
+    841Γûò                 $this->prepareBindings($bindings),
+    842Γûò                 $e,
+
+  1   vendor\laravel\framework\src\Illuminate\Database\Connection.php:838
+
+  2   vendor\laravel\framework\src\Illuminate\Database\Connection.php:584
+      NunoMaduro\Collision\Exceptions\TestException::("SQLSTATE[23000]: Integrity constraint violation: 19 UNIQUE constraint failed: categories.slug")
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Categories\CategoryTest > category product count       
+  Failed asserting that null is not null.
+
+  at tests\Feature\Categories\CategoryTest.php:243
+    239Γûò 
+    240Γûò         $categoryData = collect($response->json('data'))
+    241Γûò             ->firstWhere('id', $category->id);
+    242Γûò 
+  Γ₧£ 243Γûò         $this->assertNotNull($categoryData);
+    244Γûò         if (isset($categoryData['product_count'])) {
+    245Γûò             $this->assertGreaterThanOrEqual(7, $categoryData['product_count']);
+    246Γûò         }
+    247Γûò     }
+
+  1   tests\Feature\Categories\CategoryTest.php:243
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Orders\CheckoutTest > checkout with valid data         
+  Expected response status code [201] but received 422.
+Failed asserting that 422 is identical to 201.
+
+  at tests\Feature\Orders\CheckoutTest.php:45
+     41Γûò             'terms_agreed' => true,
+     42Γûò             'payment_intent_id' => 'pi_test_123',
+     43Γûò         ]);
+     44Γûò 
+  Γ₧£  45Γûò         $response->assertStatus(201)
+     46Γûò                 ->assertJsonPath('data.status', 'pending');
+     47Γûò     }
+     48Γûò 
+     49Γûò     /**
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Orders\CheckoutTest > cancel shipped order returnsΓÇª    
+  Expected response status code [409] but received 400.
+Failed asserting that 400 is identical to 409.
+
+  at tests\Feature\Orders\CheckoutTest.php:175
+    171Γûò         ]);
+    172Γûò 
+    173Γûò         $response = $this->actingAs($this->user)->postJson('/api/orders/' . $order->id . '/cancel');
+    174Γûò 
+  Γ₧£ 175Γûò         $response->assertStatus(409);
+    176Γûò     }
+    177Γûò }
+    178Γûò
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Orders\OrderTest > create order from cart              
+  Expected response status code [201] but received 422.
+Failed asserting that 422 is identical to 201.
+
+  at tests\Feature\Orders\OrderTest.php:47
+     43Γûò             'country' => 'US',
+     44Γûò             'phone' => '+1234567890',
+     45Γûò         ]);
+     46Γûò 
+  Γ₧£  47Γûò         $response->assertStatus(201)
+     48Γûò                 ->assertJsonPath('success', true)
+     49Γûò                 ->assertJsonStructure(['success', 'data' => ['id', 'status', 'total', 'user_id']]);
+     50Γûò 
+     51Γûò         // Verify order created in database
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Orders\OrderTest > stock reduced on order              
+  Failed asserting that a row in the table [products] matches the attributes {
+    "id": 2,
+    "stock": 7
+}.
+
+Found similar results: [
+    {
+        "id": 2,
+        "stock": 10
+    }
+].
+
+  at tests\Feature\Orders\OrderTest.php:96
+     92Γûò             'country' => 'US',
+     93Γûò             'phone' => '+1234567890',
+     94Γûò         ]);
+     95Γûò 
+  Γ₧£  96Γûò         $this->assertDatabaseHas('products', [
+     97Γûò             'id' => $product->id,
+     98Γûò             'stock' => 7,
+     99Γûò         ]);
+    100Γûò     }
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Orders\OrderTest > insufficient stock prevents ordeΓÇª   
+  Expected response status code [409] but received 422.
+Failed asserting that 422 is identical to 409.
+
+  at tests\Feature\Orders\OrderTest.php:119
+    115Γûò             'country' => 'US',
+    116Γûò             'phone' => '+1234567890',
+    117Γûò         ]);
+    118Γûò 
+  Γ₧£ 119Γûò         $response->assertStatus(409)
+    120Γûò                 ->assertJsonPath('success', false);
+    121Γûò     }
+    122Γûò 
+    123Γûò     /**
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Orders\OrderTest > get order detail                    
+  Failed asserting that an array has the key 'product_id'.
+
+  at tests\Feature\Orders\OrderTest.php:170
+    166Γûò 
+    167Γûò         $response = $this->actingAs($this->user)->getJson("/api/orders/{$order->id}");
+    168Γûò 
+    169Γûò         $response->assertStatus(200)
+  Γ₧£ 170Γûò                 ->assertJsonStructure(['success', 'data' => ['id', 'status', 'items' => ['*' => ['product_id', 'quantity']]]])
+    171Γûò                 ->assertJsonPath('data.id', $order->id);
+    172Γûò     }
+    173Γûò 
+    174Γûò     /**
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Orders\OrderTest > admin update order status           
+  Expected response status code [200] but received 405.
+Failed asserting that 405 is identical to 200.
+
+  at tests\Feature\Orders\OrderTest.php:203
+    199Γûò         $response = $this->actingAs($admin)->patchJson("/api/orders/{$order->id}/status", [
+    200Γûò             'status' => 'processing',
+    201Γûò         ]);
+    202Γûò 
+  Γ₧£ 203Γûò         $response->assertStatus(200)
+    204Γûò                 ->assertJsonPath('data.status', 'processing');
+    205Γûò 
+    206Γûò         $this->assertDatabaseHas('orders', [
+    207Γûò             'id' => $order->id,
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Orders\OrderTest > non admin cannot update order stΓÇª   
+  Expected response status code [403] but received 405.
+Failed asserting that 405 is identical to 403.
+
+  at tests\Feature\Orders\OrderTest.php:225
+    221Γûò         $response = $this->actingAs($this->user)->patchJson("/api/orders/{$order->id}/status", [
+    222Γûò             'status' => 'processing',
+    223Γûò         ]);
+    224Γûò 
+  Γ₧£ 225Γûò         $response->assertStatus(403);
+    226Γûò     }
+    227Γûò 
+    228Γûò     /**
+    229Γûò      * TEST: Orders - Order status history tracking
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Orders\OrderTest > order status history tracking       
+  Failed asserting that a row in the table [orders] matches the attributes {
+    "id": 1,
+    "status": "shipped"
+}.
+
+Found similar results: [
+    {
+        "id": 1,
+        "status": "pending"
+    }
+].
+
+  at tests\Feature\Orders\OrderTest.php:245
+    241Γûò         // Change to shipped
+    242Γûò         $this->actingAs($admin)->patchJson("/api/orders/{$order->id}/status", ['status' => 'shipped']);
+    243Γûò 
+    244Γûò         // Verify history exists (if tracking is implemented)
+  Γ₧£ 245Γûò         $this->assertDatabaseHas('orders', [
+    246Γûò             'id' => $order->id,
+    247Γûò             'status' => 'shipped',
+    248Γûò         ]);
+    249Γûò     }
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Orders\OrderTest > invalid status value                
+  Expected response status code [422] but received 405.
+Failed asserting that 405 is identical to 422.
+
+  at tests\Feature\Orders\OrderTest.php:265
+    261Γûò         $response = $this->actingAs($admin)->patchJson("/api/orders/{$order->id}/status", [
+    262Γûò             'status' => 'invalid_status',
+    263Γûò         ]);
+    264Γûò 
+  Γ₧£ 265Γûò         $response->assertStatus(422);
+    266Γûò     }
+    267Γûò 
+    268Γûò     /**
+    269Γûò      * TEST: Orders - Multiple products in order
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Orders\OrderTest > order with multiple products        
+  Expected response status code [201] but received 422.
+Failed asserting that 422 is identical to 201.
+
+  at tests\Feature\Orders\OrderTest.php:290
+    286Γûò             'country' => 'US',
+    287Γûò             'phone' => '+1234567890',
+    288Γûò         ]);
+    289Γûò 
+  Γ₧£ 290Γûò         $response->assertStatus(201);
+    291Γûò         $orderId = $response->json('data.id');
+    292Γûò 
+    293Γûò         // Verify 3 order items created
+    294Γûò         $this->assertDatabaseCount('order_items', 3);
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Orders\OrderTest > order total calculation             
+  Expected response status code [201] but received 422.
+Failed asserting that 422 is identical to 201.
+
+  at tests\Feature\Orders\OrderTest.php:335
+    331Γûò             'country' => 'US',
+    332Γûò             'phone' => '+1234567890',
+    333Γûò         ]);
+    334Γûò 
+  Γ₧£ 335Γûò         $response->assertStatus(201);
+    336Γûò         
+    337Γûò         // Total should be: (25 * 2) + (75 * 1) = 125
+    338Γûò         $responseTotal = $response->json('data.total');
+    339Γûò         $this->assertEquals(125.00, $responseTotal);
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Orders\OrderTest > prevent duplicate orders            
+  Failed asserting that 422 matches expected 201.
+
+  at tests\Feature\Orders\OrderTest.php:369
+    365Γûò         // Second request (should create new order as cart is different)
+    366Γûò         $response2 = $this->actingAs($this->user)->postJson('/api/orders', $payload);
+    367Γûò 
+    368Γûò         // Both should be successful but different orders
+  Γ₧£ 369Γûò         $this->assertEquals(201, $response1->status());
+    370Γûò         $this->assertTrue($response1->status() === 201 || $response2->status() === 201);
+    371Γûò     }
+    372Γûò }
+    373Γûò
+
+  1   tests\Feature\Orders\OrderTest.php:369
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Payment\PaymentIntentTest > create payment intent wΓÇª   
+  Expected response status code [201] but received 500.
+Failed asserting that 500 is identical to 201.
+
+The following exception occurred during the last request:
+
+ParseError: syntax error, unexpected single-quoted string "message", expecting "function" or "const" in C:\xampp\htdocs\ceyloncraft\app\Http\Controllers\Api\PaymentController.php:128
+Stack trace:
+#0 C:\xampp\htdocs\ceyloncraft\vendor\composer\ClassLoader.php(427): Composer\Autoload\{closure}('C:\\xampp\\htdocs...')
+#1 [internal function]: Composer\Autoload\ClassLoader->loadClass('App\\Http\\Contro...')
+#2 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Route.php(1125): is_a('App\\Http\\Contro...', 'Illuminate\\Rout...', true)
+#3 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Route.php(1062): Illuminate\Routing\Route->controllerMiddleware()
+#4 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Router.php(834): Illuminate\Routing\Route->gatherMiddleware()
+#5 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Router.php(816): Illuminate\Routing\Router->gatherRouteMiddleware(Object(Illuminate\Routing\Route))
+#6 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Router.php(800): Illuminate\Routing\Router->runRouteWithinStack(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request))
+#7 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Router.php(764): Illuminate\Routing\Router->runRoute(Object(Illuminate\Http\Request), Object(Illuminate\Routing\Route))
+#8 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Router.php(753): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#9 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(200): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#10 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(180): Illuminate\Foundation\Http\Kernel->Illuminate\Foundation\Http\{closure}(Object(Illuminate\Http\Request))
+#11 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TransformsRequest.php(21): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#12 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull.php(31): Illuminate\Foundation\Http\Middleware\TransformsRequest->handle(Object(Illuminate\Http\Request), Object(Closure))
+#13 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull->handle(Object(Illuminate\Http\Request), Object(Closure))
+#14 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TransformsRequest.php(21): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#15 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TrimStrings.php(51): Illuminate\Foundation\Http\Middleware\TransformsRequest->handle(Object(Illuminate\Http\Request), Object(Closure))
+#16 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Foundation\Http\Middleware\TrimStrings->handle(Object(Illuminate\Http\Request), Object(Closure))
+#17 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Http\Middleware\ValidatePostSize.php(27): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#18 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Http\Middleware\ValidatePostSize->handle(Object(Illuminate\Http\Request), Object(Closure))
+#19 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance.php(109): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#20 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance->handle(Object(Illuminate\Http\Request), Object(Closure))
+#21 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Http\Middleware\HandleCors.php(74): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#22 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Http\Middleware\HandleCors->handle(Object(Illuminate\Http\Request), Object(Closure))
+#23 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Http\Middleware\TrustProxies.php(58): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#24 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Http\Middleware\TrustProxies->handle(Object(Illuminate\Http\Request), Object(Closure))
+#25 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\InvokeDeferredCallbacks.php(22): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#26 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Foundation\Http\Middleware\InvokeDeferredCallbacks->handle(Object(Illuminate\Http\Request), Object(Closure))
+#27 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Http\Middleware\ValidatePathEncoding.php(26): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#28 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Http\Middleware\ValidatePathEncoding->handle(Object(Illuminate\Http\Request), Object(Closure))
+#29 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(137): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#30 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(175): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#31 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(144): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
+#32 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests.php(607): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
+#33 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests.php(573): Illuminate\Foundation\Testing\TestCase->call('POST', '/api/payments/i...', Array, Array, Array, Array, '{"amount":9999,...')
+#34 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests.php(411): Illuminate\Foundation\Testing\TestCase->json('POST', '/api/payments/i...', Array, Array, 0)
+#35 C:\xampp\htdocs\ceyloncraft\tests\Feature\Payment\PaymentIntentTest.php(38): Illuminate\Foundation\Testing\TestCase->postJson('/api/payments/i...', Array)
+#36 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestCase.php(1667): Tests\Feature\Payment\PaymentIntentTest->test_create_payment_intent_with_valid_amount()
+#37 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestCase.php(519): PHPUnit\Framework\TestCase->runTest()
+#38 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestRunner\TestRunner.php(87): PHPUnit\Framework\TestCase->runBare()
+#39 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestCase.php(365): PHPUnit\Framework\TestRunner->run(Object(Tests\Feature\Payment\PaymentIntentTest))
+#40 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestSuite.php(369): PHPUnit\Framework\TestCase->run()
+#41 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestSuite.php(369): PHPUnit\Framework\TestSuite->run()
+#42 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestSuite.php(369): PHPUnit\Framework\TestSuite->run()
+#43 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\TextUI\TestRunner.php(64): PHPUnit\Framework\TestSuite->run()
+#44 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\TextUI\Application.php(211): PHPUnit\TextUI\TestRunner->run(Object(PHPUnit\TextUI\Configuration\Configuration), Object(PHPUnit\Runner\ResultCache\DefaultResultCache), Object(PHPUnit\Framework\TestSuite))
+#45 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\phpunit(104): PHPUnit\TextUI\Application->run(Array)
+#46 {main}
+
+----------------------------------------------------------------------------------
+
+syntax error, unexpected single-quoted string "message", expecting "function" or "const"
+
+  at tests\Feature\Payment\PaymentIntentTest.php:44
+     40Γûò             'currency' => 'usd',
+     41Γûò             'order_id' => null,
+     42Γûò         ]);
+     43Γûò 
+  Γ₧£  44Γûò         $response->assertStatus(201)
+     45Γûò                 ->assertJsonStructure(['success', 'data' => ['client_secret', 'payment_intent_id']])
+     46Γûò                 ->assertJsonPath('data.payment_intent_id', 'pi_test_success_123');
+     47Γûò     }
+     48Γûò
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Payment\PaymentIntentTest > create payment intent wΓÇª   
+  Expected response status code [422] but received 500.
+Failed asserting that 500 is identical to 422.
+
+The following exception occurred during the last request:
+
+ParseError: syntax error, unexpected single-quoted string "message", expecting "function" or "const" in C:\xampp\htdocs\ceyloncraft\app\Http\Controllers\Api\PaymentController.php:128
+Stack trace:
+#0 C:\xampp\htdocs\ceyloncraft\vendor\composer\ClassLoader.php(427): Composer\Autoload\{closure}('C:\\xampp\\htdocs...')
+#1 [internal function]: Composer\Autoload\ClassLoader->loadClass('App\\Http\\Contro...')
+#2 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Route.php(1125): is_a('App\\Http\\Contro...', 'Illuminate\\Rout...', true)
+#3 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Route.php(1062): Illuminate\Routing\Route->controllerMiddleware()
+#4 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Router.php(834): Illuminate\Routing\Route->gatherMiddleware()
+#5 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Router.php(816): Illuminate\Routing\Router->gatherRouteMiddleware(Object(Illuminate\Routing\Route))
+#6 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Router.php(800): Illuminate\Routing\Router->runRouteWithinStack(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request))
+#7 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Router.php(764): Illuminate\Routing\Router->runRoute(Object(Illuminate\Http\Request), Object(Illuminate\Routing\Route))
+#8 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Router.php(753): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#9 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(200): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#10 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(180): Illuminate\Foundation\Http\Kernel->Illuminate\Foundation\Http\{closure}(Object(Illuminate\Http\Request))
+#11 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TransformsRequest.php(21): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#12 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull.php(31): Illuminate\Foundation\Http\Middleware\TransformsRequest->handle(Object(Illuminate\Http\Request), Object(Closure))
+#13 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull->handle(Object(Illuminate\Http\Request), Object(Closure))
+#14 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TransformsRequest.php(21): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#15 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TrimStrings.php(51): Illuminate\Foundation\Http\Middleware\TransformsRequest->handle(Object(Illuminate\Http\Request), Object(Closure))
+#16 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Foundation\Http\Middleware\TrimStrings->handle(Object(Illuminate\Http\Request), Object(Closure))
+#17 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Http\Middleware\ValidatePostSize.php(27): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#18 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Http\Middleware\ValidatePostSize->handle(Object(Illuminate\Http\Request), Object(Closure))
+#19 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance.php(109): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#20 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance->handle(Object(Illuminate\Http\Request), Object(Closure))
+#21 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Http\Middleware\HandleCors.php(74): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#22 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Http\Middleware\HandleCors->handle(Object(Illuminate\Http\Request), Object(Closure))
+#23 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Http\Middleware\TrustProxies.php(58): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#24 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Http\Middleware\TrustProxies->handle(Object(Illuminate\Http\Request), Object(Closure))
+#25 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\InvokeDeferredCallbacks.php(22): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#26 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Foundation\Http\Middleware\InvokeDeferredCallbacks->handle(Object(Illuminate\Http\Request), Object(Closure))
+#27 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Http\Middleware\ValidatePathEncoding.php(26): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#28 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Http\Middleware\ValidatePathEncoding->handle(Object(Illuminate\Http\Request), Object(Closure))
+#29 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(137): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#30 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(175): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#31 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(144): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
+#32 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests.php(607): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
+#33 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests.php(573): Illuminate\Foundation\Testing\TestCase->call('POST', '/api/payments/i...', Array, Array, Array, Array, '{"amount":49,"c...')
+#34 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests.php(411): Illuminate\Foundation\Testing\TestCase->json('POST', '/api/payments/i...', Array, Array, 0)
+#35 C:\xampp\htdocs\ceyloncraft\tests\Feature\Payment\PaymentIntentTest.php(54): Illuminate\Foundation\Testing\TestCase->postJson('/api/payments/i...', Array)
+#36 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestCase.php(1667): Tests\Feature\Payment\PaymentIntentTest->test_create_payment_intent_with_amount_too_small()
+#37 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestCase.php(519): PHPUnit\Framework\TestCase->runTest()
+#38 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestRunner\TestRunner.php(87): PHPUnit\Framework\TestCase->runBare()
+#39 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestCase.php(365): PHPUnit\Framework\TestRunner->run(Object(Tests\Feature\Payment\PaymentIntentTest))
+#40 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestSuite.php(369): PHPUnit\Framework\TestCase->run()
+#41 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestSuite.php(369): PHPUnit\Framework\TestSuite->run()
+#42 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestSuite.php(369): PHPUnit\Framework\TestSuite->run()
+#43 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\TextUI\TestRunner.php(64): PHPUnit\Framework\TestSuite->run()
+#44 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\TextUI\Application.php(211): PHPUnit\TextUI\TestRunner->run(Object(PHPUnit\TextUI\Configuration\Configuration), Object(PHPUnit\Runner\ResultCache\DefaultResultCache), Object(PHPUnit\Framework\TestSuite))
+#45 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\phpunit(104): PHPUnit\TextUI\Application->run(Array)
+#46 {main}
+
+----------------------------------------------------------------------------------
+
+syntax error, unexpected single-quoted string "message", expecting "function" or "const"
+
+  at tests\Feature\Payment\PaymentIntentTest.php:59
+     55Γûò             'amount' => 49, // $0.49 (below $0.50 minimum)
+     56Γûò             'currency' => 'usd',
+     57Γûò         ]);
+     58Γûò 
+  Γ₧£  59Γûò         $response->assertStatus(422);
+     60Γûò     }
+     61Γûò 
+     62Γûò     /**
+     63Γûò      * Test Case QA-056: Create payment intent with unsupported currency
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Payment\PaymentIntentTest > create payment intent wΓÇª   
+  Expected response status code [422] but received 500.
+Failed asserting that 500 is identical to 422.
+
+The following exception occurred during the last request:
+
+ParseError: syntax error, unexpected single-quoted string "message", expecting "function" or "const" in C:\xampp\htdocs\ceyloncraft\app\Http\Controllers\Api\PaymentController.php:128
+Stack trace:
+#0 C:\xampp\htdocs\ceyloncraft\vendor\composer\ClassLoader.php(427): Composer\Autoload\{closure}('C:\\xampp\\htdocs...')
+#1 [internal function]: Composer\Autoload\ClassLoader->loadClass('App\\Http\\Contro...')
+#2 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Route.php(1125): is_a('App\\Http\\Contro...', 'Illuminate\\Rout...', true)
+#3 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Route.php(1062): Illuminate\Routing\Route->controllerMiddleware()
+#4 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Router.php(834): Illuminate\Routing\Route->gatherMiddleware()
+#5 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Router.php(816): Illuminate\Routing\Router->gatherRouteMiddleware(Object(Illuminate\Routing\Route))
+#6 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Router.php(800): Illuminate\Routing\Router->runRouteWithinStack(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request))
+#7 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Router.php(764): Illuminate\Routing\Router->runRoute(Object(Illuminate\Http\Request), Object(Illuminate\Routing\Route))
+#8 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Router.php(753): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#9 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(200): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#10 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(180): Illuminate\Foundation\Http\Kernel->Illuminate\Foundation\Http\{closure}(Object(Illuminate\Http\Request))
+#11 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TransformsRequest.php(21): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#12 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull.php(31): Illuminate\Foundation\Http\Middleware\TransformsRequest->handle(Object(Illuminate\Http\Request), Object(Closure))
+#13 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull->handle(Object(Illuminate\Http\Request), Object(Closure))
+#14 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TransformsRequest.php(21): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#15 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TrimStrings.php(51): Illuminate\Foundation\Http\Middleware\TransformsRequest->handle(Object(Illuminate\Http\Request), Object(Closure))
+#16 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Foundation\Http\Middleware\TrimStrings->handle(Object(Illuminate\Http\Request), Object(Closure))
+#17 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Http\Middleware\ValidatePostSize.php(27): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#18 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Http\Middleware\ValidatePostSize->handle(Object(Illuminate\Http\Request), Object(Closure))
+#19 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance.php(109): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#20 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance->handle(Object(Illuminate\Http\Request), Object(Closure))
+#21 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Http\Middleware\HandleCors.php(74): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#22 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Http\Middleware\HandleCors->handle(Object(Illuminate\Http\Request), Object(Closure))
+#23 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Http\Middleware\TrustProxies.php(58): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#24 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Http\Middleware\TrustProxies->handle(Object(Illuminate\Http\Request), Object(Closure))
+#25 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\InvokeDeferredCallbacks.php(22): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#26 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Foundation\Http\Middleware\InvokeDeferredCallbacks->handle(Object(Illuminate\Http\Request), Object(Closure))
+#27 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Http\Middleware\ValidatePathEncoding.php(26): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#28 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Http\Middleware\ValidatePathEncoding->handle(Object(Illuminate\Http\Request), Object(Closure))
+#29 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(137): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#30 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(175): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#31 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(144): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
+#32 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests.php(607): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
+#33 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests.php(573): Illuminate\Foundation\Testing\TestCase->call('POST', '/api/payments/i...', Array, Array, Array, Array, '{"amount":9999,...')
+#34 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests.php(411): Illuminate\Foundation\Testing\TestCase->json('POST', '/api/payments/i...', Array, Array, 0)
+#35 C:\xampp\htdocs\ceyloncraft\tests\Feature\Payment\PaymentIntentTest.php(67): Illuminate\Foundation\Testing\TestCase->postJson('/api/payments/i...', Array)
+#36 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestCase.php(1667): Tests\Feature\Payment\PaymentIntentTest->test_create_payment_intent_with_unsupported_currency()
+#37 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestCase.php(519): PHPUnit\Framework\TestCase->runTest()
+#38 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestRunner\TestRunner.php(87): PHPUnit\Framework\TestCase->runBare()
+#39 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestCase.php(365): PHPUnit\Framework\TestRunner->run(Object(Tests\Feature\Payment\PaymentIntentTest))
+#40 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestSuite.php(369): PHPUnit\Framework\TestCase->run()
+#41 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestSuite.php(369): PHPUnit\Framework\TestSuite->run()
+#42 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestSuite.php(369): PHPUnit\Framework\TestSuite->run()
+#43 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\TextUI\TestRunner.php(64): PHPUnit\Framework\TestSuite->run()
+#44 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\TextUI\Application.php(211): PHPUnit\TextUI\TestRunner->run(Object(PHPUnit\TextUI\Configuration\Configuration), Object(PHPUnit\Runner\ResultCache\DefaultResultCache), Object(PHPUnit\Framework\TestSuite))
+#45 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\phpunit(104): PHPUnit\TextUI\Application->run(Array)
+#46 {main}
+
+----------------------------------------------------------------------------------
+
+syntax error, unexpected single-quoted string "message", expecting "function" or "const"
+
+  at tests\Feature\Payment\PaymentIntentTest.php:72
+     68Γûò             'amount' => 9999,
+     69Γûò             'currency' => 'xxx', // Invalid currency
+     70Γûò         ]);
+     71Γûò 
+  Γ₧£  72Γûò         $response->assertStatus(422);
+     73Γûò     }
+     74Γûò 
+     75Γûò     /**
+     76Γûò      * Test Case QA-064: Rate limit payment endpoint (11th request in 60s)
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Payment\PaymentIntentTest > payment endpoint rate lΓÇª   
+  Failed asserting that 500 matches expected 429.
+
+  at tests\Feature\Payment\PaymentIntentTest.php:100
+     96Γûò             'amount' => 9999,
+     97Γûò             'currency' => 'usd',
+     98Γûò         ]);
+     99Γûò 
+  Γ₧£ 100Γûò         $this->assertEquals(429, $response->status());
+    101Γûò     }
+    102Γûò }
+    103Γûò
+
+  1   tests\Feature\Payment\PaymentIntentTest.php:100
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Payments\PaymentTest > create payment intent           
+  Expected response status code [200] but received 500.
+Failed asserting that 500 is identical to 200.
+
+The following exception occurred during the last request:
+
+ParseError: syntax error, unexpected single-quoted string "message", expecting "function" or "const" in C:\xampp\htdocs\ceyloncraft\app\Http\Controllers\Api\PaymentController.php:128
+Stack trace:
+#0 C:\xampp\htdocs\ceyloncraft\vendor\composer\ClassLoader.php(427): Composer\Autoload\{closure}('C:\\xampp\\htdocs...')
+#1 [internal function]: Composer\Autoload\ClassLoader->loadClass('App\\Http\\Contro...')
+#2 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Route.php(1125): is_a('App\\Http\\Contro...', 'Illuminate\\Rout...', true)
+#3 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Route.php(1062): Illuminate\Routing\Route->controllerMiddleware()
+#4 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Router.php(834): Illuminate\Routing\Route->gatherMiddleware()
+#5 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Router.php(816): Illuminate\Routing\Router->gatherRouteMiddleware(Object(Illuminate\Routing\Route))
+#6 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Router.php(800): Illuminate\Routing\Router->runRouteWithinStack(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request))
+#7 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Router.php(764): Illuminate\Routing\Router->runRoute(Object(Illuminate\Http\Request), Object(Illuminate\Routing\Route))
+#8 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Router.php(753): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#9 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(200): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#10 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(180): Illuminate\Foundation\Http\Kernel->Illuminate\Foundation\Http\{closure}(Object(Illuminate\Http\Request))
+#11 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TransformsRequest.php(21): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#12 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull.php(31): Illuminate\Foundation\Http\Middleware\TransformsRequest->handle(Object(Illuminate\Http\Request), Object(Closure))
+#13 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull->handle(Object(Illuminate\Http\Request), Object(Closure))
+#14 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TransformsRequest.php(21): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#15 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TrimStrings.php(51): Illuminate\Foundation\Http\Middleware\TransformsRequest->handle(Object(Illuminate\Http\Request), Object(Closure))
+#16 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Foundation\Http\Middleware\TrimStrings->handle(Object(Illuminate\Http\Request), Object(Closure))
+#17 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Http\Middleware\ValidatePostSize.php(27): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#18 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Http\Middleware\ValidatePostSize->handle(Object(Illuminate\Http\Request), Object(Closure))
+#19 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance.php(109): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#20 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance->handle(Object(Illuminate\Http\Request), Object(Closure))
+#21 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Http\Middleware\HandleCors.php(74): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#22 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Http\Middleware\HandleCors->handle(Object(Illuminate\Http\Request), Object(Closure))
+#23 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Http\Middleware\TrustProxies.php(58): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#24 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Http\Middleware\TrustProxies->handle(Object(Illuminate\Http\Request), Object(Closure))
+#25 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\InvokeDeferredCallbacks.php(22): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#26 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Foundation\Http\Middleware\InvokeDeferredCallbacks->handle(Object(Illuminate\Http\Request), Object(Closure))
+#27 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Http\Middleware\ValidatePathEncoding.php(26): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#28 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Http\Middleware\ValidatePathEncoding->handle(Object(Illuminate\Http\Request), Object(Closure))
+#29 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(137): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#30 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(175): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#31 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(144): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
+#32 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests.php(607): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
+#33 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests.php(573): Illuminate\Foundation\Testing\TestCase->call('POST', '/api/payments/i...', Array, Array, Array, Array, '{"order_id":1}')
+#34 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests.php(411): Illuminate\Foundation\Testing\TestCase->json('POST', '/api/payments/i...', Array, Array, 0)
+#35 C:\xampp\htdocs\ceyloncraft\tests\Feature\Payments\PaymentTest.php(36): Illuminate\Foundation\Testing\TestCase->postJson('/api/payments/i...', Array)
+#36 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestCase.php(1667): Tests\Feature\Payments\PaymentTest->test_create_payment_intent()
+#37 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestCase.php(519): PHPUnit\Framework\TestCase->runTest()
+#38 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestRunner\TestRunner.php(87): PHPUnit\Framework\TestCase->runBare()
+#39 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestCase.php(365): PHPUnit\Framework\TestRunner->run(Object(Tests\Feature\Payments\PaymentTest))
+#40 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestSuite.php(369): PHPUnit\Framework\TestCase->run()
+#41 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestSuite.php(369): PHPUnit\Framework\TestSuite->run()
+#42 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestSuite.php(369): PHPUnit\Framework\TestSuite->run()
+#43 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\TextUI\TestRunner.php(64): PHPUnit\Framework\TestSuite->run()
+#44 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\TextUI\Application.php(211): PHPUnit\TextUI\TestRunner->run(Object(PHPUnit\TextUI\Configuration\Configuration), Object(PHPUnit\Runner\ResultCache\DefaultResultCache), Object(PHPUnit\Framework\TestSuite))
+#45 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\phpunit(104): PHPUnit\TextUI\Application->run(Array)
+#46 {main}
+
+----------------------------------------------------------------------------------
+
+syntax error, unexpected single-quoted string "message", expecting "function" or "const"
+
+  at tests\Feature\Payments\PaymentTest.php:40
+     36Γûò         $response = $this->actingAs($this->user)->postJson('/api/payments/intent', [
+     37Γûò             'order_id' => $this->order->id,
+     38Γûò         ]);
+     39Γûò 
+  Γ₧£  40Γûò         $response->assertStatus(200)
+     41Γûò                 ->assertJsonPath('success', true)
+     42Γûò                 ->assertJsonStructure(['success', 'data' => ['client_secret', 'public_key']])
+     43Γûò                 ->assertJsonPath('data.client_secret', fn($secret) => is_string($secret) && strlen($secret) > 0);
+     44Γûò
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Payments\PaymentTest > create intent for non existeΓÇª   
+  Expected response status code [404] but received 500.
+Failed asserting that 500 is identical to 404.
+
+The following exception occurred during the last request:
+
+ParseError: syntax error, unexpected single-quoted string "message", expecting "function" or "const" in C:\xampp\htdocs\ceyloncraft\app\Http\Controllers\Api\PaymentController.php:128
+Stack trace:
+#0 C:\xampp\htdocs\ceyloncraft\vendor\composer\ClassLoader.php(427): Composer\Autoload\{closure}('C:\\xampp\\htdocs...')
+#1 [internal function]: Composer\Autoload\ClassLoader->loadClass('App\\Http\\Contro...')
+#2 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Route.php(1125): is_a('App\\Http\\Contro...', 'Illuminate\\Rout...', true)
+#3 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Route.php(1062): Illuminate\Routing\Route->controllerMiddleware()
+#4 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Router.php(834): Illuminate\Routing\Route->gatherMiddleware()
+#5 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Router.php(816): Illuminate\Routing\Router->gatherRouteMiddleware(Object(Illuminate\Routing\Route))
+#6 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Router.php(800): Illuminate\Routing\Router->runRouteWithinStack(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request))
+#7 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Router.php(764): Illuminate\Routing\Router->runRoute(Object(Illuminate\Http\Request), Object(Illuminate\Routing\Route))
+#8 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Router.php(753): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#9 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(200): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#10 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(180): Illuminate\Foundation\Http\Kernel->Illuminate\Foundation\Http\{closure}(Object(Illuminate\Http\Request))
+#11 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TransformsRequest.php(21): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#12 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull.php(31): Illuminate\Foundation\Http\Middleware\TransformsRequest->handle(Object(Illuminate\Http\Request), Object(Closure))
+#13 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull->handle(Object(Illuminate\Http\Request), Object(Closure))
+#14 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TransformsRequest.php(21): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#15 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TrimStrings.php(51): Illuminate\Foundation\Http\Middleware\TransformsRequest->handle(Object(Illuminate\Http\Request), Object(Closure))
+#16 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Foundation\Http\Middleware\TrimStrings->handle(Object(Illuminate\Http\Request), Object(Closure))
+#17 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Http\Middleware\ValidatePostSize.php(27): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#18 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Http\Middleware\ValidatePostSize->handle(Object(Illuminate\Http\Request), Object(Closure))
+#19 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance.php(109): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#20 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance->handle(Object(Illuminate\Http\Request), Object(Closure))
+#21 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Http\Middleware\HandleCors.php(74): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#22 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Http\Middleware\HandleCors->handle(Object(Illuminate\Http\Request), Object(Closure))
+#23 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Http\Middleware\TrustProxies.php(58): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#24 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Http\Middleware\TrustProxies->handle(Object(Illuminate\Http\Request), Object(Closure))
+#25 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\InvokeDeferredCallbacks.php(22): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#26 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Foundation\Http\Middleware\InvokeDeferredCallbacks->handle(Object(Illuminate\Http\Request), Object(Closure))
+#27 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Http\Middleware\ValidatePathEncoding.php(26): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#28 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Http\Middleware\ValidatePathEncoding->handle(Object(Illuminate\Http\Request), Object(Closure))
+#29 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(137): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#30 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(175): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#31 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(144): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
+#32 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests.php(607): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
+#33 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests.php(573): Illuminate\Foundation\Testing\TestCase->call('POST', '/api/payments/i...', Array, Array, Array, Array, '{"order_id":999...')
+#34 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests.php(411): Illuminate\Foundation\Testing\TestCase->json('POST', '/api/payments/i...', Array, Array, 0)
+#35 C:\xampp\htdocs\ceyloncraft\tests\Feature\Payments\PaymentTest.php(59): Illuminate\Foundation\Testing\TestCase->postJson('/api/payments/i...', Array)
+#36 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestCase.php(1667): Tests\Feature\Payments\PaymentTest->test_create_intent_for_non_existent_order()
+#37 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestCase.php(519): PHPUnit\Framework\TestCase->runTest()
+#38 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestRunner\TestRunner.php(87): PHPUnit\Framework\TestCase->runBare()
+#39 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestCase.php(365): PHPUnit\Framework\TestRunner->run(Object(Tests\Feature\Payments\PaymentTest))
+#40 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestSuite.php(369): PHPUnit\Framework\TestCase->run()
+#41 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestSuite.php(369): PHPUnit\Framework\TestSuite->run()
+#42 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestSuite.php(369): PHPUnit\Framework\TestSuite->run()
+#43 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\TextUI\TestRunner.php(64): PHPUnit\Framework\TestSuite->run()
+#44 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\TextUI\Application.php(211): PHPUnit\TextUI\TestRunner->run(Object(PHPUnit\TextUI\Configuration\Configuration), Object(PHPUnit\Runner\ResultCache\DefaultResultCache), Object(PHPUnit\Framework\TestSuite))
+#45 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\phpunit(104): PHPUnit\TextUI\Application->run(Array)
+#46 {main}
+
+----------------------------------------------------------------------------------
+
+syntax error, unexpected single-quoted string "message", expecting "function" or "const"
+
+  at tests\Feature\Payments\PaymentTest.php:63
+     59Γûò         $response = $this->actingAs($this->user)->postJson('/api/payments/intent', [
+     60Γûò             'order_id' => 99999,
+     61Γûò         ]);
+     62Γûò 
+  Γ₧£  63Γûò         $response->assertStatus(404);
+     64Γûò     }
+     65Γûò 
+     66Γûò     /**
+     67Γûò      * TEST: Payment - Confirm payment success
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Payments\PaymentTest > confirm payment success         
+  Expected response status code [200] but received 500.
+Failed asserting that 500 is identical to 200.
+
+The following exception occurred during the last request:
+
+ParseError: syntax error, unexpected single-quoted string "message", expecting "function" or "const" in C:\xampp\htdocs\ceyloncraft\app\Http\Controllers\Api\PaymentController.php:128
+Stack trace:
+#0 C:\xampp\htdocs\ceyloncraft\vendor\composer\ClassLoader.php(427): Composer\Autoload\{closure}('C:\\xampp\\htdocs...')
+#1 [internal function]: Composer\Autoload\ClassLoader->loadClass('App\\Http\\Contro...')
+#2 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Route.php(1125): is_a('App\\Http\\Contro...', 'Illuminate\\Rout...', true)
+#3 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Route.php(1062): Illuminate\Routing\Route->controllerMiddleware()
+#4 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Router.php(834): Illuminate\Routing\Route->gatherMiddleware()
+#5 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Router.php(816): Illuminate\Routing\Router->gatherRouteMiddleware(Object(Illuminate\Routing\Route))
+#6 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Router.php(800): Illuminate\Routing\Router->runRouteWithinStack(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request))
+#7 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Router.php(764): Illuminate\Routing\Router->runRoute(Object(Illuminate\Http\Request), Object(Illuminate\Routing\Route))
+#8 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Router.php(753): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#9 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(200): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#10 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(180): Illuminate\Foundation\Http\Kernel->Illuminate\Foundation\Http\{closure}(Object(Illuminate\Http\Request))
+#11 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TransformsRequest.php(21): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#12 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull.php(31): Illuminate\Foundation\Http\Middleware\TransformsRequest->handle(Object(Illuminate\Http\Request), Object(Closure))
+#13 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull->handle(Object(Illuminate\Http\Request), Object(Closure))
+#14 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TransformsRequest.php(21): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#15 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TrimStrings.php(51): Illuminate\Foundation\Http\Middleware\TransformsRequest->handle(Object(Illuminate\Http\Request), Object(Closure))
+#16 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Foundation\Http\Middleware\TrimStrings->handle(Object(Illuminate\Http\Request), Object(Closure))
+#17 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Http\Middleware\ValidatePostSize.php(27): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#18 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Http\Middleware\ValidatePostSize->handle(Object(Illuminate\Http\Request), Object(Closure))
+#19 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance.php(109): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#20 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance->handle(Object(Illuminate\Http\Request), Object(Closure))
+#21 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Http\Middleware\HandleCors.php(74): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#22 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Http\Middleware\HandleCors->handle(Object(Illuminate\Http\Request), Object(Closure))
+#23 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Http\Middleware\TrustProxies.php(58): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#24 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Http\Middleware\TrustProxies->handle(Object(Illuminate\Http\Request), Object(Closure))
+#25 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\InvokeDeferredCallbacks.php(22): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#26 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Foundation\Http\Middleware\InvokeDeferredCallbacks->handle(Object(Illuminate\Http\Request), Object(Closure))
+#27 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Http\Middleware\ValidatePathEncoding.php(26): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#28 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Http\Middleware\ValidatePathEncoding->handle(Object(Illuminate\Http\Request), Object(Closure))
+#29 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(137): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#30 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(175): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#31 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(144): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
+#32 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests.php(607): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
+#33 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests.php(573): Illuminate\Foundation\Testing\TestCase->call('POST', '/api/payments/c...', Array, Array, Array, Array, '{"payment_id":1...')
+#34 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests.php(411): Illuminate\Foundation\Testing\TestCase->json('POST', '/api/payments/c...', Array, Array, 0)
+#35 C:\xampp\htdocs\ceyloncraft\tests\Feature\Payments\PaymentTest.php(79): Illuminate\Foundation\Testing\TestCase->postJson('/api/payments/c...', Array)
+#36 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestCase.php(1667): Tests\Feature\Payments\PaymentTest->test_confirm_payment_success()
+#37 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestCase.php(519): PHPUnit\Framework\TestCase->runTest()
+#38 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestRunner\TestRunner.php(87): PHPUnit\Framework\TestCase->runBare()
+#39 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestCase.php(365): PHPUnit\Framework\TestRunner->run(Object(Tests\Feature\Payments\PaymentTest))
+#40 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestSuite.php(369): PHPUnit\Framework\TestCase->run()
+#41 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestSuite.php(369): PHPUnit\Framework\TestSuite->run()
+#42 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestSuite.php(369): PHPUnit\Framework\TestSuite->run()
+#43 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\TextUI\TestRunner.php(64): PHPUnit\Framework\TestSuite->run()
+#44 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\TextUI\Application.php(211): PHPUnit\TextUI\TestRunner->run(Object(PHPUnit\TextUI\Configuration\Configuration), Object(PHPUnit\Runner\ResultCache\DefaultResultCache), Object(PHPUnit\Framework\TestSuite))
+#45 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\phpunit(104): PHPUnit\TextUI\Application->run(Array)
+#46 {main}
+
+----------------------------------------------------------------------------------
+
+syntax error, unexpected single-quoted string "message", expecting "function" or "const"
+
+  at tests\Feature\Payments\PaymentTest.php:84
+     80Γûò             'payment_id' => $payment->id,
+     81Γûò             'stripe_payment_intent_id' => 'pi_test_success_123',
+     82Γûò         ]);
+     83Γûò 
+  Γ₧£  84Γûò         $response->assertStatus(200)
+     85Γûò                 ->assertJsonPath('success', true);
+     86Γûò 
+     87Γûò         $this->assertDatabaseHas('payments', [
+     88Γûò             'id' => $payment->id,
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Payments\PaymentTest > confirm payment failure         
+  Expected response status code [200] but received 500.
+Failed asserting that 500 is identical to 200.
+
+The following exception occurred during the last request:
+
+ParseError: syntax error, unexpected single-quoted string "message", expecting "function" or "const" in C:\xampp\htdocs\ceyloncraft\app\Http\Controllers\Api\PaymentController.php:128
+Stack trace:
+#0 C:\xampp\htdocs\ceyloncraft\vendor\composer\ClassLoader.php(427): Composer\Autoload\{closure}('C:\\xampp\\htdocs...')
+#1 [internal function]: Composer\Autoload\ClassLoader->loadClass('App\\Http\\Contro...')
+#2 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Route.php(1125): is_a('App\\Http\\Contro...', 'Illuminate\\Rout...', true)
+#3 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Route.php(1062): Illuminate\Routing\Route->controllerMiddleware()
+#4 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Router.php(834): Illuminate\Routing\Route->gatherMiddleware()
+#5 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Router.php(816): Illuminate\Routing\Router->gatherRouteMiddleware(Object(Illuminate\Routing\Route))
+#6 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Router.php(800): Illuminate\Routing\Router->runRouteWithinStack(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request))
+#7 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Router.php(764): Illuminate\Routing\Router->runRoute(Object(Illuminate\Http\Request), Object(Illuminate\Routing\Route))
+#8 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Router.php(753): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#9 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(200): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#10 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(180): Illuminate\Foundation\Http\Kernel->Illuminate\Foundation\Http\{closure}(Object(Illuminate\Http\Request))
+#11 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TransformsRequest.php(21): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#12 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull.php(31): Illuminate\Foundation\Http\Middleware\TransformsRequest->handle(Object(Illuminate\Http\Request), Object(Closure))
+#13 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull->handle(Object(Illuminate\Http\Request), Object(Closure))
+#14 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TransformsRequest.php(21): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#15 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TrimStrings.php(51): Illuminate\Foundation\Http\Middleware\TransformsRequest->handle(Object(Illuminate\Http\Request), Object(Closure))
+#16 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Foundation\Http\Middleware\TrimStrings->handle(Object(Illuminate\Http\Request), Object(Closure))
+#17 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Http\Middleware\ValidatePostSize.php(27): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#18 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Http\Middleware\ValidatePostSize->handle(Object(Illuminate\Http\Request), Object(Closure))
+#19 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance.php(109): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#20 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance->handle(Object(Illuminate\Http\Request), Object(Closure))
+#21 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Http\Middleware\HandleCors.php(74): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#22 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Http\Middleware\HandleCors->handle(Object(Illuminate\Http\Request), Object(Closure))
+#23 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Http\Middleware\TrustProxies.php(58): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#24 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Http\Middleware\TrustProxies->handle(Object(Illuminate\Http\Request), Object(Closure))
+#25 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\InvokeDeferredCallbacks.php(22): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#26 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Foundation\Http\Middleware\InvokeDeferredCallbacks->handle(Object(Illuminate\Http\Request), Object(Closure))
+#27 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Http\Middleware\ValidatePathEncoding.php(26): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#28 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Http\Middleware\ValidatePathEncoding->handle(Object(Illuminate\Http\Request), Object(Closure))
+#29 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(137): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#30 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(175): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#31 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(144): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
+#32 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests.php(607): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
+#33 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests.php(573): Illuminate\Foundation\Testing\TestCase->call('POST', '/api/payments/c...', Array, Array, Array, Array, '{"payment_id":1...')
+#34 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests.php(411): Illuminate\Foundation\Testing\TestCase->json('POST', '/api/payments/c...', Array, Array, 0)
+#35 C:\xampp\htdocs\ceyloncraft\tests\Feature\Payments\PaymentTest.php(110): Illuminate\Foundation\Testing\TestCase->postJson('/api/payments/c...', Array)
+#36 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestCase.php(1667): Tests\Feature\Payments\PaymentTest->test_confirm_payment_failure()
+#37 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestCase.php(519): PHPUnit\Framework\TestCase->runTest()
+#38 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestRunner\TestRunner.php(87): PHPUnit\Framework\TestCase->runBare()
+#39 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestCase.php(365): PHPUnit\Framework\TestRunner->run(Object(Tests\Feature\Payments\PaymentTest))
+#40 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestSuite.php(369): PHPUnit\Framework\TestCase->run()
+#41 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestSuite.php(369): PHPUnit\Framework\TestSuite->run()
+#42 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestSuite.php(369): PHPUnit\Framework\TestSuite->run()
+#43 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\TextUI\TestRunner.php(64): PHPUnit\Framework\TestSuite->run()
+#44 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\TextUI\Application.php(211): PHPUnit\TextUI\TestRunner->run(Object(PHPUnit\TextUI\Configuration\Configuration), Object(PHPUnit\Runner\ResultCache\DefaultResultCache), Object(PHPUnit\Framework\TestSuite))
+#45 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\phpunit(104): PHPUnit\TextUI\Application->run(Array)
+#46 {main}
+
+----------------------------------------------------------------------------------
+
+syntax error, unexpected single-quoted string "message", expecting "function" or "const"
+
+  at tests\Feature\Payments\PaymentTest.php:116
+    112Γûò             'stripe_payment_intent_id' => 'pi_test_failed_123',
+    113Γûò             'success' => false,
+    114Γûò         ]);
+    115Γûò 
+  Γ₧£ 116Γûò         $response->assertStatus(200);
+    117Γûò 
+    118Γûò         $this->assertDatabaseHas('payments', [
+    119Γûò             'id' => $payment->id,
+    120Γûò             'status' => 'failed',
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Payments\PaymentTest > prevent duplicate charges       
+  Failed asserting that 500 matches expected 200.
+
+  at tests\Feature\Payments\PaymentTest.php:142
+    138Γûò             'payment_id' => $payment->id,
+    139Γûò             'stripe_payment_intent_id' => 'pi_test_123',
+    140Γûò         ]);
+    141Γûò 
+  Γ₧£ 142Γûò         $this->assertEquals(200, $response1->status());
+    143Γûò 
+    144Γûò         // Second confirmation (should fail or return existing)
+    145Γûò         $response2 = $this->actingAs($this->user)->postJson('/api/payments/confirm', [
+    146Γûò             'payment_id' => $payment->id,
+
+  1   tests\Feature\Payments\PaymentTest.php:142
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Payments\PaymentTest > invalid payment amount          
+  Expected response status code [200] but received 500.
+Failed asserting that 500 is identical to 200.
+
+The following exception occurred during the last request:
+
+ParseError: syntax error, unexpected single-quoted string "message", expecting "function" or "const" in C:\xampp\htdocs\ceyloncraft\app\Http\Controllers\Api\PaymentController.php:128
+Stack trace:
+#0 C:\xampp\htdocs\ceyloncraft\vendor\composer\ClassLoader.php(427): Composer\Autoload\{closure}('C:\\xampp\\htdocs...')
+#1 [internal function]: Composer\Autoload\ClassLoader->loadClass('App\\Http\\Contro...')
+#2 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Route.php(1125): is_a('App\\Http\\Contro...', 'Illuminate\\Rout...', true)
+#3 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Route.php(1062): Illuminate\Routing\Route->controllerMiddleware()
+#4 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Router.php(834): Illuminate\Routing\Route->gatherMiddleware()
+#5 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Router.php(816): Illuminate\Routing\Router->gatherRouteMiddleware(Object(Illuminate\Routing\Route))
+#6 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Router.php(800): Illuminate\Routing\Router->runRouteWithinStack(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request))
+#7 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Router.php(764): Illuminate\Routing\Router->runRoute(Object(Illuminate\Http\Request), Object(Illuminate\Routing\Route))
+#8 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Router.php(753): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#9 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(200): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#10 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(180): Illuminate\Foundation\Http\Kernel->Illuminate\Foundation\Http\{closure}(Object(Illuminate\Http\Request))
+#11 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TransformsRequest.php(21): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#12 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull.php(31): Illuminate\Foundation\Http\Middleware\TransformsRequest->handle(Object(Illuminate\Http\Request), Object(Closure))
+#13 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull->handle(Object(Illuminate\Http\Request), Object(Closure))
+#14 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TransformsRequest.php(21): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#15 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TrimStrings.php(51): Illuminate\Foundation\Http\Middleware\TransformsRequest->handle(Object(Illuminate\Http\Request), Object(Closure))
+#16 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Foundation\Http\Middleware\TrimStrings->handle(Object(Illuminate\Http\Request), Object(Closure))
+#17 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Http\Middleware\ValidatePostSize.php(27): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#18 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Http\Middleware\ValidatePostSize->handle(Object(Illuminate\Http\Request), Object(Closure))
+#19 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance.php(109): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#20 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance->handle(Object(Illuminate\Http\Request), Object(Closure))
+#21 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Http\Middleware\HandleCors.php(74): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#22 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Http\Middleware\HandleCors->handle(Object(Illuminate\Http\Request), Object(Closure))
+#23 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Http\Middleware\TrustProxies.php(58): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#24 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Http\Middleware\TrustProxies->handle(Object(Illuminate\Http\Request), Object(Closure))
+#25 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\InvokeDeferredCallbacks.php(22): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#26 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Foundation\Http\Middleware\InvokeDeferredCallbacks->handle(Object(Illuminate\Http\Request), Object(Closure))
+#27 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Http\Middleware\ValidatePathEncoding.php(26): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#28 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Http\Middleware\ValidatePathEncoding->handle(Object(Illuminate\Http\Request), Object(Closure))
+#29 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(137): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#30 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(175): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#31 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(144): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
+#32 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests.php(607): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
+#33 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests.php(573): Illuminate\Foundation\Testing\TestCase->call('POST', '/api/payments/i...', Array, Array, Array, Array, '{"order_id":1,"...')
+#34 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests.php(411): Illuminate\Foundation\Testing\TestCase->json('POST', '/api/payments/i...', Array, Array, 0)
+#35 C:\xampp\htdocs\ceyloncraft\tests\Feature\Payments\PaymentTest.php(162): Illuminate\Foundation\Testing\TestCase->postJson('/api/payments/i...', Array)
+#36 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestCase.php(1667): Tests\Feature\Payments\PaymentTest->test_invalid_payment_amount()
+#37 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestCase.php(519): PHPUnit\Framework\TestCase->runTest()
+#38 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestRunner\TestRunner.php(87): PHPUnit\Framework\TestCase->runBare()
+#39 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestCase.php(365): PHPUnit\Framework\TestRunner->run(Object(Tests\Feature\Payments\PaymentTest))
+#40 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestSuite.php(369): PHPUnit\Framework\TestCase->run()
+#41 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestSuite.php(369): PHPUnit\Framework\TestSuite->run()
+#42 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestSuite.php(369): PHPUnit\Framework\TestSuite->run()
+#43 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\TextUI\TestRunner.php(64): PHPUnit\Framework\TestSuite->run()
+#44 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\TextUI\Application.php(211): PHPUnit\TextUI\TestRunner->run(Object(PHPUnit\TextUI\Configuration\Configuration), Object(PHPUnit\Runner\ResultCache\DefaultResultCache), Object(PHPUnit\Framework\TestSuite))
+#45 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\phpunit(104): PHPUnit\TextUI\Application->run(Array)
+#46 {main}
+
+----------------------------------------------------------------------------------
+
+syntax error, unexpected single-quoted string "message", expecting "function" or "const"
+
+  at tests\Feature\Payments\PaymentTest.php:168
+    164Γûò             'amount' => 50.00, // Payment less than order total
+    165Γûò         ]);
+    166Γûò 
+    167Γûò         // Should either accept or validate on confirm
+  Γ₧£ 168Γûò         $response->assertStatus(200) || $response->assertStatus(422);
+    169Γûò     }
+    170Γûò 
+    171Γûò     /**
+    172Γûò      * TEST: Payment - Webhook handling for succeeded event
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Payments\PaymentTest > webhook payment succeeded evΓÇª   
+  Expected response status code [200] but received 405.
+Failed asserting that 405 is identical to 200.
+
+  at tests\Feature\Payments\PaymentTest.php:194
+    190Γûò                 ],
+    191Γûò             ],
+    192Γûò         ]);
+    193Γûò 
+  Γ₧£ 194Γûò         $response->assertStatus(200);
+    195Γûò 
+    196Γûò         $this->assertDatabaseHas('payments', [
+    197Γûò             'stripe_payment_intent_id' => 'pi_webhook_test_123',
+    198Γûò             'status' => 'succeeded',
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Payments\PaymentTest > webhook signature validation    
+  Failed asserting that false is true.
+
+  at tests\Feature\Payments\PaymentTest.php:217
+    213Γûò             'HTTP_STRIPE_SIGNATURE' => 'invalid_signature_12345',
+    214Γûò         ]);
+    215Γûò 
+    216Γûò         // Should reject invalid signatures
+  Γ₧£ 217Γûò         $this->assertTrue($response->status() === 401 || $response->status() === 403 || $response->status() === 400);
+    218Γûò     }
+    219Γûò 
+    220Γûò     /**
+    221Γûò      * TEST: Payment - Cannot pay another user's order
+
+  1   tests\Feature\Payments\PaymentTest.php:217
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Payments\PaymentTest > cannot pay another users ordΓÇª   
+  Expected response status code [403] but received 500.
+Failed asserting that 500 is identical to 403.
+
+The following exception occurred during the last request:
+
+ParseError: syntax error, unexpected single-quoted string "message", expecting "function" or "const" in C:\xampp\htdocs\ceyloncraft\app\Http\Controllers\Api\PaymentController.php:128
+Stack trace:
+#0 C:\xampp\htdocs\ceyloncraft\vendor\composer\ClassLoader.php(427): Composer\Autoload\{closure}('C:\\xampp\\htdocs...')
+#1 [internal function]: Composer\Autoload\ClassLoader->loadClass('App\\Http\\Contro...')
+#2 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Route.php(1125): is_a('App\\Http\\Contro...', 'Illuminate\\Rout...', true)
+#3 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Route.php(1062): Illuminate\Routing\Route->controllerMiddleware()
+#4 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Router.php(834): Illuminate\Routing\Route->gatherMiddleware()
+#5 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Router.php(816): Illuminate\Routing\Router->gatherRouteMiddleware(Object(Illuminate\Routing\Route))
+#6 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Router.php(800): Illuminate\Routing\Router->runRouteWithinStack(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request))
+#7 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Router.php(764): Illuminate\Routing\Router->runRoute(Object(Illuminate\Http\Request), Object(Illuminate\Routing\Route))
+#8 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Router.php(753): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#9 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(200): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#10 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(180): Illuminate\Foundation\Http\Kernel->Illuminate\Foundation\Http\{closure}(Object(Illuminate\Http\Request))
+#11 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TransformsRequest.php(21): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#12 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull.php(31): Illuminate\Foundation\Http\Middleware\TransformsRequest->handle(Object(Illuminate\Http\Request), Object(Closure))
+#13 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull->handle(Object(Illuminate\Http\Request), Object(Closure))
+#14 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TransformsRequest.php(21): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#15 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TrimStrings.php(51): Illuminate\Foundation\Http\Middleware\TransformsRequest->handle(Object(Illuminate\Http\Request), Object(Closure))
+#16 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Foundation\Http\Middleware\TrimStrings->handle(Object(Illuminate\Http\Request), Object(Closure))
+#17 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Http\Middleware\ValidatePostSize.php(27): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#18 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Http\Middleware\ValidatePostSize->handle(Object(Illuminate\Http\Request), Object(Closure))
+#19 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance.php(109): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#20 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance->handle(Object(Illuminate\Http\Request), Object(Closure))
+#21 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Http\Middleware\HandleCors.php(74): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#22 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Http\Middleware\HandleCors->handle(Object(Illuminate\Http\Request), Object(Closure))
+#23 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Http\Middleware\TrustProxies.php(58): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#24 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Http\Middleware\TrustProxies->handle(Object(Illuminate\Http\Request), Object(Closure))
+#25 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\InvokeDeferredCallbacks.php(22): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#26 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Foundation\Http\Middleware\InvokeDeferredCallbacks->handle(Object(Illuminate\Http\Request), Object(Closure))
+#27 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Http\Middleware\ValidatePathEncoding.php(26): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#28 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Http\Middleware\ValidatePathEncoding->handle(Object(Illuminate\Http\Request), Object(Closure))
+#29 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(137): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#30 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(175): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#31 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(144): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
+#32 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests.php(607): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
+#33 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests.php(573): Illuminate\Foundation\Testing\TestCase->call('POST', '/api/payments/c...', Array, Array, Array, Array, '{"payment_id":1...')
+#34 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests.php(411): Illuminate\Foundation\Testing\TestCase->json('POST', '/api/payments/c...', Array, Array, 0)
+#35 C:\xampp\htdocs\ceyloncraft\tests\Feature\Payments\PaymentTest.php(231): Illuminate\Foundation\Testing\TestCase->postJson('/api/payments/c...', Array)
+#36 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestCase.php(1667): Tests\Feature\Payments\PaymentTest->test_cannot_pay_another_users_order()
+#37 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestCase.php(519): PHPUnit\Framework\TestCase->runTest()
+#38 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestRunner\TestRunner.php(87): PHPUnit\Framework\TestCase->runBare()
+#39 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestCase.php(365): PHPUnit\Framework\TestRunner->run(Object(Tests\Feature\Payments\PaymentTest))
+#40 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestSuite.php(369): PHPUnit\Framework\TestCase->run()
+#41 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestSuite.php(369): PHPUnit\Framework\TestSuite->run()
+#42 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestSuite.php(369): PHPUnit\Framework\TestSuite->run()
+#43 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\TextUI\TestRunner.php(64): PHPUnit\Framework\TestSuite->run()
+#44 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\TextUI\Application.php(211): PHPUnit\TextUI\TestRunner->run(Object(PHPUnit\TextUI\Configuration\Configuration), Object(PHPUnit\Runner\ResultCache\DefaultResultCache), Object(PHPUnit\Framework\TestSuite))
+#45 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\phpunit(104): PHPUnit\TextUI\Application->run(Array)
+#46 {main}
+
+----------------------------------------------------------------------------------
+
+syntax error, unexpected single-quoted string "message", expecting "function" or "const"
+
+  at tests\Feature\Payments\PaymentTest.php:236
+    232Γûò             'payment_id' => $payment->id,
+    233Γûò             'stripe_payment_intent_id' => 'pi_test_123',
+    234Γûò         ]);
+    235Γûò 
+  Γ₧£ 236Γûò         $response->assertStatus(403);
+    237Γûò     }
+    238Γûò 
+    239Γûò     /**
+    240Γûò      * TEST: Payment - Guest cannot make payment
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Payments\PaymentTest > guest cannot make payment       
+  Expected response status code [401] but received 500.
+Failed asserting that 500 is identical to 401.
+
+The following exception occurred during the last request:
+
+ParseError: syntax error, unexpected single-quoted string "message", expecting "function" or "const" in C:\xampp\htdocs\ceyloncraft\app\Http\Controllers\Api\PaymentController.php:128
+Stack trace:
+#0 C:\xampp\htdocs\ceyloncraft\vendor\composer\ClassLoader.php(427): Composer\Autoload\{closure}('C:\\xampp\\htdocs...')
+#1 [internal function]: Composer\Autoload\ClassLoader->loadClass('App\\Http\\Contro...')
+#2 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Route.php(1125): is_a('App\\Http\\Contro...', 'Illuminate\\Rout...', true)
+#3 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Route.php(1062): Illuminate\Routing\Route->controllerMiddleware()
+#4 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Router.php(834): Illuminate\Routing\Route->gatherMiddleware()
+#5 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Router.php(816): Illuminate\Routing\Router->gatherRouteMiddleware(Object(Illuminate\Routing\Route))
+#6 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Router.php(800): Illuminate\Routing\Router->runRouteWithinStack(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request))
+#7 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Router.php(764): Illuminate\Routing\Router->runRoute(Object(Illuminate\Http\Request), Object(Illuminate\Routing\Route))
+#8 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Routing\Router.php(753): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#9 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(200): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#10 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(180): Illuminate\Foundation\Http\Kernel->Illuminate\Foundation\Http\{closure}(Object(Illuminate\Http\Request))
+#11 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TransformsRequest.php(21): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#12 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull.php(31): Illuminate\Foundation\Http\Middleware\TransformsRequest->handle(Object(Illuminate\Http\Request), Object(Closure))
+#13 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull->handle(Object(Illuminate\Http\Request), Object(Closure))
+#14 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TransformsRequest.php(21): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#15 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TrimStrings.php(51): Illuminate\Foundation\Http\Middleware\TransformsRequest->handle(Object(Illuminate\Http\Request), Object(Closure))
+#16 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Foundation\Http\Middleware\TrimStrings->handle(Object(Illuminate\Http\Request), Object(Closure))
+#17 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Http\Middleware\ValidatePostSize.php(27): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#18 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Http\Middleware\ValidatePostSize->handle(Object(Illuminate\Http\Request), Object(Closure))
+#19 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance.php(109): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#20 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance->handle(Object(Illuminate\Http\Request), Object(Closure))
+#21 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Http\Middleware\HandleCors.php(74): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#22 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Http\Middleware\HandleCors->handle(Object(Illuminate\Http\Request), Object(Closure))
+#23 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Http\Middleware\TrustProxies.php(58): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#24 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Http\Middleware\TrustProxies->handle(Object(Illuminate\Http\Request), Object(Closure))
+#25 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\InvokeDeferredCallbacks.php(22): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#26 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Foundation\Http\Middleware\InvokeDeferredCallbacks->handle(Object(Illuminate\Http\Request), Object(Closure))
+#27 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Http\Middleware\ValidatePathEncoding.php(26): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#28 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(219): Illuminate\Http\Middleware\ValidatePathEncoding->handle(Object(Illuminate\Http\Request), Object(Closure))
+#29 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(137): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#30 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(175): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#31 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(144): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
+#32 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests.php(607): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
+#33 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests.php(573): Illuminate\Foundation\Testing\TestCase->call('POST', '/api/payments/i...', Array, Array, Array, Array, '{"order_id":1}')
+#34 C:\xampp\htdocs\ceyloncraft\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests.php(411): Illuminate\Foundation\Testing\TestCase->json('POST', '/api/payments/i...', Array, Array, 0)
+#35 C:\xampp\htdocs\ceyloncraft\tests\Feature\Payments\PaymentTest.php(246): Illuminate\Foundation\Testing\TestCase->postJson('/api/payments/i...', Array)
+#36 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestCase.php(1667): Tests\Feature\Payments\PaymentTest->test_guest_cannot_make_payment()
+#37 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestCase.php(519): PHPUnit\Framework\TestCase->runTest()
+#38 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestRunner\TestRunner.php(87): PHPUnit\Framework\TestCase->runBare()
+#39 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestCase.php(365): PHPUnit\Framework\TestRunner->run(Object(Tests\Feature\Payments\PaymentTest))
+#40 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestSuite.php(369): PHPUnit\Framework\TestCase->run()
+#41 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestSuite.php(369): PHPUnit\Framework\TestSuite->run()
+#42 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\Framework\TestSuite.php(369): PHPUnit\Framework\TestSuite->run()
+#43 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\TextUI\TestRunner.php(64): PHPUnit\Framework\TestSuite->run()
+#44 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\src\TextUI\Application.php(211): PHPUnit\TextUI\TestRunner->run(Object(PHPUnit\TextUI\Configuration\Configuration), Object(PHPUnit\Runner\ResultCache\DefaultResultCache), Object(PHPUnit\Framework\TestSuite))
+#45 C:\xampp\htdocs\ceyloncraft\vendor\phpunit\phpunit\phpunit(104): PHPUnit\TextUI\Application->run(Array)
+#46 {main}
+
+----------------------------------------------------------------------------------
+
+syntax error, unexpected single-quoted string "message", expecting "function" or "const"
+
+  at tests\Feature\Payments\PaymentTest.php:250
+    246Γûò         $response = $this->postJson('/api/payments/intent', [
+    247Γûò             'order_id' => $this->order->id,
+    248Γûò         ]);
+    249Γûò 
+  Γ₧£ 250Γûò         $response->assertStatus(401);
+    251Γûò     }
+    252Γûò 
+    253Γûò     /**
+    254Γûò      * TEST: Payment - Get payment history
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Payments\PaymentTest > get paΓÇª  AssertionFailedError   
+  Invalid JSON was returned from the route.
+
+  at tests\Feature\Payments\PaymentTest.php:265
+    261Γûò 
+    262Γûò         $response = $this->actingAs($this->user)->getJson('/api/payments');
+    263Γûò 
+    264Γûò         $response->assertStatus(200)
+  Γ₧£ 265Γûò                 ->assertJsonPath('success', true)
+    266Γûò                 ->assertJsonStructure(['success', 'data' => ['*' => ['id', 'order_id', 'status', 'amount', 'created_at']]])
+    267Γûò                 ->assertJsonCount(3, 'data');
+    268Γûò     }
+    269Γûò
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Payments\PaymentTest > refund payment                  
+  Expected response status code [200] but received 405.
+Failed asserting that 405 is identical to 200.
+
+  at tests\Feature\Payments\PaymentTest.php:282
+    278Γûò         $payment = Payment::factory()->create(['status' => 'succeeded']);
+    279Γûò 
+    280Γûò         $response = $this->actingAs($admin)->postJson("/api/payments/{$payment->id}/refund", []);
+    281Γûò 
+  Γ₧£ 282Γûò         $response->assertStatus(200)
+    283Γûò                 ->assertJsonPath('success', true);
+    284Γûò 
+    285Γûò         $this->assertDatabaseHas('payments', [
+    286Γûò             'id' => $payment->id,
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Payments\PaymentTest > cannot refund failed payment    
+  Failed asserting that false is true.
+
+  at tests\Feature\Payments\PaymentTest.php:303
+    299Γûò         $payment = Payment::factory()->create(['status' => 'failed']);
+    300Γûò 
+    301Γûò         $response = $this->actingAs($admin)->postJson("/api/payments/{$payment->id}/refund", []);
+    302Γûò 
+  Γ₧£ 303Γûò         $this->assertTrue($response->status() === 422 || $response->status() === 409);
+    304Γûò     }
+    305Γûò 
+    306Γûò     /**
+    307Γûò      * TEST: Payment - Non-admin cannot refund
+
+  1   tests\Feature\Payments\PaymentTest.php:303
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Payments\PaymentTest > non admin cannot refund paymΓÇª   
+  Expected response status code [403] but received 405.
+Failed asserting that 405 is identical to 403.
+
+  at tests\Feature\Payments\PaymentTest.php:317
+    313Γûò         $payment = Payment::factory()->create(['status' => 'succeeded']);
+    314Γûò 
+    315Γûò         $response = $this->actingAs($this->user)->postJson("/api/payments/{$payment->id}/refund", []);
+    316Γûò 
+  Γ₧£ 317Γûò         $response->assertStatus(403);
+    318Γûò     }
+    319Γûò 
+    320Γûò     /**
+    321Γûò      * TEST: Payment - Payment with zero amount
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Payments\PaymentTest > payment with zero amount        
+  Failed asserting that false is true.
+
+  at tests\Feature\Payments\PaymentTest.php:337
+    333Γûò             'order_id' => $freeOrder->id,
+    334Γûò         ]);
+    335Γûò 
+    336Γûò         // Should either skip payment or auto-succeed
+  Γ₧£ 337Γûò         $this->assertTrue($response->status() === 200 || $response->status() === 204);
+    338Γûò     }
+    339Γûò 
+    340Γûò     /**
+    341Γûò      * TEST: Payment - Invalid currency
+
+  1   tests\Feature\Payments\PaymentTest.php:337
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Payments\PaymentTest > invalid currency in payment     
+  Failed asserting that false is true.
+
+  at tests\Feature\Payments\PaymentTest.php:353
+    349Γûò             'currency' => 'XYZ', // Invalid currency code
+    350Γûò         ]);
+    351Γûò 
+    352Γûò         // Should validate currency
+  Γ₧£ 353Γûò         $this->assertTrue($response->status() === 200 || $response->status() === 422);
+    354Γûò     }
+    355Γûò }
+    356Γûò
+
+  1   tests\Feature\Payments\PaymentTest.php:353
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Products\ProductTest > sort by price ascΓÇª  TypeError   
+  array_values(): Argument #1 ($array) must be of type array, bool given
+
+  at tests\Feature\Products\ProductTest.php:189
+    185Γûò         $response->assertStatus(200);
+    186Γûò         $data = $response->json('data');
+    187Γûò         
+    188Γûò         $prices = collect($data)->map(fn($p) => $p['price'])->toArray();
+  Γ₧£ 189Γûò         $this->assertEquals($prices, array_values(sort($prices) ?: $prices));
+    190Γûò     }
+    191Γûò 
+    192Γûò     /**
+    193Γûò      * TEST: Products - Sort by price descending
+
+  1   tests\Feature\Products\ProductTest.php:189
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Products\ProductTest > sort by price descending        
+  Failed asserting that two arrays are equal.
+--- Expected
++++ Actual
+@@ @@
+ Array (
+-    0 => '961.49'
+-    1 => '924.61'
+-    2 => '902.35'
+-    3 => '887.86'
+-    4 => '831.21'
+-    5 => '800.52'
+-    6 => '717.67'
+-    7 => '686.03'
+-    8 => '634.99'
+-    9 => '548.81'
+-    10 => '488.26'
+-    11 => '465.36'
++    0 => '465.36'
++    1 => '488.26'
++    2 => '548.81'
++    3 => '634.99'
++    4 => '686.03'
++    5 => '717.67'
++    6 => '800.52'
++    7 => '831.21'
++    8 => '887.86'
++    9 => '902.35'
++    10 => '924.61'
++    11 => '961.49'
+ )
+
+  at tests\Feature\Products\ProductTest.php:206
+    202Γûò         $data = $response->json('data');
+    203Γûò         
+    204Γûò         $prices = collect($data)->map(fn($p) => $p['price'])->toArray();
+    205Γûò         $reversedPrices = array_reverse($prices);
+  Γ₧£ 206Γûò         $this->assertEquals($prices, $reversedPrices);
+    207Γûò     }
+    208Γûò 
+    209Γûò     /**
+    210Γûò      * TEST: Products - Pagination
+
+  1   tests\Feature\Products\ProductTest.php:206
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Security\AuthorizationTest > regular user cannot crΓÇª   
+  Expected response status code [403] but received 405.
+Failed asserting that 405 is identical to 403.
+
+  at tests\Feature\Security\AuthorizationTest.php:42
+     38Γûò             'price' => 99.99,
+     39Γûò             'description' => 'Test product',
+     40Γûò         ]);
+     41Γûò 
+  Γ₧£  42Γûò         $response->assertStatus(403);
+     43Γûò     }
+     44Γûò 
+     45Γûò     /**
+     46Γûò      * Test Case QA-080: Admin operations as regular user returns 403
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Security\SecurityTest > user cannot access other usΓÇª   
+  Failed asserting that false is true.
+
+  at tests\Feature\Security\SecurityTest.php:344
+    340Γûò     public function test_user_cannot_access_other_users_profile(): void
+    341Γûò     {
+    342Γûò         $response = $this->actingAs($this->user)->getJson("/api/users/{$this->otherUser->id}");
+    343Γûò 
+  Γ₧£ 344Γûò         $this->assertTrue($response->status() === 403 || $response->status() === 404);
+    345Γûò     }
+    346Γûò 
+    347Γûò     /**
+    348Γûò      * TEST: Security - JSON injection prevention
+
+  1   tests\Feature\Security\SecurityTest.php:344
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Security\SecurityTest > api response format consistΓÇª   
+  Failed asserting that Array &0 [
+    0 => Array &1 [
+        'id' => 1,
+        'name' => 'natus',
+        'price' => '448.09',
+        'image' => 'https://via.placeholder.com/640x480.png/00ddcc?text=quo',
+        'created_at' => '2026-04-15T13:49:47.000000Z',
+        'updated_at' => '2026-04-15T13:49:47.000000Z',
+        'slug' => 'eligendi-error-aperiam-aut',
+        'description' => 'Suscipit fugit molestias quidem porro laborum consectetur hic omnis. Repellat quasi qui voluptas sit inventore corporis. Pariatur quos quae ea. Rem modi molestiae ratione est.',
+        'stock' => 10,
+        'is_active' => true,
+        'category_id' => null,
+        'featured' => 0,
+        'image_url' => 'http://localhost/storage/https://via.placeholder.com/640x480.png/00ddcc?text=quo',
+    ],
+] is of type object.
+
+  at tests\Feature\Security\SecurityTest.php:423
+    419Γûò         $response->assertJsonStructure(['success', 'data'])
+    420Γûò                 ->assertJsonPath('success', true);
+    421Γûò 
+    422Γûò         $this->assertIsArray($response->json('data')) || 
+  Γ₧£ 423Γûò         $this->assertIsObject($response->json('data'));
+    424Γûò     }
+    425Γûò 
+    426Γûò     /**
+    427Γûò      * TEST: Security - Error response format
+
+  1   tests\Feature\Security\SecurityTest.php:423
+
+
+  Tests:    62 failed, 2 risky, 125 passed (526 assertions)
+  Duration: 9.87s
+

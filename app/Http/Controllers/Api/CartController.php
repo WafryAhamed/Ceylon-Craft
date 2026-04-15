@@ -26,25 +26,14 @@ class CartController extends Controller
         $items = $cart->items()->with('product')->get()->map(fn ($item) => [
             'id' => $item->id,
             'product_id' => $item->product_id,
-            'product' => [
-                'id' => $item->product->id,
-                'name' => $item->product->name,
-                'slug' => $item->product->slug,
-                'price' => $item->product->price,
-                'image' => $item->product->image_url,
-            ],
             'quantity' => $item->quantity,
-            'total' => $item->getTotalPrice(),
+            'price' => $item->price ?? $item->product->price,
         ]);
 
         return response()->json([
             'success' => true,
             'message' => 'Cart retrieved successfully',
-            'data' => [
-                'items' => $items,
-                'total_items' => $cart->getTotalItems(),
-                'total_price' => $cart->getTotalPrice(),
-            ],
+            'data' => $items,
         ], 200);
     }
 
@@ -92,6 +81,7 @@ class CartController extends Controller
                 'cart_id' => $cart->id,
                 'product_id' => $product->id,
                 'quantity' => $quantity,
+                'price' => $product->price,
             ]);
         }
 
@@ -102,7 +92,7 @@ class CartController extends Controller
                 'id' => $cartItem->id,
                 'product_id' => $cartItem->product_id,
                 'quantity' => $cartItem->quantity,
-                'price' => $cartItem->product->price,
+                'price' => $cartItem->price ?? $product->price,
             ],
         ], 200);
     }
