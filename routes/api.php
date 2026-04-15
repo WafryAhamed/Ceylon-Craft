@@ -27,6 +27,11 @@ Route::get('/products/search', [ProductController::class, 'search']);
 Route::get('/products/{slug}', [ProductController::class, 'show']);
 Route::get('/products/{slug}/reviews', [ReviewController::class, 'index']);
 
+// Protected product creation (requires admin)
+Route::middleware(['api-token', 'admin'])->group(function () {
+    Route::post('/products', [ProductController::class, 'store']);
+});
+
 // Category routes
 Route::get('/categories', [CategoryController::class, 'index']);
 Route::get('/categories/{slug}', [CategoryController::class, 'show']);
