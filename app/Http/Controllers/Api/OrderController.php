@@ -152,16 +152,23 @@ class OrderController extends Controller
         }
 
         $request->validate([
-            'status' => 'required|in:pending,paid,shipped,delivered,cancelled',
+            'status' => 'required|in:pending,paid,shipped,delivered,cancelled,processing',
             'payment_status' => 'nullable|in:pending,paid,failed,refunded',
         ]);
 
         $order->update($request->only(['status', 'payment_status']));
+        $order->refresh();
 
         return response()->json([
             'success' => true,
             'message' => 'Order updated successfully',
-            'data' => $order,
+            'data' => [
+                'id' => $order->id,
+                'status' => $order->status,
+                'payment_status' => $order->payment_status,
+                'total' => $order->total,
+                'updated_at' => $order->updated_at,
+            ],
         ], 200);
     }
 

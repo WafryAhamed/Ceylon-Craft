@@ -67,6 +67,10 @@ Route::middleware('api-token')->group(function () {
     Route::post('/orders', [OrderController::class, 'checkout']);
     Route::post('/orders/checkout', [OrderController::class, 'checkout']);
     Route::post('/orders/{order}/cancel', [OrderController::class, 'cancel']);
+    
+    // Order status update (requires admin role)
+    Route::patch('/orders/{order}/status', [OrderController::class, 'updateStatus'])->middleware('admin');
+    Route::put('/orders/{order}/status', [OrderController::class, 'updateStatus'])->middleware('admin');
 
     // Review routes
     Route::post('/reviews', [ReviewController::class, 'store']);
