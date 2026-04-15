@@ -119,9 +119,17 @@ class CartTest extends TestCase
      */
     public function test_view_cart(): void
     {
-        CartItem::factory(3)->create([
-            'product_id' => $this->product->id,
-        ]);
+        // Create cart for user if it doesn't exist
+        $cart = $this->user->cart()->firstOrCreate(['user_id' => $this->user->id]);
+        
+        // Create 3 different products and add them to cart
+        $products = Product::factory(3)->create(['stock' => 100, 'is_active' => true]);
+        foreach ($products as $product) {
+            CartItem::factory()->create([
+                'cart_id' => $cart->id,
+                'product_id' => $product->id,
+            ]);
+        }
 
         $response = $this->actingAs($this->user)->getJson('/api/cart');
 
