@@ -13,7 +13,8 @@
 ## 📌 Overview
 
 **Ceylon Craft** is a full-stack web application designed as a marketplace for authentic Sri Lankan handmade products.  
-It provides a seamless shopping experience with a modern UI, powerful backend, and scalable architecture.
+It provides a seamless shopping experience with a modern UI, powerful backend and scalable architecture.
+<img width="1672" height="941" alt="ChatGPT Image Apr 28, 2026, 07_27_54 AM" src="https://github.com/user-attachments/assets/f666b30a-f82c-48fe-bea3-0190fe662c4e" />
 
 ---
 
@@ -36,13 +37,13 @@ It provides a seamless shopping experience with a modern UI, powerful backend, a
 - Axios (HTTP requests)
 - Faker (Seeding)
 - Laravel Pint (Linting)
-- Docker (Laravel Sail)
+
 
 ---
 
 ## 📁 Project Structure
 
-```
+```bash
 ceylon-craft/
 │
 ├── app/                    # Backend logic (Controllers, Models)
@@ -50,183 +51,13 @@ ceylon-craft/
 ├── database/               # Migrations & schema
 ├── resources/
 │   ├── js/
-│   │   ├── pages/         # Vue pages
-│   │   ├── components/    # Reusable components
-│   │   ├── stores/        # Pinia state
-│   │   └── router/        # Routing
-│   └── css/               # Tailwind setup
+│   │   ├── pages/          # Vue pages
+│   │   ├── components/     # Reusable components
+│   │   │── stores/         # Pinia state
+│   │   └── router/         # Routing
+│   └── css/                # Tailwind setup
 │
 ├── routes/                 # API & web routes
 ├── public/                 # Public assets
 ├── tests/                  # Unit & feature tests
-└── vite.config.js         # Build configuration
-```
-
----
-
-## ✨ Features
-
-### 🛒 E-Commerce
-- Product listing & filtering
-- Category management
-- Shopping cart system
-- Checkout & payments
-- Order tracking
-
-### 👤 User System
-- Authentication (Login/Register)
-- Profile management
-- Wishlist
-- Reviews & ratings
-
-### 🛠️ Admin Panel
-- Product CRUD
-- Order management
-- User management
-- Dashboard analytics
-
-### 📄 Additional Pages
-- Blog system
-- Contact page
-- FAQ
-- Privacy policy & Terms
-
----
-
-## 🔐 Authentication
-
-- Token-based authentication using **Laravel Sanctum**
-- Roles:
-  - `Admin`
-  - `Customer`
-
----
-
-## 📡 API Endpoints (Sample)
-
-```bash
-POST   /api/auth/login
-GET    /api/products
-POST   /api/cart/add
-POST   /api/orders
-GET    /api/admin/dashboard
-```
-
----
-
-## ⚙️ Installation
-
-### 1️⃣ Clone Repository
-
-```bash
-git clone https://github.com/WafryAhamed/Ceylon-Craft.git
-cd Ceylon-Craft
-```
-
-### 2️⃣ Backend Setup
-
-```bash
-composer install
-cp .env.example .env
-php artisan key:generate
-php artisan migrate
-```
-
-### 3️⃣ Frontend Setup
-
-```bash
-npm install
-npm run dev
-```
-
-### 4️⃣ Run Server
-
-```bash
-php artisan serve
-```
-
----
-
-## 🧪 Testing
-
-```bash
-composer test
-```
-
----
-
-## 📦 Build for Production
-
-```bash
-npm run build
-```
-
----
-
-## 🌐 Environment Variables
-
-```env
-APP_NAME=CeylonCraft
-APP_ENV=local
-APP_URL=http://localhost
-
-DB_CONNECTION=sqlite
-CACHE_STORE=database
-QUEUE_CONNECTION=database
-```
-
----
-
-## 📊 Project Info
-
-- 📁 **Repository**: Ceylon Craft
-- ⚙️ **Status**: Active Development
-- 📅 **Last Updated**: April 2026
-- 📜 **License**: Apache 2.0
-
----
-
-## 👨‍💻 Author
-
-**Mohamed Aroos**
-
-- 🔗 LinkedIn: [https://www.linkedin.com/in/rmaroos/](https://www.linkedin.com/in/rmaroos/)
-- 📧 Email: rmaroos2001@gmail.com
-
----
-
-## ⭐ Contributing
-
-Contributions are welcome!  
-Feel free to fork the repository and submit a pull request.
-
----
-
-## 📄 License
-
-This project is licensed under the **Apache 2.0 License**.
-
----
-
-## 💡 Future Improvements
-
-- Mobile app (Flutter)
-- AI product recommendations
-- Real-time order tracking
-- Payment gateway enhancements
-
----
-
-## 🌟 If you like this project, don't forget to star it!
-
----
-
-## 💬 Additional Customizations Available
-
-I can also:
-- ✨ Add **GitHub banner design**
-- 📊 Create **architecture diagram (AWS style)**
-- 🖼️ Add **screenshots section**
-- 💼 Optimize for **LinkedIn showcase**
-
-Just let me know! 👍
+└── vite.config.js          # Build configuration
