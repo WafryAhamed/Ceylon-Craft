@@ -1,63 +1,72 @@
-# 🛍️ Ceylon Craft
+<h1 align="center">🛍️ Ceylon Craft</h1>
 
-![Laravel](https://img.shields.io/badge/Laravel-12-red?style=for-the-badge&logo=laravel)
-![Vue](https://img.shields.io/badge/Vue-3-green?style=for-the-badge&logo=vue.js)
-![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4-blue?style=for-the-badge&logo=tailwind-css)
-![License](https://img.shields.io/badge/License-Apache_2.0-blue?style=for-the-badge)
-![Status](https://img.shields.io/badge/Status-Active-success?style=for-the-badge)
+<p align="center">
+  <b>🌴 A modern full-stack e-commerce platform for Sri Lankan handmade products</b>
+</p>
 
-> 🌴 A modern full-stack e-commerce platform for showcasing and selling Sri Lankan handmade products.
+<p align="center">
+  <img src="https://img.shields.io/badge/Laravel-12-FF2D20?style=for-the-badge&logo=laravel&logoColor=white" />
+  <img src="https://img.shields.io/badge/Vue-3-42b883?style=for-the-badge&logo=vue.js&logoColor=white" />
+  <img src="https://img.shields.io/badge/TailwindCSS-4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" />
+  <img src="https://img.shields.io/badge/Vite-7-646CFF?style=for-the-badge&logo=vite&logoColor=white" />
+  <img src="https://img.shields.io/badge/Pinia-Store-yellow?style=for-the-badge&logo=pinia&logoColor=black" />
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/License-Apache_2.0-blue?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Status-Active-success?style=for-the-badge" />
+</p>
 
 ---
 
 ## 📌 Overview
 
-**Ceylon Craft** is a full-stack web application designed as a marketplace for authentic Sri Lankan handmade products.  
-It provides a seamless shopping experience with a modern UI, powerful backend and scalable architecture.
-<img width="1672" height="941" alt="ChatGPT Image Apr 28, 2026, 07_27_54 AM" src="https://github.com/user-attachments/assets/f666b30a-f82c-48fe-bea3-0190fe662c4e" />
+<div align="center">
+
+**Ceylon Craft** is a full-stack marketplace for authentic Sri Lankan handmade products.  
+It combines a **modern UI + scalable backend** to deliver a smooth e-commerce experience.
+
+<img width="90%" src="https://github.com/user-attachments/assets/f666b30a-f82c-48fe-bea3-0190fe662c4e" />
+
+</div>
 
 ---
 
 ## 🏗️ Tech Stack
 
-### 🔹 Backend
-- Laravel 12 (PHP 8.2+)
-- Laravel Sanctum (Authentication)
-- SQLite / MySQL / PostgreSQL
-- PHPUnit (Testing)
+### ⚙️ Backend
+<p>
+  <img src="https://skillicons.dev/icons?i=laravel,php,mysql,sqlite" />
+</p>
 
-### 🔹 Frontend
-- Vue 3 (Composition API)
-- Pinia (State Management)
-- Vue Router
-- Tailwind CSS 4
-- Vite
-
-### 🔹 Tools
-- Axios (HTTP requests)
-- Faker (Seeding)
-- Laravel Pint (Linting)
-
+- Laravel 12  
+- PHP 8.2+  
+- Laravel Sanctum  
+- MySQL / SQLite / PostgreSQL  
+- PHPUnit  
 
 ---
 
-## 📁 Project Structure
+### 🎨 Frontend
+<p>
+  <img src="https://skillicons.dev/icons?i=vue,js,tailwind,vite" />
+</p>
 
-```bash
-ceylon-craft/
-│
-├── app/                    # Backend logic (Controllers, Models)
-├── config/                 # Configuration files
-├── database/               # Migrations & schema
-├── resources/
-│   ├── js/
-│   │   ├── pages/          # Vue pages
-│   │   ├── components/     # Reusable components
-│   │   │── stores/         # Pinia state
-│   │   └── router/         # Routing
-│   └── css/                # Tailwind setup
-│
-├── routes/                 # API & web routes
-├── public/                 # Public assets
-├── tests/                  # Unit & feature tests
-└── vite.config.js          # Build configuration
+- Vue 3 (Composition API)  
+- Pinia (State Management)  
+- Vue Router  
+- Tailwind CSS  
+- Vite  
+
+---
+
+### 🛠️ Tools & DevOps
+<p>
+  <img src="https://skillicons.dev/icons?i=git,github,docker,postman" />
+</p>
+
+- Axios  
+- Faker  
+- Laravel Pint  
+- Docker
+
